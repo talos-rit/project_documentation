@@ -1,0 +1,74 @@
+Team roles: 
+- feel out the roles as we work on the stuff
+- Communications (comm with sponsor and backlog management)
+	- Noah
+	
+
+Duties: 
+- anal repo guy
+- clean the room
+
+
+Organize the tasks: 
+- ideas: 
+	- subteams have their own plans
+	- one huge backlog for the plan
+- hardware: 
+	- Brooke's cameras
+	- start cheap, work up from there
+	- Lab machine? (we need to decide if its necessary)
+Cameras: 
+- how many (2, 3?)
+	- 3 cameras
+		- 2 bots and wide field of view cam to see the whole room
+		- wide view cam as backup to bots
+		- wide view cam as default for AI to fallback on if robots don't know that to focus on
+	- Meta data
+		- confidence intervals for each camera feed
+
+	- up to 3 data steams with TONS of meta data
+
+- each camera has its own control vs overhead controller for all cameras
+- Live vs post-processing (strentch goal)
+	- AI controls which stream to capture (destructive editing)
+		- low skill user
+		- loss of event recording
+		- live processing
+	- AI gives user suggestions based on all footage coming in (not as wanted)
+		- high skill user
+		- post-processing
+
+Overall process: 
+- dont get hungup on stuff. STUB IT OUT! (then come back and make it work)
+- work for a week or 2, then do a retrospective on ideas (both brainstorming and idea trimming)
+- researching 
+	- defining hardware requirements
+	- domain model and high-level architecture
+	- interface brainstorming
+
+
+Problems: 
+- will people actually be able to use 3 cameras
+- cameras are loud (separate audio source)
+	- active noise cancelling(???)
+	- run at low speeds?
+- start with 1 robot 1 camera
+
+Architecting for the future
+- abstracting away the camera controls
+	- swap the robtos for later
+4-up
+- what we did
+- what we will do
+- top risks
+	- product risks
+	- process risks
+	- project risks
+- needs / questions for the sponsor
+
+Teams: 
+- one codes, other reviews and vice versa
+
+- Arms team
+- interface team
+- camera team

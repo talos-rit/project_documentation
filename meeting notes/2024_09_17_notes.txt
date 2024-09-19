@@ -1,0 +1,16 @@
+Visualizer to see what the tracking algo sees
+
+user profile: more technical than a teacher(???)
+Low cost assembling, for flexibility of users?
+
+AI-processes HD video stream or low quality video stream?
+
+New remote for the blue arm?
+
+Moving between set positions? (like multiple angles in a security room)
+
+Steps forward: 
+- go-pro with the rasp-pi in computer vision (Nolan & john)
+   - maybe with webcam (Nolan)
+- try moving arms from computers in spherical (Brooke & Noah)
+- GitHub management (Devan & Alex)

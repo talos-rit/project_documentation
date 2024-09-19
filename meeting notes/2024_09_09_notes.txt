@@ -1,0 +1,51 @@
+2024_09_09 Talos Notes
+
+Technical:
+- Mkdocs for hosting documentation
+- Github Issues for issue tracking
+- Arm interface controller hardware considerations:
+	- RPI 4 (good ports: usb, ethernet, wifi/bt)
+		- Pros:
+			- Lots of ports
+				- USB
+				- Ethernet
+				- Wifi
+				- Bluetooth
+			- Easily program in any language (including python)
+			- Can multitask
+		- Cons:
+			- Expensive
+			- Hard to source
+			- Overkill
+	- ESP32
+		- Pros:
+			- Cheap
+			- Easy to aquire
+			- Well suited performance for the work load
+			- Bare-metal (low power, direct control)
+			- Bluetooth
+			- Wifi
+		- Cons:
+			- Can't mutlitask
+			- Few (if any) accessible ports
+
+- Camera considerations:
+	- 2 Camera solution:
+		- Easier to handle high resolution video stream
+		- Less complex video processing
+		- Tracking alogrithm has to guess what is actually being captured (difficult to syncronize zoom/focus/offset)
+	- 1 Camera solution:
+		- Have to figure out how to handle high resoultion streams
+		- Tracking alogrithm can see exactly what is being captured
+		- More complex video processing
+		
+Process:
+- AI/ML expert: John
+- Embedded expert: Brooke
+- (Tentative) Process person: Alex (Nolan as backup)
+- Communication person: [Same as Process Person]
+- Dedicated diagrammer: Nolan
+
+Goals:
+- Concretely define requirements and MVP; Scope creep *will* be a recurring issue to manage.
+- Get a white board
