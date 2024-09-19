@@ -1,0 +1,6 @@
+TODO: 
+- Domain model diagram
+- Architecture model diagram
+- Development methodology
+- Process and project metrics
+- Agenda for Tuesday
