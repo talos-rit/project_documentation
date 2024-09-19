@@ -1,0 +1,17 @@
+Research Questions
+- How many cameras should be mounted on the arm? - John
+- Look up the capabilities of a GoPro Hero 6 - Nolan
+- how necessary is a second camera for the MVP? (Should we do one or two)
+- think about finding a camera with a solid API to control it. (not a priority) - Brooke
+- deciding what kind of hardware / computer we want to use (raspi?) Zima blade could be considered - Noah
+
+General Notes
+- for MVP:
+	Focus is for video storage locally, not streaming
+	Keep the subject in the center of the frame
+	decided on a camera storing footage locally
+	AI is responsible for only tracking
+	Need to do more research to decide on 1 vs 2 cameras
+	Decided on no need to zoom or focus
+	No preset camera locations (only one preset config)
+	

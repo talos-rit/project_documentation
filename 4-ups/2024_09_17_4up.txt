@@ -1,0 +1,16 @@
+Project Name: Talos
+
+Progress:
+
+
+Risks:
+- Finding cameras with APIs
+- Finding/making a usable API for the blue arm
+
+Plans:
+- Research camera capabilities & APIs (John & Nolan)
+- Research hardware options (raspberry pi? zima blade?) (Noah & Brooke)
+- Research software options (Apache ActiveMQ for Pub/Sub) (Alex & Devan)
+
+Needs:
+- White board
