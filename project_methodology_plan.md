@@ -13,7 +13,7 @@ Each sprint will consist of 4 phases that incrementally add features to a runnin
         - A feature document outlining the expected features to be completed in the coming sprint. 
     - Decide on new metrics to add
         - Reflect on evaluation from previous sprint and change tracked metrics for this coming sprint. 
-2. Risk Analysis & Research (1-2 week)
+2. Risk Analysis & Research (1 week)
     - Risk analysis meetings
         - Update the risk register with new information and confirm the risks are addressed/known for this coming sprint. 
     - Risk register (as roadmap for research)
@@ -27,7 +27,7 @@ Each sprint will consist of 4 phases that incrementally add features to a runnin
         - Diagrams are updated according to the new features. 
     - Scope trimming meeting
         - Nearing the end of engineering and testing, the whole team meets to trim features that were not feasible to complete in this sprint. 
-4. Evaluation (1/2 week)
+4. Evaluation (1/2 week) 
     - Retrospective meeting
         - Meet to discuss what went well / what did not go well. 
     - Collect and analyze metrics for this past prototype
@@ -48,3 +48,5 @@ Each sprint will consist of 4 phases that incrementally add features to a runnin
 ## Tools
 - Risk Register: Tracking the evolution and resolution of risks throughout the project. 
 - GitHub Issues: Tracking jobs for members/sub-teams to work on. 
+- Feature backlog
+- Spike backlog: Architecture, Research, Decision 
