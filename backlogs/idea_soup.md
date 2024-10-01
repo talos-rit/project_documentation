@@ -27,9 +27,6 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 	- AI gives user suggestions based on all footage coming in (not as wanted)
 		- high skill user
 		- post-processing
-    - Moving between set positions? (like multiple angles in a security room)
-        - "Virtual cameras"?
-        - guesses on movement to where the subject will be standing and moves to new camera position to show the subject at that new location
 
 - Visualizer to see what the tracking algo sees
 
