@@ -17,6 +17,8 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 
 - Camera meta data
     - confidence intervals for each camera feed
+		- one for how good the shot is on a person
+		- another for how "right" the shot is in terms of who is should be pointed to
 
 
 - AI Videography
@@ -35,3 +37,12 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 - AI-processes HD video stream or low quality video stream?
 
 - robot moves to look at object on table
+	- like a classroom visualizer
+	- visualizer mode?
+	- rotating shot?
+	- Marques Brownlee-like camera rotation shots
+		- he has a cool demo
+
+- A passive videographer
+
+- Active noise cancellation

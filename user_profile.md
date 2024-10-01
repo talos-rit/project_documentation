@@ -13,5 +13,5 @@ Desired features:
 > Ex. technical middle/high school teacher, technical college professor
 
 Desired features:
-- Code is easy to 
+- Code is easy to modify
 - User can create custom configs for the AI/Director
