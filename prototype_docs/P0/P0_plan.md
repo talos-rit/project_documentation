@@ -11,6 +11,8 @@ The features planned to get done for this prototype
 - AI can control the arm
     - control the altitude & azimuth
 - AI/Director has 1 config set to keep the largest face in the middle 50% of the frame
+- There is 1 camera
+    - web cam that both tracks subjects and streams the video
 
 ## Final Features
 The features that actually got done for this prototype 
