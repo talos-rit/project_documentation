@@ -46,3 +46,10 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 - A passive videographer
 
 - Active noise cancellation
+
+- 2D visualizers on the manual interface that displays the positions of the arms
+
+- error detection from the camera feed
+
+- mockup fake people and fake arm to control
+    - digital twins of actual environments and use robot as scanning device
