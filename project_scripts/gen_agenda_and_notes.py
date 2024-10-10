@@ -35,10 +35,6 @@ def main():
         print("file " + notes_template_path + "not found :(")
     shutil.copy2(notes_template_path, notes_file_path)
     print("Created new file: " + notes_filename + "!")
-        # try: 
-        #     shutil.copy2(template_path, "//?/" + new_file_path)
-        # except:
-        # print("Failed to move the script "+os.path.basename(template_path)+" to "+ new_file_path)
 
 if __name__ == "__main__":
     main()
