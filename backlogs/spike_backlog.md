@@ -4,9 +4,12 @@ Each spike is related to at least 1 feature on the feature list that can be impl
 
 ## Architectural Spikes (A)
 Spikes related to architectural design. 
+1. 
 
 ## Reserach Spikes (R)
 Spikes related to technological capabilities. 
+2. 
 
 ## Decision Spikes (D)
 Spikes related to decisive decisions. 
+3. 
