@@ -74,7 +74,7 @@ This command is used by the Talos Command Interface (primarily the Director, but
 
 | Arg | Type | Description |
 |---|---|---|
-| Delay (ms) | INT32 | How long to wait until executing pan |
+| Delay (ms) | UINT32 | How long to wait until executing pan |
 
 ### Receive
 **Command Value**: 0x8002
