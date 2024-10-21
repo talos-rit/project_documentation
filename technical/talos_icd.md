@@ -6,6 +6,7 @@
 |---|---|---|
 | 2024-09-26 | Brooke Leinberger | Init |
 | 2024-10-03 | Brooke Leinberger | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
+| 2024-10-21 | Devan Kavalchek   | Add home and fix unsigned integers that should be signed. |
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
@@ -29,14 +30,15 @@ Note:
 ### Brief
 This command is used by the Talos Command Interface (primarily the Director, but also the manual interface) on the Operator in order to prepare for giving further commands to the operator. Upon the Operator receiving this command, it responds with the version of the Talos Operator software it's running. The Command Interface can then use this information to determine the best commands to give this unit, or decide if it's incompatible.
 
-
+### Send
 **Command Value**: 0x0000
 
-### Send
+| Arg           | Type | Description |
+|---|---|---|
+| OID | UINT16 | Unique ID for Operator-Arm model version connection |
 
-*No Payload*
-
-### Recieve
+### Receive
+**Command Value**: 0x8000
 
 | Arg | Type | Description |
 |---|---|---|
@@ -47,22 +49,35 @@ This command is used by the Talos Command Interface (primarily the Director, but
 
 ## Polar Pan (Min)
 
-### Brief
-Lorem Ipsum
-
-**Command Value**: 0x0001
-
 ### Send
+**Command Value**: 0x0001
 
 | Arg | Type | Description |
 |---|---|---|
 | Delta Azimuth     | INT32 | Requested change in azimuth |
 | Delta Altitude    | INT32 | Requested change in altitude |
-| Delay (ms)        | INT32 | How long to wait until executing pan |
-| Duration (ms)     | INT32 | How long the pan should take to execute
+| Delay (ms)        | UINT32 | How long to wait until executing pan |
+| Time              | UINT32 | How long the pan should take to execute |
 
-### Recieve
+### Receive
+**Command Value**: 0x8001
 
 | Arg | Type | Description |
 |---|---|---|
-| Return Code | UINT16 | Reports success/error |
+| Return Code | UINT16 | Reports success/error
+
+
+## Home
+
+### Send
+**Command Value**: 0x0002
+
+| Arg | Type | Description |
+|---|---|---|
+| Delay (ms) | INT32 | How long to wait until executing pan |
+
+### Receive
+**Command Value**: 0x8002
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
