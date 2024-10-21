@@ -29,9 +29,11 @@ This command is used by the Talos Command Interface (primarily the Director, but
 ### Send
 **Command Value**: 0x0000
 
-*No Payload*
+| Arg           | Type | Description |
+|---|---|---|
+| OID | UINT16 | Unique ID for Operator-Arm model version connection |
 
-### Recieve
+### Receive
 **Command Value**: 0x8000
 
 | Arg | Type | Description |
@@ -51,11 +53,28 @@ This command is used by the Talos Command Interface (primarily the Director, but
 | Delta Azimuth     | INT32 | Requested change in azimuth |
 | Delta Altitude    | INT32 | Requested change in altitude |
 | Delay (ms)        | INT32 | How long to wait until executing pan |
-| Time              | INT32 | How long the pan should take to execute
+| Time              | INT32 | How long the pan should take to execute |
 
-### Recieve
+### Receive
 **Command Value**: 0x8001
 
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
+
+
+## Home
+
+### Send
+**Command Value**: 0x0002
+
+| Arg | Type | Description |
+|---|---|---|
+| Delay (ms) | INT32 | How long to wait until executing pan |
+
+### Receive
+**Command Value**: 0x8002
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
