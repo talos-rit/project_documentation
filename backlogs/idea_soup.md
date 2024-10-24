@@ -53,3 +53,5 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 
 - mockup fake people and fake arm to control
     - digital twins of actual environments and use robot as scanning device
+
+- Control Talos from across the room (control over the network)
