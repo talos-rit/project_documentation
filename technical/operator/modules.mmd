@@ -1,0 +1,72 @@
+%% Operator Class Diagram
+
+classDiagram
+    class Subscriber{
+    <<Abstract>>
+      -the_api: API
+      +Init()
+      +Start()
+      +Send()
+      +PollReceive()
+      +Stop()
+      +Destroy()
+    }
+    class API{
+        -the_arm: Arm
+        -the_dir: Subscriber
+        +ProcessInMessage()
+        +ProcessOutMessage()
+    }
+    class ScorbotStruct{
+        -slideBasePos: int
+        -baseAzimuth: int
+        -baseElevation: int
+        -elbowAngle: int
+        -wristAngle: int
+        -gripperPercent: int
+    }
+    class Arm{
+    <<Abstract>>
+      -the_api: API
+      -pos: ScorbotStruct
+      +Init()
+      +Start()
+      +Send()
+      +PollReceive()
+      -Command(cmd: str)
+      +Stop()
+      +Destroy()
+
+      +PolarPan()
+    }
+    class ERV{
+      -pos: ScorbotStruct
+      +Init()
+      +Start()
+      +Send()
+      +PollReceive()
+      -Command(cmd: str)
+      +Stop()
+      +Destroy()
+
+      +PolarPan()
+    }
+    class ER4U{
+      -pos: ScorbotStruct
+      +Init()
+      +Start()
+      +Send()
+      +PollReceive()
+      -Command(cmd: str)
+      +Stop()
+      +Destroy()
+
+      +PolarPan()
+    }
+
+    ERV         --|>    Arm
+    ERV         -->     ScorbotStruct
+    ER4U        --|>    Arm
+    ER4U        -->     ScorbotStruct
+    API         <-->    Arm
+    Subscriber  <-->    API
