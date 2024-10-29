@@ -5,7 +5,6 @@ The features planned to get done for this prototype
 
 - User can manually control the arm
     - User can control the arm in a coodinate system via the manual interface inputs (from the screen with buttons)
-    - Arm moves accurately (to the degrees) 
 - AI can control the arm
     - AI can formulate commands (look on the screen and output readable instuctions)
         - same coodinate system as the manual interface
@@ -14,6 +13,9 @@ The features planned to get done for this prototype
     - There is 1 camera
 
 ### Stretch Features
+The features that are ready to be worked on if all of the planned features are completed within the iteration. 
+
+- Arm moves accurately (to the degrees) 
 - Operator has counter-oversteer
 - AI runs and sends commands to the arm with the camera attached to the arm
 
