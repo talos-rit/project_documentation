@@ -1,72 +1,104 @@
 %% Operator Class Diagram
 
 classDiagram
+direction LR
     class Subscriber{
+      -responder: Outbox
+      -logger: Outbox
+      -queues: Queue[]
+      -locks: pthread_mutex_t[]
+      -buffer_pool: SUB_Buffer[]
+      +Init() Subscriber
+      +RegisterResponder(Outbox* responder) int
+      +RegisterLogger(Outbox* logger) int
+      -SubRun()$ void
+      +Start() int
+      +EnqueueBuffer(SUB_Buffer* buf, SUB_Queue queue) int
+      +DequeueBuffer(SUB_Queue queue) SUB_Buffer_ptr
+      +Stop() int
+      +Destroy() void
+    }
+    class Inbox{
     <<Abstract>>
-      -the_api: API
-      +Init()
-      +Start()
-      +Send()
-      +PollReceive()
-      +Stop()
-      +Destroy()
+      #sub: Subscriber
+      -OnMessage() void
+      +Init() Inbox
+      +RegisterSubscriber(Subscriber* sub) int
+      +Start() int
+      +Stop() int
+      +Destroy() void
+    }
+    class Outbox{
+    <<Abstract>>
+      -PollQueue() void
+      +Init() Inbox
+      +Start() int
+      +Stop() int
+      +Destroy() void
+    }
+    class TAMQ_IN{
+    - BrokerURI: string
+    - Source: string
+    - AutoACK: bool
+    - UseTopics: bool
+
+      -OnMessage() void
+      +Init() TAMQ_IN
+      +Start() int
+      +Stop() int
+      +Destroy() void
+    }
+    class TAMQ_OUT{
+    - BrokerURI: string
+    - Source: string
+    - AutoACK: bool
+    - UseTopics: bool
+
+      +Init() TAMQ_IN
+      +Start() int
+      +Stop() int
+      +Destroy() void
     }
     class API{
-        -the_arm: Arm
-        -the_dir: Subscriber
-        +ProcessInMessage()
-        +ProcessOutMessage()
-    }
-    class ScorbotStruct{
-        -slideBasePos: int
-        -baseAzimuth: int
-        -baseElevation: int
-        -elbowAngle: int
-        -wristAngle: int
-        -gripperPercent: int
+        -API_prep_home(API_Data_Home* payload)$
+        -API_prep_polar_pan(API_Data_Polar_Pan* payload)$
+        +API_validate_command(u8* payload, u32 len)$
     }
     class Arm{
     <<Abstract>>
+      -pid: pthread_t
+      #the_sub: Subscriber
       -the_api: API
-      -pos: ScorbotStruct
-      +Init()
-      +Start()
-      +Send()
-      +PollReceive()
-      -Command(cmd: str)
-      +Stop()
-      +Destroy()
-
-      +PolarPan()
+      +Init() Arm
+      +RegisterSubscriber(Subscriber* sub) int
+      -ArmRun(the_arm: Arm)$ void
+      +Start() int
+      +Send() int
+      +PollQueue() void
+      -Command(cmd: str) int
+      -Handshake(): int
+      -Home(uint32_t delay_ms) int
+      -PolarPan(u32 d_azimuth, u32 d_alt, u32 delay, u32 time_ms) int
+      +Stop() int
+      +Destroy() void
     }
     class ERV{
       -pos: ScorbotStruct
-      +Init()
-      +Start()
-      +Send()
-      +PollReceive()
-      -Command(cmd: str)
-      +Stop()
-      +Destroy()
-
-      +PolarPan()
-    }
-    class ER4U{
-      -pos: ScorbotStruct
-      +Init()
-      +Start()
-      +Send()
-      +PollReceive()
-      -Command(cmd: str)
-      +Stop()
-      +Destroy()
-
-      +PolarPan()
+      +Init() Arm
+      +Start() int
+      +Send() int
+      +Stop() int
+      +Destroy() void
+      -Command(cmd: str) int
+      -Handshake(): int
+      -Home(uint32_t delay_ms) int
+      -PolarPan(u32 d_azimuth, u32 d_alt, u32 delay, u32 time_ms) int
     }
 
-    ERV         --|>    Arm
-    ERV         -->     ScorbotStruct
-    ER4U        --|>    Arm
-    ER4U        -->     ScorbotStruct
-    API         <-->    Arm
-    Subscriber  <-->    API
+    Arm         <|--    ERV
+    Arm         -->     API
+    Inbox       -->     Subscriber
+    Outbox      <--     Subscriber
+    TAMQ_IN     --|>    Inbox
+    TAMQ_OUT    --|>    Outbox
+    Subscriber  <--     Arm
