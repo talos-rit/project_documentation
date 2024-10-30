@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant Commander
+    participant Inbox
+    %% participant Outbox
+    participant Subscriber
+    participant ERV
+    participant API
+    participant SCORBOT
+
+    ERV->>Subscriber: DequeueBuffer(SUB_QUEUE_COMMAND)
+    Subscriber-->>ERV: NULL
+    Commander->>Inbox: Home(delay_ms)
+    Inbox->>Inbox: OnMessage()
+    Inbox-->>Commander: ACK
+    Inbox->>Subscriber: DequeueBuffer(SUB_QUEUE_FREE)
+    Subscriber-->>Inbox: empty SUB_Buffer buf
+    Inbox->>Inbox: Fill buf with payload
+    Inbox->>Subscriber: EnqueueBuffer(SUB_QUEUE_COMMAND, buf)
+    ERV->>Subscriber: DequeueBuffer(SUB_QUEUE_COMMAND)
+    Subscriber-->>ERV: Populated SUB_Buffer buf
+    ERV->>API: API_validate_command(buf, buf.len)
+    API->>API: API_prep_home(buf)
+    API-->>ERV: SUCCESS
+    ERV->>ERV: Cast buf to API_Data_Home
+    ERV->>ERV: usleep(delay_ms)
+    ERV->>SCORBOT: RS-232: "HOME\r"
+    ERV->>Subscriber: EnqueueBuffer(SUB_QUEUE_FREE, buf)
