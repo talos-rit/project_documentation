@@ -1,6 +1,7 @@
 # Idea Soup
 This is a list of ideas that the robotic autonomous cameraperson could potenitally incorporate into its system. 
 
+## Cameras
 - Camera considerations:
 	- 1 Camera solution:
 		- Have to figure out how to handle high resoultion streams
@@ -55,3 +56,5 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
     - digital twins of actual environments and use robot as scanning device
 
 - Control Talos from across the room (control over the network)
+
+- Coded control to prevent elbow from over-extending. 
