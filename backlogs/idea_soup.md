@@ -1,7 +1,8 @@
 # Idea Soup
 This is a list of ideas that the robotic autonomous cameraperson could potenitally incorporate into its system. 
 
-## Cameras
+
+## Camera
 - Camera considerations:
 	- 1 Camera solution:
 		- Have to figure out how to handle high resoultion streams
@@ -21,7 +22,10 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 		- one for how good the shot is on a person
 		- another for how "right" the shot is in terms of who is should be pointed to
 
+- error detection from the camera feed
 
+
+## AI Tracking
 - AI Videography
 	- AI controls which stream to capture (destructive editing)
 		- low skill user
@@ -30,13 +34,12 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 	- AI gives user suggestions based on all footage coming in (not as wanted)
 		- high skill user
 		- post-processing
-
-- Visualizer to see what the tracking algo sees
-
-- Low cost assembling, for flexibility of users?
-
 - AI-processes HD video stream or low quality video stream?
+- A passive videographer
+- Active noise cancellation
 
+
+## Robot Behavior
 - robot moves to look at object on table
 	- like a classroom visualizer
 	- visualizer mode?
@@ -44,17 +47,27 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 	- Marques Brownlee-like camera rotation shots
 		- he has a cool demo
 
-- A passive videographer
+- save positions from manual interface
 
-- Active noise cancellation
+- digital twins of actual environments and use robot as scanning device
 
+- interview professors for what they would want in their class room. 
+
+## UI Interface
+- Visualizer to see what the tracking algo sees
 - 2D visualizers on the manual interface that displays the positions of the arms
-
-- error detection from the camera feed
-
 - mockup fake people and fake arm to control
-    - digital twins of actual environments and use robot as scanning device
 
-- Control Talos from across the room (control over the network)
 
+## Implementation
+
+### Operator
 - Coded control to prevent elbow from over-extending. 
+
+### Director
+- Add options for framing locations (center, left, top, topleft, etc.)
+
+
+## Usability
+- Low cost assembling, for flexibility of users?
+- Control Talos from across the room (control over the network)
