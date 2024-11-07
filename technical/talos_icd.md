@@ -76,8 +76,12 @@ Starts/maintains a continuous polar pan rotation.
 
 | Arg | Type | Description |
 |---|---|---|
-| Moving Azimuth     | UINT8 | Requested change in azimuth |
-| Moving Altitude    | UINT8 | Requested change in altitude |
+| Moving Azimuth     | UINT8 | -1, 0, or 1 |
+| Moving Altitude    | UINT8 | -1, 0, or 1 |
+
+ The values in the body describe whether or not the arm is rotating in a given direction. 
+ 1 rotates counter-clockwise along the axis of movement, -1 rotates clockwise along the axis of 
+ movement and 0 means no rotation.
 
 ### Receive
 **Command Value**: 0x8003
