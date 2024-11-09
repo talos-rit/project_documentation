@@ -47,7 +47,7 @@ This command is used by the Talos Command Interface (primarily the Director, but
 | Minor Version | UINT8  | |
 
 
-## Polar Pan (Min)
+## Polar Pan (Discrete)
 
 ### Send
 **Command Value**: 0x0001
@@ -61,6 +61,46 @@ This command is used by the Talos Command Interface (primarily the Director, but
 
 ### Receive
 **Command Value**: 0x8001
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
+## Polar Pan (Continuous START)
+Starts/maintains a continuous polar pan rotation.
+
+### Send
+
+**Command Value**: 0x0003
+
+| Arg | Type | Description |
+|---|---|---|
+| Moving Azimuth     | UINT8 | -1, 0, or 1 |
+| Moving Altitude    | UINT8 | -1, 0, or 1 |
+
+ The values in the body describe whether or not the arm is rotating in a given direction. 
+ 1 rotates counter-clockwise along the axis of movement, -1 rotates clockwise along the axis of 
+ movement and 0 means no rotation.
+
+### Receive
+**Command Value**: 0x8003
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
+## Polar Pan (Continuous STOP)
+Stops a continuous polar pan rotation.
+
+### Send
+**Command Value**: 0x0004
+
+**No body sent**
+
+### Receive
+**Command Value**: 0x8004
 
 | Arg | Type | Description |
 |---|---|---|
