@@ -53,10 +53,14 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 
 - interview professors for what they would want in their class room. 
 
+- remembers the face of the primary presenter and only follows that face
+
 ## UI Interface
 - Visualizer to see what the tracking algo sees
 - 2D visualizers on the manual interface that displays the positions of the arms
 - mockup fake people and fake arm to control
+- draw "bounding box" on the live video
+	- draw the center target
 
 
 ## Implementation
