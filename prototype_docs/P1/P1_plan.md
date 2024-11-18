@@ -32,14 +32,8 @@ The features that actually got done for this prototype
         - same coodinate system as the manual interface
     - AI integrates with the publisher
     - AI/Director has 1 config set to keep the largest face in the middle 50% of the frame
-    - **NOTE**: All but 1 camera testing
 
 - Arm moves accurately (to the degrees) 
-
-
-
-## Dropped Features
-The features that were planned, but did *not* get done for this prototype
 
 - User can manually control the arm
     - continuous (push and it moves until release)
@@ -47,3 +41,10 @@ The features that were planned, but did *not* get done for this prototype
     - There is 1 camera
 
 - AI runs and sends commands to the arm with the camera attached to the arm
+
+
+
+## Dropped Features
+The features that were planned, but did *not* get done for this prototype
+
+- User can manually control the arm with conituous button presses

@@ -49,7 +49,7 @@ This is a list of ideas that the robotic autonomous cameraperson could potenital
 
 - save positions from manual interface
 
-- digital twins of actual environments and use robot as scanning device
+- ~~digital twins of actual environments and use robot as scanning device~~
 
 - interview professors for what they would want in their class room. 
 
