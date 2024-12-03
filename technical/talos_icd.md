@@ -133,7 +133,8 @@ Command to set the speed of all axes on the scorbot to the received number (uint
 **Command Value**: 0x0005
 | Arg | Type | Description |
 |---|---|---|
-| Speed (1-100) | UINT8 | What to set the speed of all axes to on the scorbot |
+| Speed | UINT8 | What to set the speed of all axes to on the scorbot |
+| Axis | UINT8  | Axis to change (for all axes send 0)
 
 ### Receive
 **Command Value**: 0x8005
