@@ -1,7 +1,7 @@
-Progress:
+## Progress:
 
-Risks:
+## Risks:
 
-Plans:
+## Plans:
 
-Needs:
+## Needs:

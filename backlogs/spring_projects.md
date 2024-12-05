@@ -18,7 +18,6 @@ The backlog of ideas for projects to work on over the spring 2025 semester.
 
 ### Extra ideas
 - Gesture recognition
-- Imagine RIT
 
 ## Classroom Ideas :)
 1. Framing (aestheic videography & choose framing location) (jhon, nolan)

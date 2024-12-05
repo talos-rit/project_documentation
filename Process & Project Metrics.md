@@ -19,6 +19,13 @@ Based on this, we are planning to implement a robust project metric plan.  After
 	- Track the number of errors we find in any artifact
 5. **Working Hours**
 	- Track the number of hours allocated working per member, per week.
+6. **PR Confidence**
+	- Scale 1-5 how confident you are with the quality of the work in the PR
+
+### Project Metrics
+1. **Earned Value**
+	- Estimate the percentage we have done for the project. 
+
 ### Software Functionality Metrics:
 
 1. **Camera Shot Quality**
