@@ -7,6 +7,7 @@
 | 2024-09-26 | Brooke Leinberger | Init |
 | 2024-10-03 | Brooke Leinberger | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
 | 2024-10-21 | Devan Kavalchek   | Add home and fix unsigned integers that should be signed. |
+| 2024-12-03 | Noah Carney       | Added set speed command structure and assigned it values |
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
@@ -118,6 +119,25 @@ Stops a continuous polar pan rotation.
 
 ### Receive
 **Command Value**: 0x8002
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
+## Set Speed
+
+### Brief
+Command to set the speed of all axes on the scorbot to the received number (uint8)
+
+### Send
+**Command Value**: 0x0005
+| Arg | Type | Description |
+|---|---|---|
+| Speed | UINT8 | What to set the speed of all axes to on the scorbot |
+| Axis | UINT8  | Axis to change (for all axes send 0)
+
+### Receive
+**Command Value**: 0x8005
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
