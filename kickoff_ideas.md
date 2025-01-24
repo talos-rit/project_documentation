@@ -25,6 +25,7 @@ update project plans
 - 70% features 30% bugs
 
 - OpenSource liscencing
+- get signed up for ImagineRIT
 
 - parameter tuning
 
