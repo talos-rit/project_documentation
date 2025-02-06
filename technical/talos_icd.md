@@ -124,6 +124,120 @@ Stops a continuous polar pan rotation.
 | Return Code | UINT16 | Reports success/error
 
 
+## Save Position
+Saves a position [FINISH ME]
+
+### Send
+**Command Value**: 0x0006
+
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name descriptor for the position |
+| Reference | CHAR[] | Another previously saved position to act as a reference position
+| Anchor | BOOLEAN | Whether the position will move relative to the reference position
+
+### Receive
+**Command Value**: 0x8006
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
+## Delete Position
+Given a position name, deletes that position information. 
+
+### Send
+**Command Value**: 0x0007
+
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name of the position to be deleted |
+
+### Receive
+**Command Value**: 0x8007
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+## Go to Position
+Move to a pre-defined position. 
+
+### Send
+**Command Value**: 0x0008
+
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name of the position to move to |
+
+### Receive
+**Command Value**: 0x8008
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+## Get Current Position
+Gets the current position of all axes
+
+### Send
+**Command Value**: 0x0009
+
+**no body sent**
+
+### Receive
+**Command Value**: 0x8009
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error |
+| Axis 1 position | INT32 | Current position of Axis 1 |
+| Axis 2 position | INT32 | Current position of Axis 2 |
+| Axis 3 position | INT32 | Current position of Axis 3 |
+| Axis 4 position | INT32 | Current position of Axis 4 |
+| Axis 5 position | INT32 | Current position of Axis 5 |
+<!-- There are 6 axes right? -->
+
+## Set Polar Position
+Defines a position in terms of polar coordinates
+
+### Send
+**Command Value**: 0x000A
+
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name descriptor for the position |
+| Delta | INT32 | Degrees on delta axis |
+| Azimuth | INT32 | Degrees on azimuth axis |
+| Radius | INT32 | Distance to extend outwards |
+
+### Receive
+**Command Value**: 0x800A
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
+## Set Cartesian Position
+
+### Send
+**Command Value**: 0x000B
+
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name descriptor for the position |
+| X | INT32 | Degrees on X-axis |
+| Y | INT32 | Degrees on Y-axis |
+| Z | INT32 | Degrees on Z-axis |
+
+### Receive
+**Command Value**: 0x800B
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+
 ## Set Speed
 
 ### Brief
