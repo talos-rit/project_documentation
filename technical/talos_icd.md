@@ -8,6 +8,8 @@
 | 2024-10-03 | Brooke Leinberger | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
 | 2024-10-21 | Devan Kavalchek   | Add home and fix unsigned integers that should be signed. |
 | 2024-12-03 | Noah Carney       | Added set speed command structure and assigned it values |
+| 2025-02-06 | Alex Vernes       | Added idle mode calls
+| 2025-02-25 | Brooke Leinberger | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
@@ -67,6 +69,21 @@ This command is used by the Talos Command Interface (primarily the Director, but
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
 
+## Home
+
+### Send
+**Command Value**: 0x0002
+
+| Arg | Type | Description |
+|---|---|---|
+| Delay (ms) | UINT32 | How long to wait until executing home |
+
+### Receive
+**Command Value**: 0x8002
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
 
 ## Polar Pan (Continuous START)
 Starts/maintains a continuous polar pan rotation.
@@ -107,55 +124,94 @@ Stops a continuous polar pan rotation.
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
 
-
-## Home
+## Get Speed
+Command to get the speed of all axes on Talos
 
 ### Send
-**Command Value**: 0x0002
-
-| Arg | Type | Description |
-|---|---|---|
-| Delay (ms) | UINT32 | How long to wait until executing home |
+**Command Value**: 0x0005
+No body
 
 ### Receive
-**Command Value**: 0x8002
+**Command Value**: 0x8005
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
+| Speed | UINT8 | What to the default speed of the Talos is |
 
-
-## Save Position
-Saves a position [FINISH ME]
+## Execute Hardware Operation
+Some operations require high coupling with the specifics of the hardware (e.g. axis-by-axis positions).
+Such operations should be defined by a separate companion ICD, to avoid coupling the high level API with the hardware
 
 ### Send
 **Command Value**: 0x0006
 
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name descriptor for the position |
-| Reference | CHAR[] | Another previously saved position to act as a reference position
-| Anchor | BOOLEAN | Whether the position will move relative to the reference position
+| Subcommand Value | UINT16 | Command for function in hardware specific ICD |
+| RESERVED | UINT32 | RESERVED |
+| Payload | UINT8[] | Payload defined by hardware specific ICD |
 
 ### Receive
 **Command Value**: 0x8006
 
 | Arg | Type | Description |
 |---|---|---|
+| Return Code | UINT16 | Reports success/error |
+| Subcommand Value | UINT16 | Command for function in hardware specific ICD |
+| Payload | UINT8[] | Payload defined by hardware specific ICD |
+
+## Set Speed
+Command to set the speed of all axes on Talos to the received number (uint8)
+
+### Send
+**Command Value**: 0x0007
+| Arg | Type | Description |
+|---|---|---|
+| Speed | UINT8 | The speed of all axes to set on Talos |
+
+### Receive
+**Command Value**: 0x8007
+| Arg | Type | Description |
+|---|---|---|
 | Return Code | UINT16 | Reports success/error
 
+
+## Save Position
+Saves a position. If this command is sent with a name that already exists, it will be overwritten with the new arguments.
+If reference is an empty string (length of 0), the default value will be used (can be reconfigured, unconfigured default is empty string).
+If the reference string is empty, the Anchor value is ignored and the position is always treated as if anchor is set to false.
+
+### Send
+**Command Value**: 0x0008
+
+| Arg | Type | Description |
+|---|---|---|
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated) |
+| Anchor | BOOLEAN | Whether the position will move relative to the reference position
+| Refernece len | UINT8 | Length of the reference array; if 0 |
+| Reference | CHAR[] | Another previously saved position to act as a reference position
+
+### Receive
+**Command Value**: 0x8008
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
 
 ## Delete Position
 Given a position name, deletes that position information. 
 
 ### Send
-**Command Value**: 0x0007
+**Command Value**: 0x0009
 
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name of the position to be deleted |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated) |
 
 ### Receive
-**Command Value**: 0x8007
+**Command Value**: 0x8009
 
 | Arg | Type | Description |
 |---|---|---|
@@ -165,55 +221,57 @@ Given a position name, deletes that position information.
 Move to a pre-defined position. 
 
 ### Send
-**Command Value**: 0x0008
+**Command Value**: 0x000A
 
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name of the position to move to |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated) |
 
 ### Receive
-**Command Value**: 0x8008
+**Command Value**: 0x800A
 
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
 
-## Get Current Position
-Gets the current position of all axes
-
-### Send
-**Command Value**: 0x0009
-
-**no body sent**
-
-### Receive
-**Command Value**: 0x8009
-
-| Arg | Type | Description |
-|---|---|---|
-| Return Code | UINT16 | Reports success/error |
-| Axis 1 position | INT32 | Current position of Axis 1 |
-| Axis 2 position | INT32 | Current position of Axis 2 |
-| Axis 3 position | INT32 | Current position of Axis 3 |
-| Axis 4 position | INT32 | Current position of Axis 4 |
-| Axis 5 position | INT32 | Current position of Axis 5 |
-<!-- There are 6 axes right? -->
-
 ## Set Polar Position
 Defines a position in terms of polar coordinates
 
 ### Send
-**Command Value**: 0x000A
+**Command Value**: 0x000B
 
 | Arg | Type | Description |
 |---|---|---|
 | Name | CHAR[] | Name descriptor for the position |
-| Delta | INT32 | Degrees on delta axis |
-| Azimuth | INT32 | Degrees on azimuth axis |
-| Radius | INT32 | Distance to extend outwards |
+| Delta | INT32 | Tenths of degrees on delta axis |
+| Azimuth | INT32 | Tenths of degrees on azimuth axis |
+| Radius | INT32 | Tenths of distance to extend outwards |
 
 ### Receive
-**Command Value**: 0x800A
+**Command Value**: 0x800B
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error
+
+## Get Polar Position
+Defines a position in terms of polar coordinates
+
+### Send
+**Command Value**: 0x000C
+| Arg | Type | Description |
+|---|---|---|
+| Name | CHAR[] | Name descriptor for the position |
+
+| Arg | Type | Description |
+|---|---|---|
+| Return Code | UINT16 | Reports success/error |
+| Delta | INT32 | Tenths of degrees on delta axis |
+| Azimuth | INT32 | Tenths of degrees on azimuth axis |
+| Radius | INT32 | Tenths of distance to extend outwards |
+
+### Receive
+**Command Value**: 0x800C
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -222,36 +280,36 @@ Defines a position in terms of polar coordinates
 ## Set Cartesian Position
 
 ### Send
-**Command Value**: 0x000B
+**Command Value**: 0x000D
 
 | Arg | Type | Description |
 |---|---|---|
 | Name | CHAR[] | Name descriptor for the position |
-| X | INT32 | Degrees on X-axis |
-| Y | INT32 | Degrees on Y-axis |
-| Z | INT32 | Degrees on Z-axis |
+| X | INT32 | Tenths of millimeters on X-axis |
+| Y | INT32 | Tenths of millimeters on Y-axis |
+| Z | INT32 | Tenths of millimeters on Z-axis |
 
 ### Receive
-**Command Value**: 0x800B
+**Command Value**: 0x800D
 | Arg | Type | Description |
 |---|---|---|
-| Return Code | UINT16 | Reports success/error
+| Return Code | UINT16 | Reports success/error |
 
-
-## Set Speed
-
-### Brief
-Command to set the speed of all axes on the scorbot to the received number (uint8)
+## Get Cartesian Position
 
 ### Send
-**Command Value**: 0x0005
+**Command Value**: 0x000E
+
 | Arg | Type | Description |
 |---|---|---|
-| Speed | UINT8 | What to set the speed of all axes to on the scorbot |
-| Axis | UINT8  | Axis to change (for all axes send 0)
+
+| Name | CHAR[] | Name descriptor for the position |
 
 ### Receive
-**Command Value**: 0x8005
+**Command Value**: 0x800E
 | Arg | Type | Description |
 |---|---|---|
-| Return Code | UINT16 | Reports success/error
+| Return Code | UINT16 | Reports success/error |
+| X | INT32 | Tenths of millimeters on X-axis |
+| Y | INT32 | Tenths of millimeters on Y-axis |
+| Z | INT32 | Tenths of millimeters on Z-axis |
