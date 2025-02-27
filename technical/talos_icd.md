@@ -133,7 +133,7 @@ Saves a position [FINISH ME]
 | Arg | Type | Description |
 |---|---|---|
 | Name | CHAR[] | Name descriptor for the position |
-| Reference | CHAR[] | Another previously saved position to act as a reference position
+| Reference | UINT32 | Another previously saved position to act as a reference position
 | Anchor | BOOLEAN | Whether the position will move relative to the reference position
 
 ### Receive
