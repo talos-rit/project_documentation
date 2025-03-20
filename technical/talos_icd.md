@@ -329,18 +329,15 @@ Defines a position in terms of polar coordinates
 |---|---|---|
 | Name | CHAR[] | Name descriptor for the position |
 
+
+### Receive
+**Command Value**: 0x800F
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
 | Delta | INT32 | Tenths of degrees on delta axis |
 | Azimuth | INT32 | Tenths of degrees on azimuth axis |
 | Radius | INT32 | Tenths of distance to extend outwards |
-
-### Receive
-**Command Value**: 0x800F
-| Arg | Type | Description |
-|---|---|---|
-| Return Code | UINT16 | Reports success/error
 
 
 ## Set Cartesian Position
