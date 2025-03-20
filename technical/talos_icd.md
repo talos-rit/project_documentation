@@ -321,7 +321,7 @@ Defines a position in terms of polar coordinates
 | Return Code | UINT16 | Reports success/error
 
 ## Get Polar Position
-Defines a position in terms of polar coordinates
+Returns the polar coordinates of a named position
 
 ### Send
 **Command Value**: 0x000F
@@ -341,6 +341,7 @@ Defines a position in terms of polar coordinates
 
 
 ## Set Cartesian Position
+Defines a position in terms of polar coordinates
 
 ### Send
 **Command Value**: 0x0010
@@ -359,6 +360,7 @@ Defines a position in terms of polar coordinates
 | Return Code | UINT16 | Reports success/error |
 
 ## Get Cartesian Position
+Returns the polar coordinates of a named position
 
 ### Send
 **Command Value**: 0x0011
