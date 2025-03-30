@@ -343,7 +343,7 @@ Returns the polar coordinates of a named position
 
 
 ## Set Cartesian Position
-Defines a position in terms of polar coordinates
+Defines a position in terms of cartesian coordinates
 
 ### Send
 **Command Value**: 0x0010
@@ -363,7 +363,7 @@ Defines a position in terms of polar coordinates
 | Return Code | UINT16 | Reports success/error |
 
 ## Get Cartesian Position
-Returns the polar coordinates of a named position
+Returns the cartesian coordinates of a named position
 
 ### Send
 **Command Value**: 0x0011
