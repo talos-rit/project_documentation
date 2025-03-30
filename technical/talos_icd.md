@@ -309,6 +309,7 @@ Defines a position in terms of polar coordinates
 
 | Arg | Type | Description |
 |---|---|---|
+| Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position |
 | Delta | INT32 | Tenths of degrees on delta axis |
 | Azimuth | INT32 | Tenths of degrees on azimuth axis |
@@ -327,6 +328,7 @@ Returns the polar coordinates of a named position
 **Command Value**: 0x000F
 | Arg | Type | Description |
 |---|---|---|
+| Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position |
 
 
@@ -348,6 +350,7 @@ Defines a position in terms of polar coordinates
 
 | Arg | Type | Description |
 |---|---|---|
+| Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position |
 | X | INT32 | Tenths of millimeters on X-axis |
 | Y | INT32 | Tenths of millimeters on Y-axis |
@@ -367,7 +370,7 @@ Returns the polar coordinates of a named position
 
 | Arg | Type | Description |
 |---|---|---|
-
+| Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position |
 
 ### Receive
