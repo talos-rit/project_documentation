@@ -254,16 +254,16 @@ If the reference string is empty, the Anchor value is ignored and the position i
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position (non null terminated) |
-| Anchor | BOOLEAN | Whether the position will move relative to the reference position
+| Anchor | BOOLEAN | Whether the position will move relative to the parent position (0x01 for True, 0x00 for False) |
 | Parent len | UINT8 | Length of the parent array; if 0 |
-| Parent | CHAR[] | Another previously saved position to act as a parent (refernce) position
+| Parent | CHAR[] | Another previously saved position to act as a parent (refernce) position |
 
 ### Receive
 **Command Value**: 0x800B
 
 | Arg | Type | Description |
 |---|---|---|
-| Return Code | UINT16 | Reports success/error
+| Return Code | UINT16 | Reports success/error |
 
 ## Delete Position
 Given a position name, deletes that position information. 
@@ -309,7 +309,8 @@ Defines a position in terms of polar coordinates
 
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name descriptor for the position |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 | Delta | INT32 | Tenths of degrees on delta axis |
 | Azimuth | INT32 | Tenths of degrees on azimuth axis |
 | Radius | INT32 | Tenths of distance to extend outwards |
@@ -327,7 +328,8 @@ Returns the polar coordinates of a named position
 **Command Value**: 0x000F
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name descriptor for the position |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 
 
 ### Receive
@@ -341,14 +343,15 @@ Returns the polar coordinates of a named position
 
 
 ## Set Cartesian Position
-Defines a position in terms of polar coordinates
+Defines a position in terms of cartesian coordinates
 
 ### Send
 **Command Value**: 0x0010
 
 | Arg | Type | Description |
 |---|---|---|
-| Name | CHAR[] | Name descriptor for the position |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 | X | INT32 | Tenths of millimeters on X-axis |
 | Y | INT32 | Tenths of millimeters on Y-axis |
 | Z | INT32 | Tenths of millimeters on Z-axis |
@@ -360,15 +363,15 @@ Defines a position in terms of polar coordinates
 | Return Code | UINT16 | Reports success/error |
 
 ## Get Cartesian Position
-Returns the polar coordinates of a named position
+Returns the cartesian coordinates of a named position
 
 ### Send
 **Command Value**: 0x0011
 
 | Arg | Type | Description |
 |---|---|---|
-
-| Name | CHAR[] | Name descriptor for the position |
+| Name len | UINT8 | length of name field; must be more than zero |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 
 ### Receive
 **Command Value**: 0x8011
