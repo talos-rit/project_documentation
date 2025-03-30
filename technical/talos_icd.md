@@ -254,7 +254,7 @@ If the reference string is empty, the Anchor value is ignored and the position i
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
 | Name | CHAR[] | Name descriptor for the position (non null terminated) |
-| Anchor | BOOLEAN | Whether the position will move relative to the reference position
+| Anchor | BOOLEAN | Whether the position will move relative to the parent position
 | Parent len | UINT8 | Length of the parent array; if 0 |
 | Parent | CHAR[] | Another previously saved position to act as a parent (refernce) position
 
