@@ -310,7 +310,7 @@ Defines a position in terms of polar coordinates
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
-| Name | CHAR[] | Name descriptor for the position |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 | Delta | INT32 | Tenths of degrees on delta axis |
 | Azimuth | INT32 | Tenths of degrees on azimuth axis |
 | Radius | INT32 | Tenths of distance to extend outwards |
@@ -329,7 +329,7 @@ Returns the polar coordinates of a named position
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
-| Name | CHAR[] | Name descriptor for the position |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 
 
 ### Receive
@@ -351,7 +351,7 @@ Defines a position in terms of cartesian coordinates
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
-| Name | CHAR[] | Name descriptor for the position |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 | X | INT32 | Tenths of millimeters on X-axis |
 | Y | INT32 | Tenths of millimeters on Y-axis |
 | Z | INT32 | Tenths of millimeters on Z-axis |
@@ -371,7 +371,7 @@ Returns the cartesian coordinates of a named position
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
-| Name | CHAR[] | Name descriptor for the position |
+| Name | CHAR[] | Name descriptor for the position (non null terminated)|
 
 ### Receive
 **Command Value**: 0x8011
