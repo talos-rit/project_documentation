@@ -4,7 +4,7 @@ import os
 AGENDA = "agenda"
 NOTES = "notes"
 MD_EXT = ".md"
-MEETING_NOTES_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/meeting_notes'
+MEETING_NOTES_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm/meeting_notes'
 AGENDA_TEMPLATE_FILENAME = 'agenda_template.md'
 NOTES_TEMPLATE_FILENAME = 'notes_template.md'
 

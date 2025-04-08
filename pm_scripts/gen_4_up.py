@@ -3,7 +3,7 @@ import os
 
 FOURUP = "4up"
 MD_EXT = ".md"
-FOURUP_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/4-ups'
+FOURUP_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm/4-ups'
 TEMPLATE_FILENAME = '4up_template.md'
 
 def main():
