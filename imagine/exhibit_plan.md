@@ -12,21 +12,3 @@
 
 # Done
 - X-pose to track
-
-
-
-
-# drop
-- drawing robot
-- arm pose matching
-    - someone holds a position with their arm and the robot attempts to match the position
-
-- O-pose to ignore you
-
-- nerf sentry
-
-- click person on the webcam video and the robot will track that person
-- select the shape the robot can move around in (circle, square, triangle)
-- dies to finger guns
-- other dog tricks
-- nods after you talk
