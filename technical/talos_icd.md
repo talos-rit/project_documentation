@@ -133,9 +133,9 @@ Stops a continuous polar pan rotation.
 
 | Arg | Type | Description |
 |---|---|---|
-| Delta X       | INT32 | Requested change in X |
-| Delta Y       | INT32 | Requested change in Y |
-| Delta Z       | INT32 | Requested change in Z |
+| Delta X       | INT32 | Tenths of millimeters on X-axis |
+| Delta Y       | INT32 | Tenths of millimeters on Y-axis |
+| Delta Z       | INT32 | Tenths of millimeters on Z-axis |
 | Delay (ms)    | UINT32 | How long to wait until executing pan |
 | Time          | UINT32 | How long the pan should take to execute |
 
