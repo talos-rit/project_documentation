@@ -36,5 +36,28 @@
 
 4. ER-4pc sliding around w/ custom controller
 
+# Exhibit Time
+
+09 Setup
+    Brooke, Devan, John
+10
+    Brooke, Devan, John
+11
+    Brooke, Devan, John
+12
+    Brooke, Devan
+01
+    Nolan, Alex, Brooke, Devan
+02
+    Nolan, Alex
+03
+    Nolan, Alex, John
+04
+    Nolan, Alex, John
+05
+    Nolan, Alex, John
+06 Tear down
+    Nolan, Alex, John
+
 # Done
 - X-pose to track
