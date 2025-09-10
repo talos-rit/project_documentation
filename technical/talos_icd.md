@@ -75,15 +75,17 @@ This command is used by the Talos Command Interface (primarily the Director, but
 ### Send
 **Command Value**: 0x0002
 
-| Arg | Type | Description |
-|---|---|---|
+| Arg        | Type   | Description                           |
+| ---------- | ------ | ------------------------------------- |
 | Delay (ms) | UINT32 | How long to wait until executing home |
 
 ### Receive
 **Command Value**: 0x8002
-| Arg | Type | Description |
-|---|---|---|
-| Return Code | UINT16 | Reports success/error
+
+| Arg         | Type   | Description          |
+| ----------- | ------ | -------------------- |
+| Return Code | UINT16 | Reports sucess/error |
+
 
 
 ## Polar Pan (Continuous START)
@@ -220,6 +222,7 @@ No body
 
 ### Receive
 **Command Value**: 0x8009
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -231,12 +234,14 @@ Command to set the speed of all axes on Talos to the received number (uint8)
 
 ### Send
 **Command Value**: 0x000A
+
 | Arg | Type | Description |
 |---|---|---|
 | Speed | UINT8 | The speed of all axes to set on Talos |
 
 ### Receive
 **Command Value**: 0x800A
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -317,6 +322,7 @@ Defines a position in terms of polar coordinates
 
 ### Receive
 **Command Value**: 0x800E
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -326,6 +332,7 @@ Returns the polar coordinates of a named position
 
 ### Send
 **Command Value**: 0x000F
+
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
@@ -334,6 +341,7 @@ Returns the polar coordinates of a named position
 
 ### Receive
 **Command Value**: 0x800F
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
@@ -358,6 +366,7 @@ Defines a position in terms of cartesian coordinates
 
 ### Receive
 **Command Value**: 0x8010
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
@@ -375,6 +384,7 @@ Returns the cartesian coordinates of a named position
 
 ### Receive
 **Command Value**: 0x8011
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |

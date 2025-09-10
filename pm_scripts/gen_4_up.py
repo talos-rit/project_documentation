@@ -1,10 +1,11 @@
-import shutil
 import os
+import shutil
 
 FOURUP = "4up"
 MD_EXT = ".md"
-FOURUP_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm/4-ups'
-TEMPLATE_FILENAME = '4up_template.md'
+FOURUP_PATH = "C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm-2024/4-ups"
+TEMPLATE_FILENAME = "4up_template.md"
+
 
 def main():
     print("Generating 4-UP document...")
@@ -21,10 +22,11 @@ def main():
         print("file " + template_path + "not found :(")
     shutil.copy2(template_path, new_file_path)
     print("Created new file: " + new_filename + "!")
-        # try: 
-        #     shutil.copy2(template_path, "//?/" + new_file_path)
-        # except:
-        # print("Failed to move the script "+os.path.basename(template_path)+" to "+ new_file_path)
+    # try:
+    #     shutil.copy2(template_path, "//?/" + new_file_path)
+    # except:
+    # print("Failed to move the script "+os.path.basename(template_path)+" to "+ new_file_path)
+
 
 if __name__ == "__main__":
     main()

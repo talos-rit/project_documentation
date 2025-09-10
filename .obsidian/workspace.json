@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "65f6bcc817adbcdb",
+    "type": "split",
+    "children": [
+      {
+        "id": "b13a31027994d906",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d6cb74041036d705",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "technical/talos_icd.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "talos_icd"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "21137469564dfe2f",
+    "type": "split",
+    "children": [
+      {
+        "id": "df609845e3390eb6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "da572f2bcb000beb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5b7bfd86fc92536e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "3ae5428f142c8579",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7fa772de00a257ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "390db36d8c5ba8af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be699bf29a244cd2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "technical/talos_icd.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for talos_icd"
+            }
+          },
+          {
+            "id": "7c8672ec8316768c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "technical/talos_icd.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from talos_icd"
+            }
+          },
+          {
+            "id": "ef9761c01525f04d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2c53e294e3473630",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "technical/talos_icd.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of talos_icd"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "d6cb74041036d705",
+  "lastOpenFiles": [
+    "technical/Domain Model.png",
+    "videos/V1_script_vo.md",
+    "technical/talos_icd.md",
+    "pm_scripts/README.md",
+    "README.md",
+    "pm_scripts/README.md.md",
+    "pm-2024/project_methodology_plan_2024_09_25.pdf",
+    "pm-2024/project_methodology_plan.md",
+    "evals/End-Of-TermEvaluation1stSemester.pdf"
+  ]
+}
