@@ -2,15 +2,15 @@
 
 ## Changelog
 
-| Date | Name | Description |
-|---|---|---|
-| 2024-09-26 | Brooke Leinberger    | Init |
-| 2024-10-03 | Brooke Leinberger    | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
-| 2024-10-21 | Devan Kavalchek      | Add home and fix unsigned integers that should be signed. |
-| 2024-12-03 | Noah Carney          | Added set speed command structure and assigned it values |
-| 2025-02-06 | Alex Vernes          | Added idle mode calls |
-| 2025-02-25 | Brooke Leinberger    | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands |
-| 2025-02-27 | Alex Vernes          | Reorganizing command order; added Cartesian Move |
+| Date       | Name              | Description                                                                                                           |
+| ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2024-09-26 | Brooke Leinberger | Init                                                                                                                  |
+| 2024-10-03 | Brooke Leinberger | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
+| 2024-10-21 | Devan Kavalchek   | Add home and fix unsigned integers that should be signed.                                                             |
+| 2024-12-03 | Noah Carney       | Added set speed command structure and assigned it values                                                              |
+| 2025-02-06 | Alex Vernes       | Added idle mode calls                                                                                                 |
+| 2025-02-25 | Brooke Leinberger | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands               |
+| 2025-02-27 | Alex Vernes       | Reorganizing command order; added Cartesian Move                                                                      |
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
