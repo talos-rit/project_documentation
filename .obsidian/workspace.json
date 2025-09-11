@@ -11,14 +11,14 @@
             "id": "d6cb74041036d705",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "technical/Domain Model Mermaid Version.md",
-                "mode": "source",
-                "source": false
+                "aFile": ".obsidian/workspace.json",
+                "bFile": ".obsidian/workspace.json",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Domain Model Mermaid Version"
+              "icon": "diff",
+              "title": "Diff: workspace.json"
             }
           }
         ]
@@ -94,7 +94,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "technical/Domain Model Mermaid Version.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Domain Model Mermaid Version"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +112,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "technical/Domain Model Mermaid Version.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Domain Model Mermaid Version"
+              "title": "Outgoing links"
             }
           },
           {
@@ -142,13 +140,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "technical/Domain Model Mermaid Version.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Domain Model Mermaid Version"
+              "title": "Outline"
             }
           },
           {
@@ -182,30 +179,41 @@
   },
   "active": "d6cb74041036d705",
   "lastOpenFiles": [
-    "technical/talos_icd.md",
-    "technical/Domain Model.png",
-    "technical/Domain Model Mermaid Version.md",
+    "pm-2024/meeting_notes/2024/S2/2025_01_21_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_01_23_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_01_28_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_02_11_agenda.md",
+    "pm-2024/meeting_notes/2024/final_retro_2025_05_06_notes.pdf",
+    "pm-2024/meeting_notes/2024/agenda_template.md",
+    "pm-2024/meeting_notes/2024/2025_05_06_notes.md",
+    "pm-2024/meeting_notes/2024/2025_05_06_agenda.md",
+    "pm-2024/meeting_notes/2024/S2/2025_04_22_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_04_15_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_04_08_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_03_25_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_02_27_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_02_11_notes.md",
+    "pm-2024/meeting_notes/2024/S2/2025_01_28_agenda.md",
+    "pm-2024/meeting_notes/2024/S1/2024_12_16_notes.pdf",
+    "pm-2024/meeting_notes/2024/S1/2024_12_16_notes.md",
+    "pm-2024/prototypes/P0/P0_demo_cap.mp4",
+    "pm-2024/prototypes/P2/P2_plan.md",
+    "pm-2024/prototypes/P3/P3_plan.md",
+    "pm-2024/prototypes/P1/P1_demo_director.MOV",
+    "pm-2024/prototypes/P1/P1_demo_manual.MOV",
+    "videos/V2_script.md",
+    "videos/V1_script_vo.md",
+    "videos/V1_script.md",
     "technical/architecture_diagram.jpg",
+    "technical/talos_icd.md",
+    "technical/Domain Model Mermaid Version.md",
+    "technical/Domain Model.png",
     "pm-2024/project_methodology_plan_2024_09_25.pdf",
     "pm-2024/project_methodology_plan.md",
-    "videos/V1_script.md",
     "pm-2024/project_final_plan_2024_09_26.pdf",
     "pm-2024/project_final_plan.md",
-    "pm-2024/prototypes/P3/P3_plan.md",
     "pm-2024/prototypes/prototype_plan_template.md",
-    "pm-2024/prototypes/P2/P2_plan.md",
     "pm-2024/prototypes/P1/P1_retro.md",
-    "pm-2024/prototypes/P1/P1_plan.md",
-    "pm-2024/prototypes/P1/P1_demo_script.md",
-    "pm-2024/prototypes/P1/P1_demo_manual.MOV",
-    "pm-2024/prototypes/P1/P1_demo_director.MOV",
-    "pm-2024/prototypes/P0/P0_retro.md",
-    "pm-2024/prototypes/P0/P0_plan.md",
-    "pm-2024/prototypes/P0/P0_demo_cap.mp4",
-    "videos/V1_script_vo.md",
-    "pm_scripts/README.md",
-    "README.md",
-    "pm_scripts/README.md.md",
     "evals/End-Of-TermEvaluation1stSemester.pdf"
   ]
 }
