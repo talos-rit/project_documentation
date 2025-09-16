@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b13a31027994d906",
+        "id": "38151f4b1b3dcde9",
         "type": "tabs",
         "children": [
           {
-            "id": "d6cb74041036d705",
+            "id": "b2239f273f0ead7a",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/workspace.json",
-                "bFile": ".obsidian/workspace.json",
-                "aRef": ""
+                "file": "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: workspace.json"
+              "icon": "lucide-file",
+              "title": "Talos-RIT Zoom Room"
             }
           }
         ]
@@ -94,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "pm-2024/prototypes/P0/P0_demo_cap.mp4",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for P0_demo_cap"
             }
           },
           {
@@ -112,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "pm-2024/prototypes/P0/P0_demo_cap.mp4",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from P0_demo_cap"
             }
           },
           {
@@ -140,12 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "pm-2024/prototypes/P0/P0_demo_cap.mp4",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of P0_demo_cap"
             }
           },
           {
@@ -177,43 +180,45 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d6cb74041036d705",
+  "active": "b2239f273f0ead7a",
   "lastOpenFiles": [
+    "pm-2025/9_16_2025/Talos-RIT Zoom Room  (1).md",
+    "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
+    "Hardware Doc/Scorboter-ER 5 Plus.pdf",
+    "pm-2025/9_16_2025",
+    "Hardware Doc/document(2).pdf",
+    "Hardware Doc/USBC-document.pdf",
+    "Hardware Doc/bcm2711-peripherals.pdf",
+    "Hardware Doc/acl_reference.pdf",
+    "Hardware Doc/USBC-document 1.pdf",
+    "Hardware Doc",
+    "pm-2025/Meeting with Brook.md",
+    "pm-2024/prototypes/P0/P0_demo_cap.mp4",
+    "pm-2025",
+    "pm-2024/backlogs/spike_backlog.md",
+    "pm-2024/backlogs/spring_projects.md",
+    "pm-2024/backlogs/MVP_features.md",
+    "pm-2024/backlogs/idea_soup.md",
+    "pm-2024/backlogs/feature_backlog.md",
+    "pm-2024/4-ups/4up_template.md",
+    "pm-2024/4-ups/2025/2025_9_9_4up.md",
+    "pm-2024/4-ups/2024/2025_02_11_4up.md",
+    "pm-2024/4-ups/2024/2024_11_12_4up.md",
+    "pm-2024/4-ups/2024/2024_11_05_4up.md",
+    "pm-2024/4-ups/2024/2024_10_08_4up.md",
+    "pm-2024/4-ups/2024/2024_09_24_4up.md",
+    "pm-2024/4-ups/2024/2024_09_17_4up.md",
+    "pm_scripts/README.md",
+    "imagine/squid_game.md",
+    "imagine/exhibit_plan.md",
+    "imagine/exhibit_ideas.md",
     "pm-2024/meeting_notes/2024/S2/2025_01_21_notes.md",
     "pm-2024/meeting_notes/2024/S2/2025_01_23_notes.md",
     "pm-2024/meeting_notes/2024/S2/2025_01_28_notes.md",
     "pm-2024/meeting_notes/2024/S2/2025_02_11_agenda.md",
-    "pm-2024/meeting_notes/2024/final_retro_2025_05_06_notes.pdf",
     "pm-2024/meeting_notes/2024/agenda_template.md",
     "pm-2024/meeting_notes/2024/2025_05_06_notes.md",
-    "pm-2024/meeting_notes/2024/2025_05_06_agenda.md",
-    "pm-2024/meeting_notes/2024/S2/2025_04_22_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_04_15_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_04_08_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_03_25_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_02_27_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_02_11_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_01_28_agenda.md",
-    "pm-2024/meeting_notes/2024/S1/2024_12_16_notes.pdf",
-    "pm-2024/meeting_notes/2024/S1/2024_12_16_notes.md",
-    "pm-2024/prototypes/P0/P0_demo_cap.mp4",
-    "pm-2024/prototypes/P2/P2_plan.md",
-    "pm-2024/prototypes/P3/P3_plan.md",
-    "pm-2024/prototypes/P1/P1_demo_director.MOV",
-    "pm-2024/prototypes/P1/P1_demo_manual.MOV",
-    "videos/V2_script.md",
-    "videos/V1_script_vo.md",
-    "videos/V1_script.md",
     "technical/architecture_diagram.jpg",
-    "technical/talos_icd.md",
-    "technical/Domain Model Mermaid Version.md",
-    "technical/Domain Model.png",
-    "pm-2024/project_methodology_plan_2024_09_25.pdf",
-    "pm-2024/project_methodology_plan.md",
-    "pm-2024/project_final_plan_2024_09_26.pdf",
-    "pm-2024/project_final_plan.md",
-    "pm-2024/prototypes/prototype_plan_template.md",
-    "pm-2024/prototypes/P1/P1_retro.md",
-    "evals/End-Of-TermEvaluation1stSemester.pdf"
+    "technical/Domain Model.png"
   ]
 }
