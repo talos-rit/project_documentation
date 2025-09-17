@@ -1,12 +1,13 @@
-import shutil
 import os
+import shutil
 
 AGENDA = "agenda"
 NOTES = "notes"
 MD_EXT = ".md"
-MEETING_NOTES_PATH = 'C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm/meeting_notes'
-AGENDA_TEMPLATE_FILENAME = 'agenda_template.md'
-NOTES_TEMPLATE_FILENAME = 'notes_template.md'
+MEETING_NOTES_PATH = "C:/Users/alexv/OneDrive/Desktop/RIT/GCCIS/SWEN-561-562/project_planning/pm/meeting_notes"
+AGENDA_TEMPLATE_FILENAME = "agenda_template.md"
+NOTES_TEMPLATE_FILENAME = "notes_template.md"
+
 
 def main():
     print("Generating meeting notes documents...")
@@ -17,10 +18,9 @@ def main():
     notes_filename = "_".join([year, month, day, NOTES]) + MD_EXT
     agenda_file_path = "/".join([MEETING_NOTES_PATH, agenda_filename])
     agenda_template_path = "/".join([MEETING_NOTES_PATH, AGENDA_TEMPLATE_FILENAME])
-    
+
     notes_file_path = "/".join([MEETING_NOTES_PATH, notes_filename])
     notes_template_path = "/".join([MEETING_NOTES_PATH, NOTES_TEMPLATE_FILENAME])
-    
 
     if os.path.isfile(agenda_template_path):
         print("file " + agenda_template_path + " exists!")
@@ -35,6 +35,7 @@ def main():
         print("file " + notes_template_path + "not found :(")
     shutil.copy2(notes_template_path, notes_file_path)
     print("Created new file: " + notes_filename + "!")
+
 
 if __name__ == "__main__":
     main()
