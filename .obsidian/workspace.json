@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
+                "file": "pm-2025/9_18_2025/Senior project room.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Talos-RIT Zoom Room"
+              "title": "Senior project room"
             }
           }
         ]
@@ -183,18 +183,19 @@
   "active": "b2239f273f0ead7a",
   "lastOpenFiles": [
     "pm-2025/9_16_2025/Talos-RIT Zoom Room  (1).md",
+    "pm-2025/9_18_2025/Senior project room.md",
     "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
+    "Hardware Doc/acl_reference.pdf",
+    "pm-2025/9_18_2025",
+    "Hardware Doc/bcm2711-peripherals.pdf",
     "Hardware Doc/Scorboter-ER 5 Plus.pdf",
+    "Hardware Doc/USBC-document.pdf",
     "pm-2025/9_16_2025",
     "Hardware Doc/document(2).pdf",
-    "Hardware Doc/USBC-document.pdf",
-    "Hardware Doc/bcm2711-peripherals.pdf",
-    "Hardware Doc/acl_reference.pdf",
     "Hardware Doc/USBC-document 1.pdf",
     "Hardware Doc",
     "pm-2025/Meeting with Brook.md",
     "pm-2024/prototypes/P0/P0_demo_cap.mp4",
-    "pm-2025",
     "pm-2024/backlogs/spike_backlog.md",
     "pm-2024/backlogs/spring_projects.md",
     "pm-2024/backlogs/MVP_features.md",
@@ -216,8 +217,6 @@
     "pm-2024/meeting_notes/2024/S2/2025_01_23_notes.md",
     "pm-2024/meeting_notes/2024/S2/2025_01_28_notes.md",
     "pm-2024/meeting_notes/2024/S2/2025_02_11_agenda.md",
-    "pm-2024/meeting_notes/2024/agenda_template.md",
-    "pm-2024/meeting_notes/2024/2025_05_06_notes.md",
     "technical/architecture_diagram.jpg",
     "technical/Domain Model.png"
   ]
