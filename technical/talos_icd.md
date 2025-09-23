@@ -2,15 +2,15 @@
 
 ## Changelog
 
-| Date | Name | Description |
-|---|---|---|
-| 2024-09-26 | Brooke Leinberger    | Init |
-| 2024-10-03 | Brooke Leinberger    | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
-| 2024-10-21 | Devan Kavalchek      | Add home and fix unsigned integers that should be signed. |
-| 2024-12-03 | Noah Carney          | Added set speed command structure and assigned it values |
-| 2025-02-06 | Alex Vernes          | Added idle mode calls |
-| 2025-02-25 | Brooke Leinberger    | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands |
-| 2025-02-27 | Alex Vernes          | Reorganizing command order; added Cartesian Move |
+| Date       | Name              | Description                                                                                                           |
+| ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2024-09-26 | Brooke Leinberger | Init                                                                                                                  |
+| 2024-10-03 | Brooke Leinberger | Device IDs are redundant; Subbed out for ids that are unique message-to-message; Added reserved flag field to wrapper |
+| 2024-10-21 | Devan Kavalchek   | Add home and fix unsigned integers that should be signed.                                                             |
+| 2024-12-03 | Noah Carney       | Added set speed command structure and assigned it values                                                              |
+| 2025-02-06 | Alex Vernes       | Added idle mode calls                                                                                                 |
+| 2025-02-25 | Brooke Leinberger | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands               |
+| 2025-02-27 | Alex Vernes       | Reorganizing command order; added Cartesian Move                                                                      |
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
@@ -75,15 +75,17 @@ This command is used by the Talos Command Interface (primarily the Director, but
 ### Send
 **Command Value**: 0x0002
 
-| Arg | Type | Description |
-|---|---|---|
+| Arg        | Type   | Description                           |
+| ---------- | ------ | ------------------------------------- |
 | Delay (ms) | UINT32 | How long to wait until executing home |
 
 ### Receive
 **Command Value**: 0x8002
-| Arg | Type | Description |
-|---|---|---|
-| Return Code | UINT16 | Reports success/error
+
+| Arg         | Type   | Description          |
+| ----------- | ------ | -------------------- |
+| Return Code | UINT16 | Reports sucess/error |
+
 
 
 ## Polar Pan (Continuous START)
@@ -220,6 +222,7 @@ No body
 
 ### Receive
 **Command Value**: 0x8009
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -231,12 +234,14 @@ Command to set the speed of all axes on Talos to the received number (uint8)
 
 ### Send
 **Command Value**: 0x000A
+
 | Arg | Type | Description |
 |---|---|---|
 | Speed | UINT8 | The speed of all axes to set on Talos |
 
 ### Receive
 **Command Value**: 0x800A
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -317,6 +322,7 @@ Defines a position in terms of polar coordinates
 
 ### Receive
 **Command Value**: 0x800E
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error
@@ -326,6 +332,7 @@ Returns the polar coordinates of a named position
 
 ### Send
 **Command Value**: 0x000F
+
 | Arg | Type | Description |
 |---|---|---|
 | Name len | UINT8 | length of name field; must be more than zero |
@@ -334,6 +341,7 @@ Returns the polar coordinates of a named position
 
 ### Receive
 **Command Value**: 0x800F
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
@@ -358,6 +366,7 @@ Defines a position in terms of cartesian coordinates
 
 ### Receive
 **Command Value**: 0x8010
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
@@ -375,6 +384,7 @@ Returns the cartesian coordinates of a named position
 
 ### Receive
 **Command Value**: 0x8011
+
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
