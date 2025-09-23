@@ -11,14 +11,12 @@
             "id": "b2239f273f0ead7a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "pm-2025/9_18_2025/Senior project room.md",
-                "mode": "source",
-                "source": false
+                "file": "Hardware Doc/ER5Plus_user_manual.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Senior project room"
+              "icon": "lucide-file-text",
+              "title": "ER5Plus_user_manual"
             }
           }
         ]
@@ -182,14 +180,19 @@
   },
   "active": "b2239f273f0ead7a",
   "lastOpenFiles": [
-    "pm-2025/9_16_2025/Talos-RIT Zoom Room  (1).md",
-    "pm-2025/9_18_2025/Senior project room.md",
-    "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
+    "Hardware Doc/ER4u_user_manual.pdf",
+    "Hardware Doc/ER5Plus_user_manual.pdf",
+    "Hardware Doc/USBC-document.pdf",
     "Hardware Doc/acl_reference.pdf",
+    "technical/Domain Model Mermaid Version.md",
+    "technical/Domain Model.png",
+    "technical/talos_icd.md",
+    "technical/architecture_diagram.jpg",
+    "pm-2025/9_18_2025/Senior project room.md",
+    "pm-2025/9_16_2025/Talos-RIT Zoom Room  (1).md",
+    "pm-2025/9_16_2025/Talos-RIT Zoom Room .md",
     "pm-2025/9_18_2025",
     "Hardware Doc/bcm2711-peripherals.pdf",
-    "Hardware Doc/Scorboter-ER 5 Plus.pdf",
-    "Hardware Doc/USBC-document.pdf",
     "pm-2025/9_16_2025",
     "Hardware Doc/document(2).pdf",
     "Hardware Doc/USBC-document 1.pdf",
@@ -214,10 +217,6 @@
     "imagine/exhibit_plan.md",
     "imagine/exhibit_ideas.md",
     "pm-2024/meeting_notes/2024/S2/2025_01_21_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_01_23_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_01_28_notes.md",
-    "pm-2024/meeting_notes/2024/S2/2025_02_11_agenda.md",
-    "technical/architecture_diagram.jpg",
-    "technical/Domain Model.png"
+    "pm-2024/meeting_notes/2024/S2/2025_01_23_notes.md"
   ]
 }

@@ -21,7 +21,7 @@ Zoom: https://rit.zoom.us/rec/share/eNlWH1LZetQhRoIZpjG00CVz7EEK5uLoDv6En4DVFd6d
 - Commander software needs major changes to support multiple robots simultaneously
 ## Action items
 
-- **Jay**
+- **J**
     - [ ] Test all axes on Bluey robot
     - [ ] Research motor controller boards that can handle 6 axes
     - [ ] Meet with Professor Kaiser on Monday at 11am to get oscilloscope
@@ -32,9 +32,9 @@ Zoom: https://rit.zoom.us/rec/share/eNlWH1LZetQhRoIZpjG00CVz7EEK5uLoDv6En4DVFd6d
     - [ ] Work on Commander software to handle multiple video streams
     - [ ] Research how to implement the "director" functionality for shot selection
 - **Hero**
-    - [ ] Work on Riker software
-    - [ ] Document the process for compiling Riker
-- **Franklin**
+    - [ ] Work on Ichor software
+    - [ ] Document the process for compiling Ichor
+- **Kai**
     - [ ] Work on driver software
     - [ ] Lead documentation efforts
 - **Team**
