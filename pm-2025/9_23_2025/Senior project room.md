@@ -1,3 +1,5 @@
+Zoom: https://rit.zoom.us/rec/share/cThAc3D6uS6Rtyk_Ol-JyyfGYLvraYoOIoQcVBXrNl1odUWr31n9ZPV-8tsnMpM2.X3Gv54kF8D2GLm_7 
+
 ## Key takeaways
 
 - The team successfully got the Windows version of the commander working without WSL
