@@ -1,7 +1,7 @@
 ---
-name: Default Issue Template
-about: Use this template for tracking new features.
-title: "Default Issue Template"
+name: Simple Issue Template
+about: Use this template for tracking new features and small tasks.
+title: "Simple Issue Template"
 labels: 
 assignees: 
 ---
