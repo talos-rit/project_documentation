@@ -1,0 +1,5 @@
+- Review 4up
+- Details of commander refactor
+- Review project website for updated requirements (I should have all of them updated by the meeting)
+- Repo branch rules for operator/driver
+- Hardware discussion, choose and layout pros/cons of each
