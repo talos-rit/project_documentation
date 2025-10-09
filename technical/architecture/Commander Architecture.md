@@ -23,7 +23,7 @@ Scheduler class is the first result of such "solution". The scheduler allows us 
 > https://youtu.be/8aGhZQkoFbQ?si=UE6x9rQTU1pMTLBI
 > https://youtu.be/eiC58R16hb8?si=TyC6C3gUlo1aaRfM 
 ### Why this is useful
-We have several classes that needs to run its subprocess as a background tasks. While most of these tasks are a single while loop, its generally bad idea to have the while loop run on the main process because it would block the UI until the loop finishes. This is bad for several reasons, user will experience a huge lag where all of their inputs and interactions will be blocked, and other processes like updating video frame on screen or running detection model could also be blocked from further processing. 
+We have several classes that needs to run its subprocess as a background tasks. While most of these tasks are a single while loop, its generally bad idea to have the while loop run on the main process because it would block the UI until the loop finishes. This causes UI to freeze and all of their inputs and interactions will be blocked, and other processes like updating video frame on screen or running detection model could also be blocked from further processing. 
 This is where scheduler is used. Instead of having the following code:
 ```python
 def process(self):
@@ -37,7 +37,7 @@ def process(self):
 	if self.is_running:
 		self.scheduler.set_timeout(100, self.process)
 ```
-This allows us to schedule the same process function to run after 100 ms. This means that while this process is not running for that 100 ms, other process can run their own tasks. I would recommend not putting 0 for ms because it can over load the event loop and take over the entire eventloop; if you are doing this I would make sure that the function is very short, shorter the better.
+This allows us to release the main process and schedule the same process function to run after 100 ms. This means that while this process is not running for that 100 ms, the main process is freed and other process can run their own tasks. I would recommend not putting 0 for ms because it can over load the event loop and take over the entire eventloop; if you are doing this or have a small delay, I would make sure that the function is very short and fast, shorter the better.
 
 ### set_interval method
 If you would just like to continuously call a process over and over again, we can also use set_interval. This is great especially if you would like to have a set timeout be called exactly the correct ms interval. Make sure that the method call is shorter than the sleep ms or else we would also over load the eventloop. 
@@ -86,12 +86,20 @@ Tracker class currently acts as a state object for data distribution. From Track
 3. Object Model(tracker pushes into object model's process queue)
 	1. The tracker queues up the latest frame into the model. The queue has a max size of 1, so only the latest frame ill be queued.
 
+Note that the ManualInterface class is the initiator of UI for Talos, but ManualInterface will not be required to start the rest of the background tasks for Tracker, Director, and ObjectModel. Instead tracker class will act as a initiator for rest of the application tasks. See Tracker.\_\_init\_\_().
+
 ```mermaid
 ---
 title: Dataflow diagram
 ---
 classDiagram
-    class Tracker{
+    Tracker <|-- ObjectModel : bboxes
+    Tracker <|-- Tracker : self update frames
+    ManualInterface <|-- Tracker : frame, bboxes
+    ObjectModel <|-- Tracker : frame
+    Director <|-- Tracker : bboxes
+	
+	class Tracker{
 	    -_bboxes
 	    -_frame
         +capture cv2.VideoCapture
@@ -101,17 +109,14 @@ classDiagram
     class ManualInterface{
         +VideoLabel
     }
+    class ObjectModel{
+	    +detect_person: bboxes
+    }
     class Director{
         +connection: Connection
     }
-    class ObjectModel{
-	    +detect_person(frame):bboxes
-    }
-
-    Tracker <|-- ObjectModel : bboxes
-    Tracker <|-- Tracker : self update frames
-    ManualInterface <|-- Tracker : frame, bboxes
-    ObjectModel <|-- Tracker : frame
-    Director <|-- Tracker : bboxes
-
+    
 ```
+
+<img src="commander_flow_diagram.png" />
+link: https://excalidraw.com/#json=iU9MLVgq5AVm4nue_HPA5,xz3zdOHLNiqpePQWANHUew
