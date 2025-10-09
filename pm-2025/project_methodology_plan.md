@@ -1,4 +1,5 @@
 # Project Methodology Plan
+This methodology is a minor variation on spiral, with more structured phases.
 
 ## Planned Activities and Artifacts
 
