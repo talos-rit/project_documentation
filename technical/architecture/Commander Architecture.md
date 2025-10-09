@@ -86,12 +86,20 @@ Tracker class currently acts as a state object for data distribution. From Track
 3. Object Model(tracker pushes into object model's process queue)
 	1. The tracker queues up the latest frame into the model. The queue has a max size of 1, so only the latest frame ill be queued.
 
+Note that the ManualInterface class is the initiator of UI for Talos, but ManualInterface will not be required to start the rest of the background tasks for Tracker, Director, and ObjectModel. Instead tracker class will act as a initiator for rest of the application tasks. See Tracker.\_\_init\_\_().
+
 ```mermaid
 ---
 title: Dataflow diagram
 ---
 classDiagram
-    class Tracker{
+    Tracker <|-- ObjectModel : bboxes
+    Tracker <|-- Tracker : self update frames
+    ManualInterface <|-- Tracker : frame, bboxes
+    ObjectModel <|-- Tracker : frame
+    Director <|-- Tracker : bboxes
+	
+	class Tracker{
 	    -_bboxes
 	    -_frame
         +capture cv2.VideoCapture
@@ -101,17 +109,12 @@ classDiagram
     class ManualInterface{
         +VideoLabel
     }
+    class ObjectModel{
+	    +detect_person: bboxes
+    }
     class Director{
         +connection: Connection
     }
-    class ObjectModel{
-	    +detect_person(frame):bboxes
-    }
-
-    Tracker <|-- ObjectModel : bboxes
-    Tracker <|-- Tracker : self update frames
-    ManualInterface <|-- Tracker : frame, bboxes
-    ObjectModel <|-- Tracker : frame
-    Director <|-- Tracker : bboxes
-
+    
 ```
+
