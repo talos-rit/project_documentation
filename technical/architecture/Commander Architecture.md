@@ -23,7 +23,7 @@ Scheduler class is the first result of such "solution". The scheduler allows us 
 > https://youtu.be/8aGhZQkoFbQ?si=UE6x9rQTU1pMTLBI
 > https://youtu.be/eiC58R16hb8?si=TyC6C3gUlo1aaRfM 
 ### Why this is useful
-We have several classes that needs to run its subprocess as a background tasks. While most of these tasks are a single while loop, its generally bad idea to have the while loop run on the main process because it would block the UI until the loop finishes. This is bad for several reasons, user will experience a huge lag where all of their inputs and interactions will be blocked, and other processes like updating video frame on screen or running detection model could also be blocked from further processing. 
+We have several classes that needs to run its subprocess as a background tasks. While most of these tasks are a single while loop, its generally bad idea to have the while loop run on the main process because it would block the UI until the loop finishes. This causes UI to freeze and all of their inputs and interactions will be blocked, and other processes like updating video frame on screen or running detection model could also be blocked from further processing. 
 This is where scheduler is used. Instead of having the following code:
 ```python
 def process(self):
@@ -37,7 +37,7 @@ def process(self):
 	if self.is_running:
 		self.scheduler.set_timeout(100, self.process)
 ```
-This allows us to schedule the same process function to run after 100 ms. This means that while this process is not running for that 100 ms, other process can run their own tasks. I would recommend not putting 0 for ms because it can over load the event loop and take over the entire eventloop; if you are doing this I would make sure that the function is very short, shorter the better.
+This allows us to release the main process and schedule the same process function to run after 100 ms. This means that while this process is not running for that 100 ms, the main process is freed and other process can run their own tasks. I would recommend not putting 0 for ms because it can over load the event loop and take over the entire eventloop; if you are doing this or have a small delay, I would make sure that the function is very short and fast, shorter the better.
 
 ### set_interval method
 If you would just like to continuously call a process over and over again, we can also use set_interval. This is great especially if you would like to have a set timeout be called exactly the correct ms interval. Make sure that the method call is shorter than the sleep ms or else we would also over load the eventloop. 
