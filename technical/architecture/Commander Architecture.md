@@ -118,3 +118,5 @@ classDiagram
     
 ```
 
+<img src="commander_flow_diagram.png" />
+link: https://excalidraw.com/#json=iU9MLVgq5AVm4nue_HPA5,xz3zdOHLNiqpePQWANHUew
