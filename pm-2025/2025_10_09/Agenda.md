@@ -1,0 +1,3 @@
+- Review 4up
+- Details of commander refactor
+- Hardware discussion, encoders, single ended.
