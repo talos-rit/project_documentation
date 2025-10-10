@@ -127,14 +127,17 @@ This is the overall system flow diagram of commander when ManualInterface is run
 <img src="commander_flow_diagram.png" />
 link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
 
-Process List:
+Process List by Type:
 1. Eventloop
-	1. ManualInterface::frame_loop -- this process updates UI's frame
-	2. Tracker::save_frame -- this poll's video frames from video capture
-	3. Tracker::send_latest_frame -- this pushes frames into shared resource to let object detection get access to the frame
-	4. Tracker::poll_bboxes -- this polls latest bboxes sent from ObjectModel
+	1. Director::track_obj -- this is the process to send command to operator using Connection
+	2. ManualInterface::frame_loop -- this process updates UI's frame
+	3. Tracker::save_frame -- this poll's video frames from video capture
+	4. Tracker::send_latest_frame -- this pushes frames into shared resource to let object detection get access to the frame
+	5. Tracker::poll_bboxes -- this polls latest bboxes sent from ObjectModel
 2. Threads
 	1. Connection::connect_on_thread -- this attempts to connect to operator on the raspberry pi and continues until the connection is successfully made
 	2. (Not diagramed)ManualInterface::stop_move -- this allows continuous inputs to operator
 3. Multiprocess
-	1. ObjectModel::detect_person -- this polls from the frame_queue and returns a boundary boxes into bbox_queue.
+	1. ObjectModel::detect_person -- this polls from the frame_queue and returns a boundary boxes into bbox_queue
+
+
