@@ -125,7 +125,7 @@ classDiagram
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
 <img src="commander_flow_diagram.png" />
-link: https://excalidraw.com/#json=iU9MLVgq5AVm4nue_HPA5,xz3zdOHLNiqpePQWANHUew
+link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
 
 Process List:
 1. Eventloop
