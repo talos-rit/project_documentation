@@ -10,7 +10,8 @@ TODO: Write how to install dependencies once the dependency installation is sort
 
 ## GUI
 
-> [!NOTE] Tkinter is installed by default by python, but there could be some issues especially using the uv see solutions in README.md in commander.
+> [!NOTE] 
+> Tkinter is installed by default by python, but there could be some issues especially using the uv see solutions in README.md in commander.
 
 The application uses Tkinter to display GUI. While its great that tkinter comes with the python installation, but like any UI library it comes with its own event loop management. This is great for when you would like to have a simple native application, but if tasks needs to be separated into multiple processes and need to manage cleanup it can get nasty. This architecture is the result of such issue. You may see a lot of explanation focusing on runtime management and how to schedule tasks, this is the reason why. 
 
@@ -19,7 +20,8 @@ The application uses Tkinter to display GUI. While its great that tkinter comes 
 
 Scheduler class is the first result of such "solution". The scheduler allows us to indirectly pass root window reference to other sub classes that may need to make its own separate tasks. 
 
-> [!NOTE] This section require one's understanding of event loops. If you need to understand the concept of single threaded event loops there are great video explaining the event loop for internet browsers. While Tkinter does not have all of the browser's robust event loop management system, it's core idea and limitations are the same. More on this below...
+> [!NOTE] 
+> This section require one's understanding of event loops. If you need to understand the concept of single threaded event loops there are great video explaining the event loop for internet browsers. While Tkinter does not have all of the browser's robust event loop management system, it's core idea and limitations are the same. More on this below...
 > https://youtu.be/8aGhZQkoFbQ?si=UE6x9rQTU1pMTLBI
 > https://youtu.be/eiC58R16hb8?si=TyC6C3gUlo1aaRfM 
 ### Why this is useful
@@ -118,5 +120,24 @@ classDiagram
     
 ```
 
+## Concurrent Processes
+
+This is the overall system flow diagram of commander when ManualInterface is running. 
+
 <img src="commander_flow_diagram.png" />
-link: https://excalidraw.com/#json=iU9MLVgq5AVm4nue_HPA5,xz3zdOHLNiqpePQWANHUew
+link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
+
+Process List by Type:
+1. Eventloop
+	1. Director::track_obj -- this is the process to send command to operator using Connection
+	2. ManualInterface::frame_loop -- this process updates UI's frame
+	3. Tracker::save_frame -- this poll's video frames from video capture
+	4. Tracker::send_latest_frame -- this pushes frames into shared resource to let object detection get access to the frame
+	5. Tracker::poll_bboxes -- this polls latest bboxes sent from ObjectModel
+2. Threads
+	1. Connection::connect_on_thread -- this attempts to connect to operator on the raspberry pi and continues until the connection is successfully made
+	2. (Not diagramed)ManualInterface::stop_move -- this allows continuous inputs to operator
+3. Multiprocess
+	1. ObjectModel::detect_person -- this polls from the frame_queue and returns a boundary boxes into bbox_queue
+
+
