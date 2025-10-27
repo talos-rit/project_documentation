@@ -19,7 +19,7 @@ The Remote Repository to store all things project planning.
 	- talos_icd -- documentation on icd
 - poster -- Any poster images and files
 - videos -- Any video script files
-- pm -- project meeting notes and notes
+- pm -- project meeting notes
 	- pm_script -- not used for 2025
 	- pm-2024 -- meeting notes from 2024
 	- pm-2025 -- meeting notes from 2025
