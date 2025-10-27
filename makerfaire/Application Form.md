@@ -140,7 +140,8 @@ https://github.com/talos-rit/project_documentation/blob/master/poster/talos_post
 **Radio Frequencies**
 
 *If your exhibit uses radio frequencies, please provide details about your RF use, frequencies, etc.*
-N/A
+
+`N/A`
 ## Safety
 
 *Does your exhibit make use of fire (any size flame), chemicals, or other dangerous materials or tools (propane, welders, etc)?**
