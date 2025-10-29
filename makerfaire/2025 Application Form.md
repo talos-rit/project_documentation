@@ -1,6 +1,8 @@
 https://rochester.makerfaire.com/call-for-makers/
 ## **DEADLINE: NOVEMBER 1st**
 
+# Page 1
+
 **Saturday November 15, 2025 is our traditional Maker Faire Event from 9 AM to 5 PM.**      
 Participation Day(s)*
 
@@ -96,8 +98,8 @@ https://github.com/talos-rit/project_documentation/blob/master/poster/talos_post
     
 *Please bring your own setup if possible. Please note table sizes from our vendor are typically 6' by 2'.*
 
-- [x] I will bring my own table and chairs and do not need any provided.
-- [ ] I need help with 1 table and 2 chairs. (Supply is limited.)
+- [ ] I will bring my own table and chairs and do not need any provided.
+- [x] I need help with 1 table and 2 chairs. (Supply is limited.)
 - [ ] I would like more than 1 table and 2 chairs. List specific request below.
 - [ ] I do not need any tables or chairs.
 
@@ -107,7 +109,12 @@ https://github.com/talos-rit/project_documentation/blob/master/poster/talos_post
 
 - [x] Yes
 - [ ] No
-    
+
+**Describe your hands-on activity or interactive exhibit.\***
+```
+Visitors can walk in front of the robot and watch as it automatically tracks their movement, following them across the space in real time.
+```
+
 **Location Preference\***
 
 - [x] Inside
@@ -162,3 +169,143 @@ Do you have an interactive exhibit involving using tools of any kind, riding (bi
 
 - [ ] Yes
 - [x] No
+
+
+# Page 2
+
+**Contact**
+First: Hiroto, Last: Takeuchi
+
+**Email**
+Hiro's email
+
+**Phone**
+Hiro's phone
+
+**Secondary phone number**
+Connor's phone
+
+**Address**
+Malachowsky's office room
+
+400 Reynolds Dr
+GOL-1545
+Rochester, NY
+14623
+US
+
+
+**Who would you like listed as the maker, presenter or performer publicly?\***
+- [ ] One maker
+- [ ] A list of makers (7 max)
+- [x] A group or association
+
+Maker Entrance Credentials for Booth or Exhibit
+
+**The default number of credentials and entrance wristbands we provide maker booths are 2.** However we do allow for up to 8 entrance wristbands for exhibits provided each person works at your booth for at least 2 hours.  
+  
+**Do you need more than 2 entrance wristbands for your booth?**
+- [x] Yes
+- [ ] No
+
+Number of Entrance Wristbands Needed
+
+Please enter 1 to 8 for the number of entrance wristbands you are requesting.
+`7`
+
+## Group Information
+    
+**Group Name\***
+Talos RIT
+
+Group Photo*
+
+Image must be at least 500px wide or larger.
+![[group_photo.jpg|400]]
+
+**Group Bio\***
+```
+We are a five-member Software Engineering capstone team creating an open-source system that upgrades old robotic arms with autonomous tracking through computer vision and object detection.
+```
+
+
+**Group's General Age Range**
+- [ ] 0-6
+- [ ] 7-17
+- [x] 18-29
+- [ ] 30-49
+- [ ] 50-69
+- [ ] 70+
+
+**Group Website**    
+*Example: http://www.groupwebsite.com/*
+[`https://github.com/talos-rit`](https://github.com/talos-rit)
+
+# Page 3
+
+**First: Pick the category that BEST fits your project.**
+`Robotics`
+
+**Second: select four additional categories which relate to your project.**
+- [x] Open Source
+- [ ] Raspberry Pi
+- [x] Sustainability & Nature
+- [x] Engineering
+- [ ] Computers & Mobile devices
+- [x] Photography & Video
+- [ ] Robotics
+- [ ] Science
+- [ ] ... etc
+
+
+**Additional supporting documents**
+*Upload other documentation related to your exhibit that you'd like to share with us.*
+`N/A`
+
+**References**
+*Who is familiar with you, your exhibit or other things you have made? Were you referred to Maker Faire or asked to fill out this application? If so, who referred you?*
+```
+I(Hiroto) am also part of separate club organization of RIT, Multidisciplinary Robotics Club, participating in Makerfaire every year. I recommended our group to Maker Faire because of my experience participating in the event through my club.
+```
+
+**Are there other organizations or makers you recommend we contact about participating in Maker Faire?**
+`N/A`
+
+**What inspired you to make this project?**
+```
+Our advisor provided us with two semi-functional robotic arms in need of major hardware and software upgrades. Inspired by their potential, we set out to revitalize them with modern technology and restore their full capabilities.
+```
+
+**How will you help promote your appearance at Maker Faire?**
+```
+We plan to promote engagement at the event by showcasing live demonstrations where visitors can interact with our robot’s autonomous tracking, using engaging visuals and signage to highlight its capabilities, and encouraging attendees to try the experience themselves.
+```
+
+**Is there anything else you would like to tell us?**
+`N/A`
+
+
+# Page 4
+[[Participation Agreement Release and Consent]]
+
+**Are you 18 years or older?**
+- [x] Yes
+- [ ] No
+
+**Full Name\***
+*Parent or Guardian Name if applicant is under 18 years old.*
+
+First: `Hiroto` Last: `Takeuchi`
+
+**Date\***
+`10/28/2025`
+
+End of Application
+--- 
+
+
+## Submitted
+10/28/2025
+
+![[submition_screenshot.png]]
+
