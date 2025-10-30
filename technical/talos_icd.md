@@ -11,6 +11,7 @@
 | 2025-02-06 | Alex Vernes       | Added idle mode calls                                                                                                 |
 | 2025-02-25 | Brooke Leinberger | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands               |
 | 2025-02-27 | Alex Vernes       | Reorganizing command order; added Cartesian Move                                                                      |
+| 2025-10-30 | Connor O'Neill    | Updated command wrapper to be more clear about what the fields are |
 
 Note: 
 - Type names are given by the stdint.h header file in the C standard.
@@ -20,14 +21,14 @@ Note:
 
 | Arg           | Type | Description |
 |---|---|---|
-| Command ID    | UINT32    | Unique ID for individual commands |
+| Message ID    | UINT32    | Unique ID for individual messages |
 | *RESERVED*    | UINT16    | *RESERVED* |
-| Command Value | UINT16    | Command for device to carry out |
+| Command ID    | UINT16    | Command for device to carry out |
 | Length        | UINT16    | Length of Payload |
 | Payload       | UINT8[]   | Command Info |
 | CRC           | UINT16    | Checksum |
 
-*Note*: Command IDs are unique to the indiviual commands. If the director were to send out two identical commands, they would share a Command Value and payload, but would have unique Command IDs. Each command exchange will have 2 messages: a command request message, and a command return message. Half of the ID's will therefore be return messages, and should correspond to a specific command request message. Specifically, the upper 31 bits should denote the overall command exchange, while the least significant bit is a '0' for command, and a '1' for response (i.e. command issued with command ID 0 gets a return ID of 1, command ID of 54 gets a return ID of 55, etc).
+*Note*: Message IDs are unique to the indiviual commands. If the director were to send out two identical commands, they would share a Command ID and payload, but would have unique Message IDs. Each command exchange will have 2 messages: a command request message, and a command return message. Half of the ID's will therefore be return messages, and should correspond to a specific command request message. Specifically, the upper 31 bits should denote the overall command exchange, while the least significant bit is a '0' for command, and a '1' for response (i.e. command issued with command ID 0 gets a return ID of 1, command ID of 54 gets a return ID of 55, etc).
 
 ## Handshake
 
@@ -35,14 +36,14 @@ Note:
 This command is used by the Talos Command Interface (primarily the Director, but also the manual interface) on the Operator in order to prepare for giving further commands to the operator. Upon the Operator receiving this command, it responds with the version of the Talos Operator software it's running. The Command Interface can then use this information to determine the best commands to give this unit, or decide if it's incompatible.
 
 ### Send
-**Command Value**: 0x0000
+**Command ID**: 0x0000
 
 | Arg           | Type | Description |
 |---|---|---|
 | OID | UINT16 | Unique ID for Operator-Arm model version connection |
 
 ### Receive
-**Command Value**: 0x8000
+**Command ID**: 0x8000
 
 | Arg | Type | Description |
 |---|---|---|
@@ -54,7 +55,7 @@ This command is used by the Talos Command Interface (primarily the Director, but
 ## Polar Pan (Discrete)
 
 ### Send
-**Command Value**: 0x0001
+**Command ID**: 0x0001
 
 | Arg | Type | Description |
 |---|---|---|
@@ -64,7 +65,7 @@ This command is used by the Talos Command Interface (primarily the Director, but
 | Time              | UINT32 | How long the pan should take to execute |
 
 ### Receive
-**Command Value**: 0x8001
+**Command ID**: 0x8001
 
 | Arg | Type | Description |
 |---|---|---|
@@ -73,14 +74,14 @@ This command is used by the Talos Command Interface (primarily the Director, but
 ## Home
 
 ### Send
-**Command Value**: 0x0002
+**Command ID**: 0x0002
 
 | Arg        | Type   | Description                           |
 | ---------- | ------ | ------------------------------------- |
 | Delay (ms) | UINT32 | How long to wait until executing home |
 
 ### Receive
-**Command Value**: 0x8002
+**Command ID**: 0x8002
 
 | Arg         | Type   | Description          |
 | ----------- | ------ | -------------------- |
@@ -93,7 +94,7 @@ Starts/maintains a continuous polar pan rotation.
 
 ### Send
 
-**Command Value**: 0x0003
+**Command ID**: 0x0003
 
 | Arg | Type | Description |
 |---|---|---|
@@ -105,7 +106,7 @@ Starts/maintains a continuous polar pan rotation.
  movement and 0 means no rotation.
 
 ### Receive
-**Command Value**: 0x8003
+**Command ID**: 0x8003
 
 | Arg | Type | Description |
 |---|---|---|
@@ -116,12 +117,12 @@ Starts/maintains a continuous polar pan rotation.
 Stops a continuous polar pan rotation.
 
 ### Send
-**Command Value**: 0x0004
+**Command ID**: 0x0004
 
 **No body sent**
 
 ### Receive
-**Command Value**: 0x8004
+**Command ID**: 0x8004
 
 | Arg | Type | Description |
 |---|---|---|
@@ -131,7 +132,7 @@ Stops a continuous polar pan rotation.
 ## Cartesian Move (Discrete)
 
 ### Send
-**Command Value**: 0x0005
+**Command ID**: 0x0005
 
 | Arg | Type | Description |
 |---|---|---|
@@ -142,7 +143,7 @@ Stops a continuous polar pan rotation.
 | Time          | UINT32 | How long the pan should take to execute |
 
 ### Receive
-**Command Value**: 0x8005
+**Command ID**: 0x8005
 
 | Arg | Type | Description |
 |---|---|---|
@@ -154,7 +155,7 @@ Starts/maintains a continuous cartesian movement.
 
 ### Send
 
-**Command Value**: 0x0006
+**Command ID**: 0x0006
 
 | Arg | Type | Description |
 |---|---|---|
@@ -167,7 +168,7 @@ Starts/maintains a continuous cartesian movement.
  movement and 0 means no rotation.
 
 ### Receive
-**Command Value**: 0x8006
+**Command ID**: 0x8006
 
 | Arg | Type | Description |
 |---|---|---|
@@ -178,12 +179,12 @@ Starts/maintains a continuous cartesian movement.
 Stops a continuous cartesian move.
 
 ### Send
-**Command Value**: 0x0007
+**Command ID**: 0x0007
 
 **No body sent**
 
 ### Receive
-**Command Value**: 0x8007
+**Command ID**: 0x8007
 
 | Arg | Type | Description |
 |---|---|---|
@@ -195,21 +196,21 @@ Some operations require high coupling with the specifics of the hardware (e.g. a
 Such operations should be defined by a separate companion ICD, to avoid coupling the high level API with the hardware
 
 ### Send
-**Command Value**: 0x0008
+**Command ID**: 0x0008
 
 | Arg | Type | Description |
 |---|---|---|
-| Subcommand Value | UINT16 | Command for function in hardware specific ICD |
+| Subcommand ID | UINT16 | Command for function in hardware specific ICD |
 | RESERVED | UINT32 | RESERVED |
 | Payload | UINT8[] | Payload defined by hardware specific ICD |
 
 ### Receive
-**Command Value**: 0x8008
+**Command ID**: 0x8008
 
 | Arg | Type | Description |
 |---|---|---|
 | Return Code | UINT16 | Reports success/error |
-| Subcommand Value | UINT16 | Command for function in hardware specific ICD |
+| Subcommand ID | UINT16 | Command for function in hardware specific ICD |
 | Payload | UINT8[] | Payload defined by hardware specific ICD |
 
 
@@ -217,11 +218,12 @@ Such operations should be defined by a separate companion ICD, to avoid coupling
 Command to get the speed of all axes on Talos
 
 ### Send
-**Command Value**: 0x0009
+**Command ID**: 0x0009
+
 No body
 
 ### Receive
-**Command Value**: 0x8009
+**Command ID**: 0x8009
 
 | Arg | Type | Description |
 |---|---|---|
@@ -233,14 +235,14 @@ No body
 Command to set the speed of all axes on Talos to the received number (uint8)
 
 ### Send
-**Command Value**: 0x000A
+**Command ID**: 0x000A
 
 | Arg | Type | Description |
 |---|---|---|
 | Speed | UINT8 | The speed of all axes to set on Talos |
 
 ### Receive
-**Command Value**: 0x800A
+**Command ID**: 0x800A
 
 | Arg | Type | Description |
 |---|---|---|
@@ -253,7 +255,7 @@ If reference is an empty string (length of 0), the default value will be used (c
 If the reference string is empty, the Anchor value is ignored and the position is always treated as if anchor is set to false.
 
 ### Send
-**Command Value**: 0x000B
+**Command ID**: 0x000B
 
 | Arg | Type | Description |
 |---|---|---|
@@ -264,7 +266,7 @@ If the reference string is empty, the Anchor value is ignored and the position i
 | Parent | CHAR[] | Another previously saved position to act as a parent (refernce) position |
 
 ### Receive
-**Command Value**: 0x800B
+**Command ID**: 0x800B
 
 | Arg | Type | Description |
 |---|---|---|
@@ -274,7 +276,7 @@ If the reference string is empty, the Anchor value is ignored and the position i
 Given a position name, deletes that position information. 
 
 ### Send
-**Command Value**: 0x000C
+**Command ID**: 0x000C
 
 | Arg | Type | Description |
 |---|---|---|
@@ -282,7 +284,7 @@ Given a position name, deletes that position information.
 | Name | CHAR[] | Name descriptor for the position (non null terminated) |
 
 ### Receive
-**Command Value**: 0x800C
+**Command ID**: 0x800C
 
 | Arg | Type | Description |
 |---|---|---|
@@ -292,7 +294,7 @@ Given a position name, deletes that position information.
 Move to a pre-defined position. 
 
 ### Send
-**Command Value**: 0x000D
+**Command ID**: 0x000D
 
 | Arg | Type | Description |
 |---|---|---|
@@ -300,7 +302,7 @@ Move to a pre-defined position.
 | Name | CHAR[] | Name descriptor for the position (non null terminated) |
 
 ### Receive
-**Command Value**: 0x800D
+**Command ID**: 0x800D
 
 | Arg | Type | Description |
 |---|---|---|
@@ -310,7 +312,7 @@ Move to a pre-defined position.
 Defines a position in terms of polar coordinates
 
 ### Send
-**Command Value**: 0x000E
+**Command ID**: 0x000E
 
 | Arg | Type | Description |
 |---|---|---|
@@ -321,7 +323,7 @@ Defines a position in terms of polar coordinates
 | Radius | INT32 | Tenths of distance to extend outwards |
 
 ### Receive
-**Command Value**: 0x800E
+**Command ID**: 0x800E
 
 | Arg | Type | Description |
 |---|---|---|
@@ -331,7 +333,7 @@ Defines a position in terms of polar coordinates
 Returns the polar coordinates of a named position
 
 ### Send
-**Command Value**: 0x000F
+**Command ID**: 0x000F
 
 | Arg | Type | Description |
 |---|---|---|
@@ -340,7 +342,7 @@ Returns the polar coordinates of a named position
 
 
 ### Receive
-**Command Value**: 0x800F
+**Command ID**: 0x800F
 
 | Arg | Type | Description |
 |---|---|---|
@@ -354,7 +356,7 @@ Returns the polar coordinates of a named position
 Defines a position in terms of cartesian coordinates
 
 ### Send
-**Command Value**: 0x0010
+**Command ID**: 0x0010
 
 | Arg | Type | Description |
 |---|---|---|
@@ -365,7 +367,7 @@ Defines a position in terms of cartesian coordinates
 | Z | INT32 | Tenths of millimeters on Z-axis |
 
 ### Receive
-**Command Value**: 0x8010
+**Command ID**: 0x8010
 
 | Arg | Type | Description |
 |---|---|---|
@@ -375,7 +377,7 @@ Defines a position in terms of cartesian coordinates
 Returns the cartesian coordinates of a named position
 
 ### Send
-**Command Value**: 0x0011
+**Command ID**: 0x0011
 
 | Arg | Type | Description |
 |---|---|---|
@@ -383,7 +385,7 @@ Returns the cartesian coordinates of a named position
 | Name | CHAR[] | Name descriptor for the position (non null terminated)|
 
 ### Receive
-**Command Value**: 0x8011
+**Command ID**: 0x8011
 
 | Arg | Type | Description |
 |---|---|---|
