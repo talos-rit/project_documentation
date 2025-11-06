@@ -7,7 +7,7 @@
 
 ## Risks:
 
-* 
+* Possible refactoring needed post milestone 1 for both commander and operator
 
 ## Plans:
 
