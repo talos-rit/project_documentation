@@ -124,7 +124,7 @@ classDiagram
 
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
-<img src="commander_flow_diagram.png" />
+<img src="2025_commander_flow_diagram.png" />
 link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
 
 Process List by Type:
@@ -140,4 +140,11 @@ Process List by Type:
 3. Multiprocess
 	1. ObjectModel::detect_person -- this polls from the frame_queue and returns a boundary boxes into bbox_queue
 
+
+## Detection and control mode interaction
+
+<img src="commander-activity-diagram.excalidraw.svg" />
+
+> [!BUG]
+> Currently there is a bug with the logic for swapping object detection model where if the model is swapped, the detection process is started regardless of what the previous process state was.
 
