@@ -9,12 +9,13 @@ Zoom: [https://rit.zoom.us/rec/share/GJvcwqoeLWz8cMX_5DlGCGPf-_5DtqeNySISLLEVwJa
 - The team worked on debugging issues with the detection process and camera functionality
 ## Team updates
 
-| **Speaker**  | **Completed** |                                   **In Progress**                                   |                  **Plan**                   |                          **Blockers**                           |
-|--------------|---------------|-------------------------------------------------------------------------------------|---------------------------------------------|-----------------------------------------------------------------|
-| Kai & Hiroto | N/A           | - Working on camera and detection process debugging                                 | N/A                                         | - Unexplained program crashes when setting object model to none |
-| Hiroto       | N/A           | - Investigating gRPC implementation- Created a separate repository for gRPC testing | - Continue refining gRPC implementation     | N/A                                                             |
-| Conor        | N/A           | - Working on unit testing for Operator- Reviewing code changes                      | N/A                                         | N/A                                                             |
-| J            | N/A           | - Working on e-stop wiring- Testing robot control commands                          | - Investigate ACL scripts for robot control | N/A                                                             |
+| **Speaker**  | **Completed**                                                              | **In Progress**                                                                     | **Plan**                                    | **Blockers**                                                    |
+| ------------ | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------- | --------------------------------------------------------------- |
+| Kai & Hiroto | - Improved performance for multiframe merging and model performance        | - Working on camera and detection process debugging                                 | N/A                                         | - Unexplained program crashes when setting object model to none |
+| Hiroto       | - Complete two way implementation of client python and cpp server for grpc | - Investigating gRPC implementation- Created a separate repository for gRPC testing | - Continue refining gRPC implementation     | N/A                                                             |
+| Connor       | - Merged PR for operator to add dev container                              | - Working on unit testing for Operator- Reviewing code changes                      | N/A                                         | N/A                                                             |
+| Ryan         | N/A                                                                        | - Working on driver                                                                 | N/A                                         | N/A                                                             |
+| J            | N/A                                                                        | - Working on e-stop wiring- Testing robot control commands                          | - Investigate ACL scripts for robot control | N/A                                                             |
 
 ## High risks
 
