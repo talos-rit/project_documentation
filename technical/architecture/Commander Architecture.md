@@ -3,18 +3,12 @@
 
 Commander is a GUI application that lets us use the local device's camera to run a object detection model. Once the object is detected in frame, we can turn on the automatic control mode, and let the application send commands to the operator running on the robot's raspberry PI.
 
-## Dependency
-
-TODO: Write how to install dependencies once the dependency installation is sorted out
-
-
 ## GUI
 
 > [!NOTE] 
-> Tkinter is installed by default by python, but there could be some issues especially using the uv see solutions in README.md in commander.
+> Tkinter is installed by default by python, but there could be some issues especially using the uv python package manager. See solutions in README.md in commander.
 
 The application uses Tkinter to display GUI. While its great that tkinter comes with the python installation, but like any UI library it comes with its own event loop management. This is great for when you would like to have a simple native application, but if tasks needs to be separated into multiple processes and need to manage cleanup it can get nasty. This architecture is the result of such issue. You may see a lot of explanation focusing on runtime management and how to schedule tasks, this is the reason why. 
-
 
 ## Scheduler class
 
@@ -76,6 +70,7 @@ Now this works well enough, but sometimes this is still not enough especially wi
 ## Issues I have faced
 I had several issues when handling termination.
 - TKinter overrides the termination handler. This could be that Tkinter runs on a new process after initialization, but the termination did not always work. The solution for this was that I had to move the initialization of termination handler into the manual interface initialization. That seems to work more reliably.
+- This especially became a problem when closing the application because if the user clicks on the x button on the window, the termination handler will be triggered from the tkinter side in which the termination handler will not be called. If the termination process is subscribed to window close event, the signal termination in the terminal becomes a problem because the tkinter window close handler is going to be called twice. Termination handler now has a remove method to delete used handlers to fix this problem. 
 
 # Tracker Class
 
@@ -140,7 +135,18 @@ Process List by Type:
 3. Multiprocess
 	1. ObjectModel::detect_person -- this polls from the frame_queue and returns a boundary boxes into bbox_queue
 
+The recommended factor to pick between each concurrency method is the following:
+![[concurrency_decision_graph.svg]]
 
+Several watch out with each:
+- Event loop
+	- Currently the scheduler's iterate task class has no protection with over scheduling tasks. It is heavily recommended that the developer stay aware of the duration of the function calls and decide to switch to other method if necessary or decrease the call rate.
+	- While clean up is not necessary for scheduler class, it is recommended in case you decide to terminate the logic without fully closing the application. Or the order to which the termination is necessary(not currently implemented).
+- Threads
+	- You can throw the concurrent logic into threads and make it work, but be aware that rigorous clean up logic should still be maintained.
+- Multiprocess
+	- Pickling may be problematic depending on the parameter that is required, if you are having trouble pickling the parameters of the logic, I would recommend going back to threads for the time being. 
+	- Be aware of unterminated processes, this project has seen segfaults in python due to unforeseen behavior of the gc. 
 ## Detection and control mode interaction
 
 <img src="commander-activity-diagram.excalidraw.svg" />
