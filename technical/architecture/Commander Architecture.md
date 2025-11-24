@@ -91,17 +91,17 @@ title: Dataflow diagram
 ---
 classDiagram
     Tracker <|-- ObjectModel : bboxes
-    Tracker <|-- Tracker : self update frames
-    ManualInterface <|-- Tracker : frame, bboxes
+    Tracker <|-- ManualInterface : get_frame()
+    ManualInterface <|-- Tracker : frame
     ObjectModel <|-- Tracker : frame
+    Tracker <|-- Director : get_bboxes()
     Director <|-- Tracker : bboxes
 	
 	class Tracker{
 	    -_bboxes
-	    -_frame
-        +capture cv2.VideoCapture
-        +get_frame()
-        +get_bbox()
+	    -captures dict[host, VideoConnection]
+        +get_frame(host: str)
+        +get_bboxes()
     }
     class ManualInterface{
         +VideoLabel
