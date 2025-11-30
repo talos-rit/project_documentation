@@ -137,7 +137,7 @@ Process List by Type:
 	1. ObjectModel::detect_person -- this polls from the frame_queue and returns boundary boxes into bbox_queue
 
 The recommended factor to pick between each concurrency method is the following:
-![[concurrency_decision_graph.svg]]
+![Concurrency decision graph](concurrency_decision_graph.svg)
 
 Several things to watch out for with each:
 - Event loop
