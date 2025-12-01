@@ -3,6 +3,9 @@
 
 Commander is a GUI application that lets us use the local device's camera to run a object detection model. Once the object is detected in frame, we can turn on the automatic control mode, and let the application send commands to the operator running on the robot's raspberry PI.
 
+# Architecture
+One of the main architectural decision we made was the facade design pattern using the App class. In `talos_app.py` we have the App class which is a single point of control for the entire backend of commander. This merges several control behavior logic in the backend classes like Tracker, Director, Connection, and Publisher. The app class acts as a single bridge of User interface logics and the backend. This was necessary due to the interest of adding another interface option with a potentially completely different runtime and process behavior. Thus extracting backend logic from the user interface logic was necessary to make this transition process easier.
+
 ## GUI
 
 > [!NOTE] 
@@ -12,7 +15,7 @@ The application uses Tkinter to display the GUI. While it's great that tkinter c
 
 ## Scheduler class
 
-Scheduler class is the first part of such a solution. The scheduler allows us to indirectly pass root window reference to other sub classes that may need to perform tasks separate from the main loop. 
+Scheduler class is the first part of such a solution. The scheduler is an abstract class that allows us to indirectly pass task scheduling logic reference to other sub classes that may need to perform tasks separately in the main loop.
 
 > [!NOTE] 
 > This section require one's understanding of event loops. If you need to understand the concept of single threaded event loops there are great videos explaining the event loop for internet browsers. While Tkinter does not have all of the browser's robust event loop management system, it's core idea and limitations are the same. More on this below...
@@ -36,19 +39,20 @@ def process(self):
 This allows us to release the main process and schedule the same process function to run after 100 ms. This means that while this process won't run for 100 ms, the main process is free and other process can run their own tasks. I would recommend not putting 0 for ms when using set_timeout recursively, because it can over load the event loop and take over the entire eventloop; if you are doing this or have a small delay, make sure that the function is very short and fast.
 
 ### set_interval method
-If you would just like to continuously call a process over and over again, we can also use set_interval, which automatically sets up the recursive callback structure I just described. This is great especially if you would like to have a set timeout be called with exactly the correct interval. Make sure that the method call is shorter than the interval or else we would also over load the eventloop. 
+If you would just like to continuously call a process over and over again, we can also use set_interval, which automatically sets up the recursive callback structure I just described. This is great especially if you would like to have a set timeout be called with exactly the correct interval. Make sure that the method call is shorter than the interval or else we would also over load the eventloop. This method will return a IterativeTask object that can then be canceled using `task.cancel()`.
 
-This method will return a IterativeTask object that can then be canceled using `task.cancel()`.
+### Architectural decision
+Scheduler is an abstract class for the backend because it is the only class that needs to cross the frontend/backend border. This is because scheduling logic is defined by the user interface frameworks and can not be initiated by the backend. This is also the reason why the frontend is always initiated before the backend and the frontend owns the backend. While we could have not given an option to use the eventloop as a concurrency technique in the backend via threads, eventloops are a much more predictable and less overhead with concurrency. This means we do not have to create thread locks to prevent race conditions because eventloop guarantee single execution.
 
 ## Longer background tasks
-Eventloop is great for small UI microinteractions, but if we want to do anything that will take a second or longer we should to break it into a separate process. This is where we will use Threading and multiprocessing. 
+The Eventloop is great for small UI microinteractions, but if we want to do anything that will take a second or longer we should to break it into a separate thread or core process. This is where we will use Threading and Multiprocessing. 
 
 ### Threading
-This is a simple method for offloading tasks into the background, where you want to just run a simple while loop that eventually ends. This is used for the Connection class when it continuously tries to connect to operator using loops. This is great if you want to use the same main process for just calling a method over and over again.
+This is a simple method for offloading tasks into the background, where you want to just run a simple while loop with each iteration being a long task. This is used for the Connection class when it continuously tries to connect to operator using loops. This is great if you want to use the same main process for just calling a method over and over again. Note that we are still using python 3.12 with the GIL making the threads only a single execution, but threads is an easy way of offloading tasks to a different task to unblock the main thread running the event-loop.
 
 ### Multiprocess
-This is a more difficult solution for breaking task out into a completely different process. This is great for things that take a large amount of time or resources to compute. We use this for ObjectModel where it needs to run object detection algorithms. If you are using this please be careful of the following topic. 
-
+This is a more difficult solution for breaking task out into a completely different process. This is great for things that take a large amount of time or resources to compute. We use this for ObjectModel where it needs to run object detection algorithms where we definitely don't want it to block the main process, but we also want itself to run block free. This is a harder implementation in python because we need to spin up a completely separate python process with its own interpreter and runtime. Meaning you will need to instantiate everything that you will need in the childprocess again in the runtime of the childprocess. This also means that we will have to manage data sharing ourselves via pickling. Thankfully, the object detection is relatively isolated from other commander logic and only requires image frame as input and boundary box as the output(list of integer coordinates). The image frame uses shared memory buffer where we are continuously writing and reading off of in each process. The output boundary box uses queues and IPC method of sharing data. While its not necessary to understand how each mechanisms work, it could be great to have a general idea of how each mechanisms work. 
+If you are messing with this method please be careful of the following topic:
 ### Termination Handling
 Once the task is started with Multiprocessing or Threading we will need a method to clean up. One way to ensure clean up for threading is passing the daemon param like so
 ```python
@@ -71,6 +75,7 @@ Now this works well sometimes, but with Queues this is still not enough. These w
 I had several issues when handling termination.
 - TKinter overrides the termination handler. This could be that Tkinter runs on a new process after initialization, but the termination did not always work. The solution for this was that I had to move the initialization of termination handler into the manual interface initialization. That seems to work more reliably.
 - This especially became a problem when closing the application because if the user clicks on the x button on the window, the termination handler will be triggered from the tkinter side in which case the termination handler will not be called. But if the termination process is subscribed to the window close event, closing via the terminal becomes a problem because the termination handler will to be called twice. Termination handler now has a remove method to delete used handlers to fix this problem. 
+- The GC accidentally deleted the shared memory used by numpy while the process is still writing into the buffer. This is an odd behavior of the numpy's internal optimization and the GC's unfortunate memory management mechanisms. This resulted in a segmentation fault in python, and the solution was holding a reference to the shared memory buffer, but not actually do anything else with it. While this will seem like a dead code, it is very necessary to prevent GC from accidentally deleting it. 
 
 # Tracker Class
 
