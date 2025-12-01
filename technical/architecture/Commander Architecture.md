@@ -96,21 +96,26 @@ Note that the TKInterface class (in src/tk_gui/main_interface) is the initiator 
 title: Dataflow diagram
 ---
 classDiagram
+    App -- Interface
+    Tracker -- App
+    
     Tracker <|-- ObjectModel : bboxes
-    Tracker <|-- ManualInterface : get_frame()
-    ManualInterface <|-- Tracker : frame
     ObjectModel <|-- Tracker : frame
     Tracker <|-- Director : get_bboxes()
     Director <|-- Tracker : bboxes
 	
+	class Interface{
+        +VideoLabel
+    }
+    class App {
+	    -Tracker
+	    -Director
+    }
 	class Tracker{
 	    -_bboxes
 	    -captures dict[host, VideoConnection]
         +get_frame(host: str)
         +get_bboxes()
-    }
-    class ManualInterface{
-        +VideoLabel
     }
     class ObjectModel{
 	    +detect_person: bboxes
