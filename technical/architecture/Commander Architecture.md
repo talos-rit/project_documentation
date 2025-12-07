@@ -13,6 +13,14 @@ One of the main architectural decision we made was the facade design pattern usi
 
 The application uses Tkinter to display the GUI. While it's great that tkinter comes with the python installation, like any UI library it comes with its own event loop management as well. This is great for when you would like to have a simple native application, but if tasks needs to be separated into multiple processes and you need to manage cleanup it can get nasty. This architecture attempts to solve this issue. You may see a lot of explanation focusing on runtime management and how to schedule tasks, this is the reason why. 
 
+## TUI
+
+The no interface option is also possible to be developed or tested in the terminal via the `-t` flag. This allows us to also run the commander in a no graphical environment like the container or server. The application uses python [textul UI](https://github.com/talos-rit/project_documentation/blob/master/technical/architecture/Commander%20Architecture.md). This is still a interactive interface and the buttons, dropdown menu, and logger is interactive with a mouse. There are also several keyboard shortcut available and can be searched via the ctrl+p shortcut. 
+
+> [!NOTE]
+> This is still under development in [#168](https://github.com/talos-rit/commander/pull/168)
+> and is planned to be merged in milestone 2.
+
 ## Scheduler class
 
 Scheduler class is the first part of such a solution. The scheduler is an abstract class that allows us to indirectly pass task scheduling logic reference to other sub classes that may need to perform tasks separately in the main loop.
