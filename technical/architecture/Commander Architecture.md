@@ -138,7 +138,7 @@ classDiagram
 
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
-<img src="2025_commander_flow_diagram.png" />
+![commander-flow-diagram](2025_commander_flow_diagram.png)
 link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
 
 Process List by Type:
@@ -168,6 +168,4 @@ Several things to watch out for with each:
 	- Be aware of unterminated processes, this project has seen segfaults in python due to unforeseen behavior of the garbage collector. 
 ## Detection and control mode interaction
 
-<img src="commander-activity-diagram.excalidraw.svg" />
-
-
+![Commander-activity-diagram](commander-activity-diagram.excalidraw.svg)

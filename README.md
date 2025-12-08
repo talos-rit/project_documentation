@@ -14,6 +14,7 @@ The Remote Repository to store all things project planning.
 # Table of contents
 
 - technical -- Any technical documentation will be located here
+	- README -- overall system architecture
 	- architecture -- architecture diagrams
 	- domain_model -- domain model images
 	- talos_icd -- documentation on icd

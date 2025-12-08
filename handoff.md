@@ -5,8 +5,8 @@
 - GitHub admin
     - make Malachowsky & Kiser GitHub owners
 - documentation
-    - architecture & UML
-        - commander
+    - [architecture & UML](./technical/architecture/README.md)
+        - [[Commander Architecture]]
         - operator
         - linking
 
