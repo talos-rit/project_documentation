@@ -6,7 +6,7 @@
     - make Malachowsky & Kiser GitHub owners
 - documentation
     - [architecture & UML](./technical/architecture/README.md)
-        - [[Commander Architecture]]
+        - [Commander Architecture](./technical/architecture/Commander Architecture)
         - operator
         - linking
 
