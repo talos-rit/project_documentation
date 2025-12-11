@@ -1,0 +1,541 @@
+classDiagram
+    class C_0011076331764796852453["API::CommandID"]
+    class C_0011076331764796852453 {
+        <<enumeration>>
+        Handshake
+        PolarPan
+        Home
+        PolarPanStart
+        PolarPanStop
+    }
+    class C_0017832934725495251735["API::DataHeader"]
+    class C_0017832934725495251735 {
+        +cmd_id : uint16_t
+        +len : uint16_t
+        +msg_id : uint32_t
+        +reserved_1 : uint16_t
+    }
+    class C_0012828990641794498788["API::DataWrapper"]
+    class C_0012828990641794498788 {
+        +header : DataHeader
+        +payload_head : std::byte
+    }
+    class C_0015045327087783083870["API::PolarPan"]
+    class C_0015045327087783083870 {
+        +delay_ms : uint32_t
+        +delta_altitude : int32_t
+        +delta_azimuth : int32_t
+        +time_ms : uint32_t
+    }
+    class C_0002477329946875244817["API::PolarPanStart"]
+    class C_0002477329946875244817 {
+        +delta_altitude : int8_t
+        +delta_azimuth : int8_t
+    }
+    class C_0013768403615250353160["API::Home"]
+    class C_0013768403615250353160 {
+        +delay_ms : uint32_t
+    }
+    class C_0018321219611545119884["Sub_Queue"]
+    class C_0018321219611545119884 {
+        <<enumeration>>
+        Free
+        Command
+        Return
+        Log
+        Count
+    }
+    class C_0005526076108939345007["std::array&lt;uint8_t,SUB_MSG_LEN&gt;"]
+    class C_0005526076108939345007 {
+    }
+    class C_0001449033310007216471["Sub_Buffer"]
+    class C_0001449033310007216471 {
+        +reset() void
+        +body : std::array&lt;uint8_t,SUB_MSG_LEN&gt;
+        +len : uint8_t
+    }
+    class C_0001930605246120405132["std::array&lt;Subscriber::Queue,static_cast&lt;size_t&gt;&lpar;Sub_Queue::Count&rpar;&gt;"]
+    class C_0001930605246120405132 {
+    }
+    class C_0018415470952640986292["std::vector&lt;Sub_Buffer&gt;"]
+    class C_0018415470952640986292 {
+    }
+    class C_0000994511990246631929["Subscriber"]
+    class C_0000994511990246631929 {
+        +Subscriber() void
+        +~Subscriber() void
+        +Abort() void
+        +dequeueBuffer(Sub_Queue queue) Sub_Buffer *
+        -destroyBuffers() void
+        +enqueueBuffer(Sub_Queue queue, Sub_Buffer * buf) bool
+        -prepareBuffers() void
+        +start() bool
+        +stop() bool
+        -pool_ : std::vector&lt;Sub_Buffer&gt;
+        -queues_ : std::array&lt;Queue,static_cast&lt;size_t&gt;&lpar;Sub_Queue::Count&rpar;&gt;
+        -state_ : State
+    }
+    class C_0005630217204087988897["Subscriber::State"]
+    class C_0005630217204087988897 {
+        <<enumeration>>
+        Dead
+        Init
+        Run
+    }
+    class C_0013360676849416048060["std::deque&lt;Sub_Buffer *&gt;"]
+    class C_0013360676849416048060 {
+    }
+    class C_0002646179773506170456["Subscriber::Queue"]
+    class C_0002646179773506170456 {
+        +buffers : std::deque&lt;Sub_Buffer *&gt;
+        +mtx : std::mutex
+    }
+    class C_0000641257680088558383["Inbox"]
+    class C_0000641257680088558383 {
+        <<abstract>>
+        +Inbox() void
+        +~Inbox() void
+        #OnMessage() void
+        +registerSubscriber(Subscriber * sub) void*
+        +start() bool*
+        +stop() void*
+        #sub : Subscriber *
+    }
+    class C_0004308501729698541420["std::atomic&lt;bool&gt;"]
+    class C_0004308501729698541420 {
+    }
+    class C_0015796760387748272473["Arm"]
+    class C_0015796760387748272473 {
+        <<abstract>>
+        +Arm() void
+        +~Arm() void
+        -handShake() int*
+        -home(API::Home * home) int*
+        +isRunning() [const] bool
+        -polarPan(API::PolarPan * pan) int*
+        -polarPanStart(API::PolarPanStart * pan) int*
+        -polarPanStop() int*
+        +poll() void*
+        +processCommand() bool
+        +registerSubscriber(Subscriber * sub) bool
+        -runLoop() void
+        +start() bool
+        +stop() bool
+        -running_ : std::atomic&lt;bool&gt;
+        -sub_ : Subscriber *
+        -thread_ : std::thread
+    }
+    class C_0008605319653785353255["Arm::OversteerConfig"]
+    class C_0008605319653785353255 {
+        <<enumeration>>
+        None
+        Ignore
+        Abort
+    }
+    class C_0000813988274643062879["_s_list_node"]
+    class C_0000813988274643062879 {
+        +next : struct _s_list_node *
+    }
+    class C_0007285932188171721919["_s_list"]
+    class C_0007285932188171721919 {
+        +head : S_List_Node *
+        +len : uint32_t
+        +tail : S_List_Node *
+    }
+    class C_0003133309914991244045["_log_level"]
+    class C_0003133309914991244045 {
+        <<enumeration>>
+        LOG_FATAL
+        LOG_ERROR
+        LOG_WARN
+        LOG_INFO
+        LOG_VERBOSE
+    }
+    class C_0012690804671960306349["LogConfig"]
+    class C_0012690804671960306349 {
+        +LogConfig() void
+        +~LogConfig() void
+        +GetLogLocation() const char *
+        +SetLogLocation(const char * log_location) int
+        -log_loc_idx : int
+    }
+    class C_0010466557973063645673["_conf_data_type"]
+    class C_0010466557973063645673 {
+        <<enumeration>>
+        CONF_DATA_STRING
+        CONF_DATA_BOOL
+        CONF_DATA_INT
+    }
+    class C_0016435635031087481897["_conf_entry"]
+    class C_0016435635031087481897 {
+        +key : char[64]
+        +type : CONF_Data_Type
+        +val : char[64]
+    }
+    class C_0008289891971916880997["Config"]
+    class C_0008289891971916880997 {
+        +Config() void
+        +~Config() void
+        +AddKey(const char * key, int deflt) int
+        +AddKey(const char * key, bool deflt) int
+        +AddKey(const char * key, const char * deflt) int
+        +AddKey(const char * key, const char * deflt, CONF_Data_Type type) int
+        +ClearKeyVals() void
+        +DumpToLog(int log_level) void
+        +GetBool(int idx) bool
+        +GetBool(const char * key) bool
+        +GetFilePath() const char *
+        +GetInt(int idx) int
+        +GetInt(const char * key) int
+        -GetKeyIndex(const char * key) int
+        +GetVal(uint8_t idx) const char *
+        +GetVal(const char * key) const char *
+        #OverrideValue(uint8_t key_idx, bool val) int
+        #OverrideValue(uint8_t key_idx, const char * val) int
+        +ParseConfig() int
+        -ParseYaml(int fd) int
+        +SetFilePath(const char * file_path) int
+        -fail_get_bool(int idx) bool
+        -conf_errno : int
+        -key_count : uint8_t
+        -pairs : CONF_Entry[16]
+        -path : char[128]
+    }
+    class C_0016581258198969039044["FileDescriptor"]
+    class C_0016581258198969039044 {
+        +FileDescriptor() [default] void
+        +FileDescriptor(int fd) void
+        +FileDescriptor(const FileDescriptor &) void
+        +FileDescriptor(FileDescriptor && other) void
+        +~FileDescriptor() void
+        +operator=(const FileDescriptor &) FileDescriptor &
+        +operator=(FileDescriptor && other) FileDescriptor &
+        +get() int
+        +operator int() [const] int
+        +reset() void
+        +valid() [const] bool
+        -fd_ : int
+    }
+    class C_0002615841846943434995["std::span&lt;const char const&gt;"]
+    class C_0002615841846943434995 {
+    }
+    class C_0013584685150829991845["Socket"]
+    class C_0013584685150829991845 {
+        +Socket() void
+        +~Socket() void
+        -init() bool
+        -poll() void
+        +registerSubscriber(Subscriber * sub) void
+        -sendResponse(std::span&lt;const char&gt; msg) bool
+        +start() bool
+        +stop() void
+        -waitForConnection() bool
+        -props_ : struct Props
+        -thread_ : std::thread
+    }
+    class C_0009549548850605113756["Socket::Props"]
+    class C_0009549548850605113756 {
+        +client : sockaddr_in
+        +connfd : FileDescriptor
+        +port : int
+        +running : std::atomic&lt;bool&gt;
+        +server : sockaddr_in
+        +sockfd : FileDescriptor
+        +sub : Subscriber *
+    }
+    class C_0016266746467850534616["SerialDevice"]
+    class C_0016266746467850534616 {
+        <<abstract>>
+        +SerialDevice() void
+        +~SerialDevice() void
+        +FlushQueue() int*
+        +InitFrame(SerialFrame * frame) int$
+        -InitQueueNode(QueueNode * node) int
+        #PopQueue() S_List *
+        +QueueFrames(S_List * frames) int
+        -free_queue_nodes : S_List
+        -queue : S_List
+        -queue_nodes : QueueNode[32]
+    }
+    class C_0004565648980978041282["SerialDevice::queue_node"]
+    class C_0004565648980978041282 {
+        +list : S_List *
+        +node : S_List_Node
+    }
+    class C_0003948822194045864708["SerialDevice::_serial_buffer_state"]
+    class C_0003948822194045864708 {
+        <<enumeration>>
+        IDLE
+        ENQUEUED
+        PROCESSED
+        FAILED
+    }
+    class C_0006069017394447451684["SerialDevice::_serial_frame"]
+    class C_0006069017394447451684 {
+        +callback : void &lpar;*&rpar;&lpar;&rpar;
+        +delay_ms : uint32_t
+        +len : uint8_t
+        +node : S_List_Node
+        +rx_buf : uint8_t *
+        +state : SerialState
+        +tx_buf : const uint8_t *
+    }
+    class C_0017625938992588851034["I2CDev"]
+    class C_0017625938992588851034 {
+        +I2CDev(int fd = -1, uint8_t addr = 0) void
+        +~I2CDev() void
+        +FlushQueue() int
+        +FlushQueue(S_List * queue) int
+        +OverrideAddr(uint8_t addr) int
+        -addr : uint8_t
+        -fd : int
+        -msgs : i2c_msg[64]
+    }
+    class C_0013914911546541932904["PCA9685PW"]
+    class C_0013914911546541932904 {
+        +PCA9685PW(int fd = -1, int addr = 0) void
+        +~PCA9685PW() void
+        +ClearQueues() int
+        +FlushQueues() int
+        +GetDutyCycle(uint8_t channel) int
+        +InitDevice() int
+        -QueueRD(uint8_t addr, uint8_t len) int
+        -QueueWR(uint8_t addr, uint8_t len) int
+        +ResetDevice() int
+        +SetDutyCycle(uint8_t channel, uint16_t duty_cycle) int
+        +UpdateRegisters() int
+        -prep_queue_transaction(uint8_t addr, uint8_t len, bool read) int
+        -dev : I2CDev
+        -fd : int
+        -frames : SerialDevice::SerialFrame *
+        -frames_len : uint16_t
+        -free_queue : S_List
+        -inited : bool
+        -misc : uint8_t[256]
+        -misc_iter : uint8_t
+        -queue_iter : uint8_t
+        -queues : S_List[256]
+        -regs : PCA_Regs
+        -staged : PCA_Regs
+    }
+    class C_0008087362279070361010["PCA9685PW::Channel"]
+    class C_0008087362279070361010 {
+        +OFF_H : uint8_t
+        +OFF_L : uint8_t
+        +ON_H : uint8_t
+        +ON_L : uint8_t
+    }
+    class C_0012226250891646915786["PCA9685PW::PCA_Regs"]
+    class C_0012226250891646915786 {
+        +ALLCALLADR : uint8_t
+        +ALL_LED : Channel
+        +LEDs : Channel[16]
+        +MODE : uint8_t[2]
+        +PRE_SCALE : uint8_t
+        +SUBADDR : uint8_t[3]
+        +TestMode : uint8_t
+    }
+    class C_0014435740983028158851["RotaryEncoder"]
+    class C_0014435740983028158851 {
+        +RotaryEncoder() void
+        +~RotaryEncoder() void
+        +GetValue() int32_t
+        +ToggleA() void
+        +ToggleB() void
+        -state : int8_t
+        -value : int32_t
+    }
+    class C_0011913530466395847213["_gpio_target"]
+    class C_0011913530466395847213 {
+        +callback : void &lpar;*&rpar;&lpar;&rpar;
+        +enc : RotaryEncoder *
+    }
+    class C_0013977975584838553064["_gpio_intr_type"]
+    class C_0013977975584838553064 {
+        <<enumeration>>
+        GPIO_INTR_TYPE_UNINIT
+        GPIO_INTR_TYPE_ENCODER_A
+        GPIO_INTR_TYPE_ENCODER_B
+        GPIO_INTR_TYPE_HOMING
+        GPIO_INTR_TYPE_E_STOP
+        GPIO_INTR_TYPE_LEN
+    }
+    class C_0004498034929353578197["_gpio_intr"]
+    class C_0004498034929353578197 {
+        +target : GPIO_INTR_TARGET
+        +type : GPIO_INTR_TYPE
+    }
+    class C_0003813734828947556155["IchorISR"]
+    class C_0003813734828947556155 {
+        +IchorISR(const char * chip_path) void
+        +~IchorISR() void
+        +AllocatePins() int
+        -ExecutePin(uint8_t pin) int
+        +ProcessEvents() void
+        +RegisterPin(uint8_t pin, GPIO_INTR_TYPE type, GPIO_INTR_TARGET target) int
+        +UnregisterPin(uint8_t pin) int
+        -closeISR() int
+        -openISR() int
+        -chip_fd : int
+        -pin_map : GPIO_Interrupt[40]
+        -req : gpio_v2_line_request
+    }
+    class C_0013528079590318004367["Motor"]
+    class C_0013528079590318004367 {
+        +Motor(PCA9685PW * dac, uint8_t in1_pin, uint8_t in2_pin, uint8_t speed_pin) void
+        +~Motor() void
+        +GetSpeed() int32_t
+        +Kill() int
+        +RegisterDriver(PCA9685PW * dac) int
+        +SetDrive(DriveType type) int
+        +SetSpeed(int16_t speed) int
+        -dac : PCA9685PW *
+        -in1_pin : uint8_t
+        -in2_pin : uint8_t
+        -last_speed : uint8_t
+        -speed_pin : uint8_t
+        -type : DriveType
+    }
+    class C_0000188334435155586179["Motor::DriveType"]
+    class C_0000188334435155586179 {
+        <<enumeration>>
+        DEAD
+        DEAD_BRAKE
+        DRIVE
+        BRAKE
+        DRIVE_LEN
+    }
+    class C_0006701334225289874121["Driver"]
+    class C_0006701334225289874121 {
+        +Driver(PCA9685PW * dac, uint8_t in1, uint8_t in2, uint8_t speed, IchorISR * isr, uint8_t enc_a, uint8_t enc_b, void * adc, uint8_t adc_channel) void
+        +~Driver() void
+        +Abort() int
+        +Poll() int
+        +SetSpeedCoefficient(uint8_t speed) int
+        +SetTarget(int32_t target, int32_t start) int
+        +SetVelocityFunc(float &lpar;*&rpar;&lpar;int32_t,int32_t,int32_t&rpar; func) int
+        +Shutdown() int
+        -adc : void *
+        -adc_channel : uint8_t
+        -enc : RotaryEncoder
+        -enc_a : uint8_t
+        -enc_b : uint8_t
+        -isr : IchorISR *
+        -last_velocity : int32_t
+        -motor : Motor
+        -speed : uint8_t
+        -start : int32_t
+        -target : int32_t
+        -v_func : float &lpar;*&rpar;&lpar;int32_t,int32_t,int32_t&rpar;
+    }
+    class C_0000859233989023472201["Ichor"]
+    class C_0000859233989023472201 {
+        +Ichor(const char * isr_dev, const char * i2c_dev, uint8_t dac0_addr, uint8_t dac1_addr, uint8_t adc_addr) void
+        +~Ichor() void
+        +Init() int
+        +RegisterMotor(uint8_t motor_index, uint8_t dac_index, uint8_t dac_in1, uint8_t dac_in2, uint8_t dac_speed, uint8_t enc_a, uint8_t enc_b, uint8_t adc_channel) int
+        -handShake() int
+        -home(API::Home * home) int
+        -polarPan(API::PolarPan * pan) int
+        -polarPanStart(API::PolarPanStart * pan) int
+        -polarPanStop() int
+        -poll() void
+        -axis : Driver *[8]
+        -dac : PCA9685PW *[2]
+        -i2c_fd : int
+        -isr : IchorISR *
+        -manual_mode : bool
+        -oversteer : OversteerConfig
+        -polar_pan_cont : char
+    }
+    class C_0007773315913250630581["IchorConfig"]
+    class C_0007773315913250630581 {
+        +IchorConfig() void
+        +~IchorConfig() void
+        +GetI2CDev() const char *
+        +LoadDefaults() int
+    }
+    C_0012828990641794498788 o-- C_0017832934725495251735 : +header
+    C_0001449033310007216471 o-- C_0005526076108939345007 : +body
+    C_0018415470952640986292 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 ..> C_0018321219611545119884 : 
+    C_0000994511990246631929 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 o-- C_0005630217204087988897 : -state_
+    C_0000994511990246631929 o-- C_0001930605246120405132 : -queues_
+    C_0000994511990246631929 o-- C_0018415470952640986292 : -pool_
+    C_0000994511990246631929 ()-- C_0005630217204087988897 : 
+    C_0013360676849416048060 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 ()-- C_0002646179773506170456 : 
+    C_0002646179773506170456 o-- C_0013360676849416048060 : +buffers
+    C_0000641257680088558383 --> C_0000994511990246631929 : #sub
+    C_0015796760387748272473 ..> C_0015045327087783083870 : 
+    C_0015796760387748272473 ..> C_0002477329946875244817 : 
+    C_0015796760387748272473 ..> C_0013768403615250353160 : 
+    C_0015796760387748272473 o-- C_0004308501729698541420 : -running_
+    C_0015796760387748272473 --> C_0000994511990246631929 : -sub_
+    C_0015796760387748272473 ()-- C_0008605319653785353255 : 
+    C_0000813988274643062879 --> C_0000813988274643062879 : +next
+    C_0007285932188171721919 --> C_0000813988274643062879 : +head
+    C_0007285932188171721919 --> C_0000813988274643062879 : +tail
+    C_0008289891971916880997 <|-- C_0012690804671960306349 : 
+    C_0016435635031087481897 o-- C_0010466557973063645673 : +type
+    C_0008289891971916880997 ..> C_0010466557973063645673 : 
+    C_0008289891971916880997 o-- "16" C_0016435635031087481897 : -pairs
+    C_0013584685150829991845 ..> C_0000994511990246631929 : 
+    C_0013584685150829991845 ..> C_0002615841846943434995 : 
+    C_0013584685150829991845 o-- C_0009549548850605113756 : -props_
+    C_0000641257680088558383 <|-- C_0013584685150829991845 : 
+    C_0013584685150829991845 ()-- C_0009549548850605113756 : 
+    C_0009549548850605113756 o-- C_0016581258198969039044 : +sockfd
+    C_0009549548850605113756 o-- C_0016581258198969039044 : +connfd
+    C_0009549548850605113756 --> C_0000994511990246631929 : +sub
+    C_0009549548850605113756 o-- C_0004308501729698541420 : +running
+    C_0016266746467850534616 ..> C_0006069017394447451684 : 
+    C_0016266746467850534616 o-- "32" C_0004565648980978041282 : -queue_nodes
+    C_0016266746467850534616 o-- C_0007285932188171721919 : -free_queue_nodes
+    C_0016266746467850534616 o-- C_0007285932188171721919 : -queue
+    C_0016266746467850534616 ()-- C_0004565648980978041282 : 
+    C_0004565648980978041282 --> C_0007285932188171721919 : +list
+    C_0004565648980978041282 o-- C_0000813988274643062879 : +node
+    C_0016266746467850534616 ()-- C_0003948822194045864708 : 
+    C_0016266746467850534616 ()-- C_0006069017394447451684 : 
+    C_0006069017394447451684 o-- C_0003948822194045864708 : +state
+    C_0006069017394447451684 o-- C_0000813988274643062879 : +node
+    C_0017625938992588851034 ..> C_0007285932188171721919 : 
+    C_0016266746467850534616 <|-- C_0017625938992588851034 : 
+    C_0013914911546541932904 o-- C_0017625938992588851034 : -dev
+    C_0013914911546541932904 o-- C_0012226250891646915786 : -regs
+    C_0013914911546541932904 o-- C_0012226250891646915786 : -staged
+    C_0013914911546541932904 --> C_0006069017394447451684 : -frames
+    C_0013914911546541932904 o-- C_0007285932188171721919 : -free_queue
+    C_0013914911546541932904 o-- "256" C_0007285932188171721919 : -queues
+    C_0013914911546541932904 ()-- C_0008087362279070361010 : 
+    C_0013914911546541932904 ()-- C_0012226250891646915786 : 
+    C_0012226250891646915786 o-- "16" C_0008087362279070361010 : +LEDs
+    C_0012226250891646915786 o-- C_0008087362279070361010 : +ALL_LED
+    C_0011913530466395847213 --> C_0014435740983028158851 : +enc
+    C_0004498034929353578197 o-- C_0013977975584838553064 : +type
+    C_0004498034929353578197 o-- C_0011913530466395847213 : +target
+    C_0003813734828947556155 ..> C_0013977975584838553064 : 
+    C_0003813734828947556155 ..> C_0011913530466395847213 : 
+    C_0003813734828947556155 o-- "40" C_0004498034929353578197 : -pin_map
+    C_0013528079590318004367 --> C_0013914911546541932904 : -dac
+    C_0013528079590318004367 o-- C_0000188334435155586179 : -type
+    C_0013528079590318004367 ()-- C_0000188334435155586179 : 
+    C_0006701334225289874121 ..> C_0013914911546541932904 : 
+    C_0006701334225289874121 o-- C_0013528079590318004367 : -motor
+    C_0006701334225289874121 --> C_0003813734828947556155 : -isr
+    C_0006701334225289874121 o-- C_0014435740983028158851 : -enc
+    C_0000859233989023472201 ..> C_0015045327087783083870 : 
+    C_0000859233989023472201 ..> C_0002477329946875244817 : 
+    C_0000859233989023472201 ..> C_0013768403615250353160 : 
+    C_0000859233989023472201 --> "8" C_0006701334225289874121 : -axis
+    C_0000859233989023472201 --> "2" C_0013914911546541932904 : -dac
+    C_0000859233989023472201 --> C_0003813734828947556155 : -isr
+    C_0000859233989023472201 o-- C_0008605319653785353255 : -oversteer
+    C_0015796760387748272473 <|-- C_0000859233989023472201 : 
+    C_0012690804671960306349 <|-- C_0007773315913250630581 : 
+    direction RL
+
+%% Generated with clang-uml, version 0.6.2
+%% LLVM version Debian clang version 19.1.7 (3~deb12u1)
