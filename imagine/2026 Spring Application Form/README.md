@@ -24,3 +24,5 @@ For the first person that is submitting the proposal will be asked to fill sever
 4. [Service Requests](./Service_Requests.md)
 5. Manage Exhibitors(add all of the group members via their RIT username)
 6. [Images and Files](./Images_and_Files.md)
+
+**Double check for a [[imagine/2026 Spring Application Form/confirmation_emails/README|confirmation emails]]**
