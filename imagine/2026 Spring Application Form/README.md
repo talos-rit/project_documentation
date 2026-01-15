@@ -3,7 +3,7 @@ Application link: https://www.rit.edu/imagine/proposal
 ## Deadlines
 - [x] Exhibit Information: 3/9/2026
 - [x] Service Requests: 3/9/2026
-- [ ] Manage Exhibitors: 3/23/2026
+- [x] Manage Exhibitors: 3/23/2026
 - [ ] images and Files: 3/23/2026
 
 ## Exhibitor guidelines
