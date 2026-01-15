@@ -18,11 +18,11 @@ and
 
 # Form Submission
 For the first person that is submitting the proposal will be asked to fill several forms
-1. [Profile](./Profile.md)
-2. [Create a New Proposal](Create_a_New_Proposal.md)
-3. [Exhibit Information](./Exhibit_information.md)
-4. [Service Requests](./Service_Requests.md)
+1. [Profile](/imagine/2026_Spring/Profile.md)
+2. [Create a New Proposal](/imagine/2026_Spring/Create_a_New_Proposal.md)
+3. [Exhibit Information](/imagine/2026_Spring/Exhibit_information.md)
+4. [Service Requests](/imagine/2026_Spring/Service_Requests.md)
 5. Manage Exhibitors(add all of the group members via their RIT username)
-6. [Images and Files](./Images_and_Files.md)
+6. [Images and Files](/imagine/2026_Spring/Images_and_Files.md)
 
-**Double check for a [[imagine/2026 Spring Application Form/confirmation_emails/README|confirmation emails]]**
+**Double check for a [confirmation emails](imagine/2026_Spring/confirmation_emails/README)**

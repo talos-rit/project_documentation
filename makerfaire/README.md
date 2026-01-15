@@ -5,7 +5,7 @@ Maker Faire is a similar exhibit style event at as Imagine RIT with more focus o
 
 This event is really good for getting a practice at demoing our project and getting used to talking about this capstone project.
 
-![[IMG_6311.jpg]]
+<img src="/makerfaire/booth_photo.jpg"/>
 
 ## Demo setup Instructions
 

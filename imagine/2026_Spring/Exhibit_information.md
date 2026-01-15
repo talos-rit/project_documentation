@@ -1,4 +1,4 @@
-Prefilled question from [**Create a New Proposal**](./Create_a_New_Proposal.md).
+Prefilled question from [**Create a New Proposal**](/imagine/2026_Spring/Create_a_New_Proposal.md).
 
 **Please provide a brief, summary description of your exhibit for the Imagine RIT website. Keep in mind that potential visitors will read this quickly, and you want them to be enticed to find your exhibit on the day of the festival!**
 (500 char limit)

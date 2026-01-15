@@ -1,6 +1,6 @@
 # Project Planning Repo
 
-The Remote Repository to store all things project planning. 
+The Remote Repository to store all things project planning. For best support please use [Obsidian](https://obsidian.md/) to view this documentation.
 
 > [!NOTE]
 > New members please read the handoff.md doc
