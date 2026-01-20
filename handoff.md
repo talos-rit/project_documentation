@@ -9,6 +9,9 @@
         - [Commander Architecture](./technical/architecture/Commander Architecture)
         - operator
         - linking
+- future
+	- See [future.md](/future.md)
+	- feature sets that could be great for this project to implement
 
 
 ## Deadlines for Events Application to remember
