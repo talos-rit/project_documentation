@@ -16,7 +16,7 @@
 
 ## Deadlines for Events Application to remember
 
-- Application for [*Maker Faire*](https://rochester.makerfaire.com/)
+- Application for [*Maker Faire*](/makerfaire/README.md)
 	- For 2025 it was 11/1/2025
 	- Faire date was 11/15/2025
 	- See /makerfaire/Application Form.md

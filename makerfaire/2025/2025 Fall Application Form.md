@@ -1,5 +1,5 @@
 https://rochester.makerfaire.com/call-for-makers/
-## **DEADLINE: NOVEMBER 1st**
+## **DEADLINE: NOVEMBER 1st 2025** 
 
 # Page 1
 
