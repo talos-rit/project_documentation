@@ -7,7 +7,7 @@ This event is really good for getting a practice at demoing our project and gett
 
 <img src="/makerfaire/booth_photo.jpg"/>
 
-## Demo setup Instructions
+## 2025 Demo setup Instructions
 
 1. Turn on all raspberry pi's
 2. Connect the router to both raspberry pi's with ethernet cords
