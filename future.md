@@ -3,6 +3,7 @@
 
 # General Efforts
 1. Collaboration with graduate researchers and work with entities like research computing
+2. Binocular Vision framing and capture
 
 # Commander
 
@@ -17,7 +18,9 @@
 
 # Operator
 
-1. TBD
+1. Rewrite into embedded systems like esp32, stm32, or arduino.
+	1. We don't need the full capability of raspberry pi and is more of an overhead for writing hardware components. With a caveat of video streaming device also required.
+2. 
 
 # Hardware
 

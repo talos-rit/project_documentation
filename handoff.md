@@ -13,7 +13,6 @@
 	- See [future.md](/future.md)
 	- feature sets that could be great for this project to implement
 
-
 ## Deadlines for Events Application to remember
 
 - Application for [*Maker Faire*](/makerfaire/README.md)
