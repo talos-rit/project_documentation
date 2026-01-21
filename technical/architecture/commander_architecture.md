@@ -1,4 +1,24 @@
 
+Contents:
+- [[#What is Commander|What is Commander]]
+- [[#GUI|GUI]]
+- [[#TUI|TUI]]
+- [[#Scheduler class|Scheduler class]]
+	- [[#Scheduler class#Why this is useful|Why this is useful]]
+	- [[#Scheduler class#set_interval method|set_interval method]]
+	- [[#Scheduler class#Architectural decision|Architectural decision]]
+- [[#Longer background tasks|Longer background tasks]]
+	- [[#Longer background tasks#Threading|Threading]]
+	- [[#Longer background tasks#Multiprocess|Multiprocess]]
+	- [[#Longer background tasks#Termination Handling|Termination Handling]]
+- [[#Issues I have faced|Issues I have faced]]
+- [[#Concurrent Processes|Concurrent Processes]]
+- [[#Detection and control mode interaction|Detection and control mode interaction]]
+- [[#MVC architecture|MVC architecture]]
+	- [[#MVC architecture#View|View]]
+	- [[#MVC architecture#Controller|Controller]]
+	- [[#MVC architecture#Model|Model]]
+
 ## What is Commander
 
 Commander is a GUI application that lets us use the local device's camera to run a object detection model. Once the object is detected in frame, we can turn on the automatic control mode, and let the application send commands to the operator running on the robot's raspberry PI.
@@ -169,3 +189,16 @@ Several things to watch out for with each:
 ## Detection and control mode interaction
 
 ![Commander-activity-diagram](commander-activity-diagram.excalidraw.svg)
+
+## MVC architecture
+
+While this is not regularly how we think about commander's architecture we can easily identify different sections of the commander to be classified as MVC. Since this is not how architecture was drafted for commander, the organization of the source code is not related to MVC. This could be possible, but organization via functionality has been prioritized to make this easier to maintain. 
+### View
+The interface classes will be the view of commander like tk_gui and textual_tui. This controls the visual aspects of the commander. Note that typically application will have only one view, but because we have a gui and tui option depending on the options, the interface class used will change.
+
+### Controller
+Considering tk_gui and textual_tui as view classes we can consider talos_app or app class to be the controller. All of the control or action a user can execute can be found here. Additionally there are also base director, scheduler, and tracker that also acts as controller. 
+
+### Model
+Models are harder to spot in commander but they still exist in a few places like IterativeTask for scheduler, Command for ICD, VideoConnection or Connection for OperatorConnection. 
+
