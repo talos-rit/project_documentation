@@ -158,19 +158,18 @@ classDiagram
 
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
-![commander-flow-diagram](2025_commander_flow_diagram.png)
-link: https://excalidraw.com/#json=R1vgjL8J8xnGoYC_HBg2d,fTWG8Xhsb7a3OFAg49wysA
+![commander-flow-diagram](commander-flow-diagram-2026-01-23-1417.excalidraw.png)
+link: https://excalidraw.com/#json=TYrgaMFIY22a3fWrXEuoE,_wv-jaxajN7yGfRHaKrrKA
 
 Process List by Type:
 1. Eventloop
 	1. Director::track_obj -- this is the process to send commands to operator using the Connection class
 	2. TKInterface::frame_loop -- this process updates the UI frame
-	3. Tracker::save_frame -- this polls video frames from video capture
-	4. Tracker::send_latest_frame -- this pushes frames into shared memory to let object detection access them
-	5. Tracker::poll_bboxes -- this polls latest bboxes sent from the ObjectModel
 2. Threads
 	1. Connection::connect_on_thread -- this continuously attempts to connect to the operator on the raspberry pi until the connection is successful
 	2. (Not diagramed)TKInterface::stop_move -- this allows continuous inputs to operator
+	3. Tracker::send_latest_frame -- this pushes frames into shared memory to let object detection access them
+	4. Tracker::poll_bboxes -- this polls latest bboxes sent from the ObjectModel
 3. Multiprocess
 	1. ObjectModel::detect_person -- this polls from the frame_queue and returns boundary boxes into bbox_queue
 
