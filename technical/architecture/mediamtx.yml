@@ -483,7 +483,7 @@ pathDefaults:
   # It can be can be a relative path (i.e. /otherstream) or an absolute RTSP URL.
   fallback:
   # Use absolute timestamp of frames, instead of replacing them with the current time.
-  useAbsoluteTimestamp: false
+  useAbsoluteTimestamp: true
 
   ###############################################
   # Default path settings -> Record
