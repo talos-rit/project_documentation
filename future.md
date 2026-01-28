@@ -15,6 +15,8 @@
 	2. We could make a CLI command for running minimal amount of code.
 3. Support for python notebooks
 	1. While this could already be done, it might be more interesting to have development done in a notebook to develop our own object detection model or more advanced algorithms. The notebook could act as a playground/platform to support research in these areas.
+4. Port UI to another UI framework
+	1. While tkinter is a great library for building simple UIs, it is very limited in terms of features and capabilities. Another framework, such as PyQt or PySide, would allow us to build more advanced UIs with better performance and more features. tkinter has shown to be very limiting when it comes to performance while including video streams. (See `pyside6-migration` branch for a start)
 
 # Operator
 
