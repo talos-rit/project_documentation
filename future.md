@@ -26,4 +26,5 @@
 
 # Hardware
 
-1. TBD
+1. Simpler solution for ESP32 flasher using github pages(?)
+2. 
