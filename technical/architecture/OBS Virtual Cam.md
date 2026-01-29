@@ -12,4 +12,4 @@
 6. find "Controls" window
 7. click "Start Virtual Camera"
 
-This should add
+This should add virtual camera as an option for camera input in zoom for example.
