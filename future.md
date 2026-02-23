@@ -51,6 +51,9 @@
 		2. This could be combined with pruning to make the models smaller and hypothetically only detect people.
 9. Running models in the cloud
 	1. Running the object detection models in the cloud could potentially allow us to use more powerful models that would not be able to run on the local hardware. This would involve sending the video feed from the robot to a cloud server where the object detection model is running, and then sending the results back to commander. This could allow us to use more advanced models that require more computational resources, but it would also introduce latency and require a stable internet connection, so it may not be suitable for all use cases.
+10. Digital Twin
+	1. Creating a digital twin of the robot and its environment could allow us to simulate the robot's behavior and test out different algorithms and strategies in a virtual environment without needing the physical robot. This could be especially useful for testing out new features in commander without risking damage to the physical robot. The digital twin could be created using a simulation software, and it could be integrated with commander to allow for seamless switching between the physical robot and the digital twin.
+	2. The original team attempted this for the ER 4 PC with pybullet but ran into some issues and ultimately ended up abandoning it. Could be worth revisiting. This repo might be able to help out with simulation of the ER V robot: [R2D3](https://github.com/ajnsit/r2d3). It has a `.blend` file for the ER V robot that could hopefully be used in a simulation environment. We would likely need to convert this file to a format that is compatible with the simulation software we choose to use, but it could be a good starting point for creating a digital twin of the ER V robot.
 
 # Operator
 
