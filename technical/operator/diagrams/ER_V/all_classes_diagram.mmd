@@ -1,0 +1,333 @@
+classDiagram
+    class C_0011076331764796852453["API::CommandID"]
+    class C_0011076331764796852453 {
+        <<enumeration>>
+        Handshake
+        PolarPan
+        Home
+        PolarPanStart
+        PolarPanStop
+    }
+    class C_0017832934725495251735["API::DataHeader"]
+    class C_0017832934725495251735 {
+        +cmd_id : uint16_t
+        +len : uint16_t
+        +msg_id : uint32_t
+        +reserved_1 : uint16_t
+    }
+    class C_0012828990641794498788["API::DataWrapper"]
+    class C_0012828990641794498788 {
+        +header : DataHeader
+        +payload_head : std::byte
+    }
+    class C_0015045327087783083870["API::PolarPan"]
+    class C_0015045327087783083870 {
+        +delay_ms : uint32_t
+        +delta_altitude : int32_t
+        +delta_azimuth : int32_t
+        +time_ms : uint32_t
+    }
+    class C_0002477329946875244817["API::PolarPanStart"]
+    class C_0002477329946875244817 {
+        +delta_altitude : int8_t
+        +delta_azimuth : int8_t
+    }
+    class C_0013768403615250353160["API::Home"]
+    class C_0013768403615250353160 {
+        +delay_ms : uint32_t
+    }
+    class C_0018321219611545119884["Sub_Queue"]
+    class C_0018321219611545119884 {
+        <<enumeration>>
+        Free
+        Command
+        Return
+        Log
+        Count
+    }
+    class C_0005526076108939345007["std::array&lt;uint8_t,SUB_MSG_LEN&gt;"]
+    class C_0005526076108939345007 {
+    }
+    class C_0001449033310007216471["Sub_Buffer"]
+    class C_0001449033310007216471 {
+        +reset() void
+        +body : std::array&lt;uint8_t,SUB_MSG_LEN&gt;
+        +len : uint8_t
+    }
+    class C_0001930605246120405132["std::array&lt;Subscriber::Queue,static_cast&lt;size_t&gt;&lpar;Sub_Queue::Count&rpar;&gt;"]
+    class C_0001930605246120405132 {
+    }
+    class C_0018415470952640986292["std::vector&lt;Sub_Buffer&gt;"]
+    class C_0018415470952640986292 {
+    }
+    class C_0000994511990246631929["Subscriber"]
+    class C_0000994511990246631929 {
+        +Subscriber() void
+        +~Subscriber() void
+        +Abort() void
+        +dequeueBuffer(Sub_Queue queue) Sub_Buffer *
+        -destroyBuffers() void
+        +enqueueBuffer(Sub_Queue queue, Sub_Buffer * buf) bool
+        -prepareBuffers() void
+        +start() bool
+        +stop() bool
+        -pool_ : std::vector&lt;Sub_Buffer&gt;
+        -queues_ : std::array&lt;Queue,static_cast&lt;size_t&gt;&lpar;Sub_Queue::Count&rpar;&gt;
+        -state_ : State
+    }
+    class C_0005630217204087988897["Subscriber::State"]
+    class C_0005630217204087988897 {
+        <<enumeration>>
+        Dead
+        Init
+        Run
+    }
+    class C_0013360676849416048060["std::deque&lt;Sub_Buffer *&gt;"]
+    class C_0013360676849416048060 {
+    }
+    class C_0002646179773506170456["Subscriber::Queue"]
+    class C_0002646179773506170456 {
+        +buffers : std::deque&lt;Sub_Buffer *&gt;
+        +mtx : std::mutex
+    }
+    class C_0000641257680088558383["Inbox"]
+    class C_0000641257680088558383 {
+        <<abstract>>
+        +Inbox() void
+        +~Inbox() void
+        #OnMessage() void
+        +registerSubscriber(Subscriber * sub) void*
+        +start() bool*
+        +stop() void*
+        #sub : Subscriber *
+    }
+    class C_0004308501729698541420["std::atomic&lt;bool&gt;"]
+    class C_0004308501729698541420 {
+    }
+    class C_0015796760387748272473["Arm"]
+    class C_0015796760387748272473 {
+        <<abstract>>
+        +Arm() void
+        +~Arm() void
+        -handShake() int*
+        -home(API::Home * home) int*
+        +isRunning() [const] bool
+        -polarPan(API::PolarPan * pan) int*
+        -polarPanStart(API::PolarPanStart * pan) int*
+        -polarPanStop() int*
+        +poll() void*
+        +processCommand() bool
+        +registerSubscriber(Subscriber * sub) bool
+        -runLoop() void
+        +start() bool
+        +stop() bool
+        -running_ : std::atomic&lt;bool&gt;
+        -sub_ : Subscriber *
+        -thread_ : std::thread
+    }
+    class C_0008605319653785353255["Arm::OversteerConfig"]
+    class C_0008605319653785353255 {
+        <<enumeration>>
+        None
+        Ignore
+        Abort
+    }
+    class C_0000813988274643062879["_s_list_node"]
+    class C_0000813988274643062879 {
+        +next : struct _s_list_node *
+    }
+    class C_0007285932188171721919["_s_list"]
+    class C_0007285932188171721919 {
+        +head : S_List_Node *
+        +len : uint32_t
+        +tail : S_List_Node *
+    }
+    class C_0010466557973063645673["_conf_data_type"]
+    class C_0010466557973063645673 {
+        <<enumeration>>
+        CONF_DATA_STRING
+        CONF_DATA_BOOL
+        CONF_DATA_INT
+    }
+    class C_0016435635031087481897["_conf_entry"]
+    class C_0016435635031087481897 {
+        +key : char[64]
+        +type : CONF_Data_Type
+        +val : char[64]
+    }
+    class C_0008289891971916880997["Config"]
+    class C_0008289891971916880997 {
+        +Config() void
+        +~Config() void
+        +AddKey(const char * key, int deflt) int
+        +AddKey(const char * key, bool deflt) int
+        +AddKey(const char * key, const char * deflt) int
+        +AddKey(const char * key, const char * deflt, CONF_Data_Type type) int
+        +ClearKeyVals() void
+        +DumpToLog(int log_level) void
+        +GetBool(int idx) bool
+        +GetBool(const char * key) bool
+        +GetFilePath() const char *
+        +GetInt(int idx) int
+        +GetInt(const char * key) int
+        -GetKeyIndex(const char * key) int
+        +GetVal(uint8_t idx) const char *
+        +GetVal(const char * key) const char *
+        #OverrideValue(uint8_t key_idx, bool val) int
+        #OverrideValue(uint8_t key_idx, const char * val) int
+        +ParseConfig() int
+        -ParseYaml(int fd) int
+        +SetFilePath(const char * file_path) int
+        -fail_get_bool(int idx) bool
+        -conf_errno : int
+        -key_count : uint8_t
+        -pairs : CONF_Entry[16]
+        -path : char[128]
+    }
+    class C_0012690804671960306349["LogConfig"]
+    class C_0012690804671960306349 {
+        +LogConfig() void
+        +~LogConfig() void
+        +GetLogLocation() const char *
+        +SetLogLocation(const char * log_location) int
+        -log_loc_idx : int
+    }
+    class C_0003133309914991244045["_log_level"]
+    class C_0003133309914991244045 {
+        <<enumeration>>
+        LOG_FATAL
+        LOG_ERROR
+        LOG_WARN
+        LOG_INFO
+        LOG_VERBOSE
+    }
+    class C_0008003742948942357168["SocketConfig"]
+    class C_0008003742948942357168 {
+        +SocketConfig() void
+        +~SocketConfig() void
+        +GetBindingAddress() uint32_t
+        +GetPort() uint16_t
+        +LoadDefaults() int
+        +SetBindingAddress(uint32_t addr) int
+        +SetBindingAddress(const char * addr) int
+        +SetPort(uint16_t port) int
+        -address_idx : int
+        -port_idx : int
+    }
+    class C_0002615841846943434995["std::span&lt;const char const&gt;"]
+    class C_0002615841846943434995 {
+    }
+    class C_0013584685150829991845["Socket"]
+    class C_0013584685150829991845 {
+        +Socket() void
+        +~Socket() void
+        -init() bool
+        -poll() void
+        +registerSubscriber(Subscriber * sub) void
+        -sendResponse(std::span&lt;const char&gt; msg) bool
+        +start() bool
+        +stop() void
+        -waitForConnection() bool
+        -props_ : struct Props
+        -thread_ : std::thread
+    }
+    class C_0009549548850605113756["Socket::Props"]
+    class C_0009549548850605113756 {
+        +client : sockaddr_in
+        +connfd : FileDescriptor
+        +port : int
+        +running : std::atomic&lt;bool&gt;
+        +server : sockaddr_in
+        +sockfd : FileDescriptor
+        +sub : Subscriber *
+    }
+    class C_0016581258198969039044["FileDescriptor"]
+    class C_0016581258198969039044 {
+        +FileDescriptor() [default] void
+        +FileDescriptor(int fd) void
+        +FileDescriptor(const FileDescriptor &) void
+        +FileDescriptor(FileDescriptor && other) void
+        +~FileDescriptor() void
+        +operator=(const FileDescriptor &) FileDescriptor &
+        +operator=(FileDescriptor && other) FileDescriptor &
+        +get() int
+        +operator int() [const] int
+        +reset() void
+        +valid() [const] bool
+        -fd_ : int
+    }
+    class C_0008771614352313515328["Scorbot"]
+    class C_0008771614352313515328 {
+        +Scorbot(const char * dev) void
+        +~Scorbot() void
+        -handShake() int
+        -home(API::Home * home) int
+        -polarPan(API::PolarPan * pan) int
+        -polarPanStart(API::PolarPanStart * pan) int
+        -polarPanStop() int
+        -poll() void
+        -writeCommandQueue(S_List * cmd_list) int
+        -cmd_buffer : S_List
+        -dev : char[32]
+        -fd : int
+        -last_start : struct timeval
+        -manual_mode : bool
+        -oversteer : OversteerConfig
+        -polar_pan_cont : char
+    }
+    class C_0004381454229389844940["ERVConfig"]
+    class C_0004381454229389844940 {
+        +ERVConfig() void
+        +~ERVConfig() void
+        +GetScorbotDevicePath() const char *
+        +LoadDefaults() int
+        -dev_idx : uint8_t
+    }
+    C_0012828990641794498788 o-- C_0017832934725495251735 : +header
+    C_0001449033310007216471 o-- C_0005526076108939345007 : +body
+    C_0018415470952640986292 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 ..> C_0018321219611545119884 : 
+    C_0000994511990246631929 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 o-- C_0005630217204087988897 : -state_
+    C_0000994511990246631929 o-- C_0001930605246120405132 : -queues_
+    C_0000994511990246631929 o-- C_0018415470952640986292 : -pool_
+    C_0000994511990246631929 ()-- C_0005630217204087988897 : 
+    C_0013360676849416048060 ..> C_0001449033310007216471 : 
+    C_0000994511990246631929 ()-- C_0002646179773506170456 : 
+    C_0002646179773506170456 o-- C_0013360676849416048060 : +buffers
+    C_0000641257680088558383 --> C_0000994511990246631929 : #sub
+    C_0015796760387748272473 ..> C_0015045327087783083870 : 
+    C_0015796760387748272473 ..> C_0002477329946875244817 : 
+    C_0015796760387748272473 ..> C_0013768403615250353160 : 
+    C_0015796760387748272473 o-- C_0004308501729698541420 : -running_
+    C_0015796760387748272473 --> C_0000994511990246631929 : -sub_
+    C_0015796760387748272473 ()-- C_0008605319653785353255 : 
+    C_0000813988274643062879 --> C_0000813988274643062879 : +next
+    C_0007285932188171721919 --> C_0000813988274643062879 : +head
+    C_0007285932188171721919 --> C_0000813988274643062879 : +tail
+    C_0016435635031087481897 o-- C_0010466557973063645673 : +type
+    C_0008289891971916880997 ..> C_0010466557973063645673 : 
+    C_0008289891971916880997 o-- "16" C_0016435635031087481897 : -pairs
+    C_0008289891971916880997 <|-- C_0012690804671960306349 : 
+    C_0008289891971916880997 <|-- C_0008003742948942357168 : 
+    C_0013584685150829991845 ..> C_0000994511990246631929 : 
+    C_0013584685150829991845 ..> C_0002615841846943434995 : 
+    C_0013584685150829991845 o-- C_0009549548850605113756 : -props_
+    C_0000641257680088558383 <|-- C_0013584685150829991845 : 
+    C_0013584685150829991845 ()-- C_0009549548850605113756 : 
+    C_0009549548850605113756 o-- C_0016581258198969039044 : +sockfd
+    C_0009549548850605113756 o-- C_0016581258198969039044 : +connfd
+    C_0009549548850605113756 --> C_0000994511990246631929 : +sub
+    C_0009549548850605113756 o-- C_0004308501729698541420 : +running
+    C_0008771614352313515328 ..> C_0015045327087783083870 : 
+    C_0008771614352313515328 ..> C_0002477329946875244817 : 
+    C_0008771614352313515328 ..> C_0013768403615250353160 : 
+    C_0008771614352313515328 o-- C_0008605319653785353255 : -oversteer
+    C_0008771614352313515328 o-- C_0007285932188171721919 : -cmd_buffer
+    C_0015796760387748272473 <|-- C_0008771614352313515328 : 
+    C_0012690804671960306349 <|-- C_0004381454229389844940 : 
+    C_0008003742948942357168 <|-- C_0004381454229389844940 : 
+    direction RL
+
+%% Generated with clang-uml, version 0.6.2
+%% LLVM version Debian clang version 19.1.7 (3~deb12u1)

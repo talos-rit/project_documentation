@@ -1,9 +1,10 @@
 # Project Planning Repo
 
 The Remote Repository to store all things project planning. 
+For best support please use [Obsidian](https://obsidian.md/) to view this documentation.
 
 > [!NOTE]
-> New members please read the handoff.md doc
+> New members please read the [handoff.md](/handoff.md) doc
 
 ## What to put here
 
@@ -14,6 +15,7 @@ The Remote Repository to store all things project planning.
 # Table of contents
 
 - technical -- Any technical documentation will be located here
+	- README -- overall system architecture
 	- architecture -- architecture diagrams
 	- domain_model -- domain model images
 	- talos_icd -- documentation on icd
