@@ -68,3 +68,4 @@
 	1. Include common tips like the 3D printed encoder [https://www.thingiverse.com/thing:3388595]
 
 3. Make the pendant controller work with the new ESP driver code
+4. custom PCB design!
