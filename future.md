@@ -6,6 +6,8 @@
 2. Binocular Vision framing and capture
 3. Documentation hosted on github pages maybe using mkdocs to make it easier to maintain and update documentation. 
 	- This would allow us to have a more comprehensive and organized documentation for the project, which would be helpful for both current and future developers. It would also make it easier for users to find the information they need to set up and use the system.
+4. Authentication for connection between commander and a robot
+	- Would require integration on both commander and operator/driver side
 
 # Commander
 
