@@ -61,13 +61,13 @@
 
 1. Rewrite into embedded systems like esp32, stm32, or arduino.
 	1. We don't need the full capability of raspberry pi and is more of an overhead for writing hardware components. With a caveat of video streaming device also required.
-2. 
 
 # Hardware
 
-1. Simpler solution for ESP32 flasher using github pages(?)
+1. Simpler solution for ESP32 flasher using Github pages(?)
 2. Create comprehensive end user guide to setup all parts the system
 	1. Include common tips like the 3D printed encoder [https://www.thingiverse.com/thing:3388595]
+3. Create an enclosure around the hardware
 
-3. Make the pendant controller work with the new ESP driver code
-4. custom PCB design!
+4. Make the pendant controller work with the new ESP driver code
+5. custom PCB design!
