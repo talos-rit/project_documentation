@@ -64,7 +64,7 @@
 
 # Hardware
 
-1. Simpler solution for ESP32 flasher using Github pages(?)
+1. Simpler solution for ESP32 flasher using Github pages([ESP Web Tool](https://espressif.github.io/esptool-js/))
 2. Create comprehensive end user guide to setup all parts the system
 	1. Include common tips like the 3D printed encoder [https://www.thingiverse.com/thing:3388595]
 3. Create an enclosure around the hardware
