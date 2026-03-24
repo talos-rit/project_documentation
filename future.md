@@ -6,6 +6,8 @@
 2. Binocular Vision framing and capture
 3. Documentation hosted on github pages maybe using mkdocs to make it easier to maintain and update documentation. 
 	- This would allow us to have a more comprehensive and organized documentation for the project, which would be helpful for both current and future developers. It would also make it easier for users to find the information they need to set up and use the system.
+4. Authentication for connection between commander and a robot
+	- Would require integration on both commander and operator/driver side
 
 # Commander
 
@@ -59,13 +61,13 @@
 
 1. Rewrite into embedded systems like esp32, stm32, or arduino.
 	1. We don't need the full capability of raspberry pi and is more of an overhead for writing hardware components. With a caveat of video streaming device also required.
-2. 
 
 # Hardware
 
-1. Simpler solution for ESP32 flasher using github pages(?)
+1. Simpler solution for ESP32 flasher using Github pages([ESP Web Tool](https://espressif.github.io/esptool-js/))
 2. Create comprehensive end user guide to setup all parts the system
 	1. Include common tips like the 3D printed encoder [https://www.thingiverse.com/thing:3388595]
-
-3. Make the pendant controller work with the new ESP driver code
-4. custom PCB design!
+3. Create an enclosure around the hardware
+4. ESP 32 needs more pins for IO
+5. Make the pendant controller work with the new ESP driver code
+6. custom PCB design!

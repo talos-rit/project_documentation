@@ -1,4 +1,5 @@
 # Project Planning Repo
+
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/talos-rit/project_documentation)
 The Remote Repository to store all things project planning. 
 For best support please use [Obsidian](https://obsidian.md/) to view this documentation.
