@@ -8,6 +8,9 @@
 	- This would allow us to have a more comprehensive and organized documentation for the project, which would be helpful for both current and future developers. It would also make it easier for users to find the information they need to set up and use the system.
 4. Authentication for connection between commander and a robot
 	- Would require integration on both commander and operator/driver side
+5. Dynamic Robot discovery
+	- Commander should be able to discover robots available on the network. This could be done similarly to how computers find printers or like how some smart home apps find devices that can be controlled.
+	- The robots themselves (operator) could possibly hold a config file for commander to use for that particular robot
 
 # Commander
 
