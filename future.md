@@ -75,6 +75,13 @@
 		   See https://arxiv.org/abs/2203.09416
 		7. Language guided Saliency ranking: using a model with multimodal contexts we can rank the bboxes.
 		   See https://arxiv.org/abs/2203.09416
+12. Filtering based on user defined zone
+	1. Some computer vision systems, like the trackman launch monitor, require the user to calibrate the launch monitor by defining the zone/area where detections should occur. This aids object tracking by allowing the model/system to filter out detections that are out of that range. 
+	2. For commander, this could allow users to define a zone at the front of a classroom where valid detections should occur. The user would be able to define this zone upon starting up commander and connecting to the robot. Assuming the robots would not change rooms or positions super often, this zone could be persisted across different runs of the application. Like trackman, the user would still be prompted to calibrate the robot by redrawing the zone or review the existing zone when connecting to the robot for the first time since starting up commander.
+	3. One possible way to do this could be using `supervision`. See these links below for some possibly helpful articles from the `supervision` documentation:
+		- [How To Analyze Occupancy with Supervision](https://supervision.roboflow.com/develop/notebooks/occupancy_analytics/)
+		- [Count Objects Crossing the Line](https://supervision.roboflow.com/develop/notebooks/count-objects-crossing-the-line/)
+	3. Please note more research is needed to determine if this will actually work and/or be helpful for our use case.
 
 # Operator
 
