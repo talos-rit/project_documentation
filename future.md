@@ -24,6 +24,8 @@
 	1. While this could already be done, it might be more interesting to have development done in a notebook to develop our own object detection model or more advanced algorithms. The notebook could act as a playground/platform to support research in these areas.
 4. Port UI to another UI framework
 	1. While tkinter is a great library for building simple UIs, it is very limited in terms of features and capabilities. Another framework, such as PyQt or PySide, would allow us to build more advanced UIs with better performance and more features. tkinter has shown to be very limiting when it comes to performance while including video streams. (See `pyside6-migration` branch for a start)
+	2. A lot of the performance degradation comes from running interfaces due to interface managing tasks, so isolating interface to a dedicated package written in another language or process. This would also require commander to become a proper backend service.
+	3. Js framework like react.js or svelte.js could also be a good option. While I(Hiro) don't recommend it, you could look into electron.js for more local aproach.
 5. LLM as a video director
 	1. The LLM could make decisions on which video feed to show or possibly even what commands to run based on the current situation. This could be especially useful in a multi-robot scenario where there are multiple video feeds or objects to track.
 	2. Due to current real-time limitations of LLMs and resources required, this would likely be more of a high level decision maker and not something that could be used for real-time object tracking or control. Maybe do the processing of the video feeds after the fact. Deciding which video feed to show is probably more feasible.
@@ -59,6 +61,20 @@
 10. Digital Twin
 	1. Creating a digital twin of the robot and its environment could allow us to simulate the robot's behavior and test out different algorithms and strategies in a virtual environment without needing the physical robot. This could be especially useful for testing out new features in commander without risking damage to the physical robot. The digital twin could be created using a simulation software, and it could be integrated with commander to allow for seamless switching between the physical robot and the digital twin.
 	2. The original team attempted this for the ER 4 PC with pybullet but ran into some issues and ultimately ended up abandoning it. Could be worth revisiting. This repo might be able to help out with simulation of the ER V robot: [R2D3](https://github.com/ajnsit/r2d3). It has a `.blend` file for the ER V robot that could hopefully be used in a simulation environment. We would likely need to convert this file to a format that is compatible with the simulation software we choose to use, but it could be a good starting point for creating a digital twin of the ER V robot.
+11. Manual person and automated bbox prioritization feature
+	1. Currently the process for person detection is the following:
+	   Stream > detect multiple people > prioritize > return output
+	2. Currently we have wide flexibility for detect multiple people which is great, but not very important in terms of the process because we can only detect so much people in the frame and don't have problems doing. But the area that commander lack currently is a post processing step, prioritize, where we can prioritize the detected people and select one instance to focus on. This is the most crucial step, even more than the person detection, where there are many active research going on in this area.
+	3. The goal for prioritization is to rank the detected people and select the single best score to focus on but this ranking method can be done in multiple ways listed below.(easiest to hardest)
+		1. We can manually select the person to focus on which could work until the person is lost out of sight or detection loses the person.
+		2. BBox size: using the overall coverage of the frame we can prioritize bbox that takes either the largest or smallest or in between.
+		3. Speed: tracking people overtime and their movement could allow us to reject fast moving object early on for people that can not be efficiently tracked using the robot.
+		4. Time duration: using ID's in yolo's tracking model we can keep track of how long each person is in the frame allowing us to time for how long the person is in the frame for. 
+		5. Priority by depth: using monocular vision we can estimate depth using a model. See https://github.com/DepthAnything/Depth-Anything-V2.
+		6. Saliency ranking: using a model trained on saliency we can rank the bboxes. 
+		   See https://arxiv.org/abs/2203.09416
+		7. Language guided Saliency ranking: using a model with multimodal contexts we can rank the bboxes.
+		   See https://arxiv.org/abs/2203.09416
 
 # Operator
 
