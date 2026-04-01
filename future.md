@@ -81,6 +81,8 @@
 	3. One possible way to do this could be using `supervision`. See these links below for some possibly helpful articles from the `supervision` documentation:
 		- [How To Analyze Occupancy with Supervision](https://supervision.roboflow.com/develop/notebooks/occupancy_analytics/)
 		- [Count Objects Crossing the Line](https://supervision.roboflow.com/develop/notebooks/count-objects-crossing-the-line/)
+		- [Filter Detections](https://supervision.roboflow.com/develop/how_to/filter_detections/)
+		- [Count in Zone](https://supervision.roboflow.com/develop/how_to/count_in_zone/)
 	3. Please note more research is needed to determine if this will actually work and/or be helpful for our use case.
 
 # Operator
