@@ -90,6 +90,12 @@
 1. Rewrite into embedded systems like esp32, stm32, or arduino.
 	1. We don't need the full capability of raspberry pi and is more of an overhead for writing hardware components. With a caveat of video streaming device also required.
 
+# ESP Driver
+1. Be Human Safe; detect when the robots hit something
+	1. By using a dynamic function comparing the velocity of the motor and the current of the motor, detect when the arm hits an object (like a human or an end stop), but DONT false trigger when a user isntantaneously starts motion of a motor, because motors have a spike of current when started.
+2. Smooth Motion Profiling
+	1. make it so motors start slow, ramp up in speed, and ramp down when done moving. look into PID (position; integral; differential) controllers for point to point motion, but for up-down-left-right control the motion wont be as snappy.
+
 # Hardware
 
 1. Simpler solution for ESP32 flasher using Github pages([ESP Web Tool](https://espressif.github.io/esptool-js/))
