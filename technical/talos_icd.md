@@ -11,22 +11,24 @@
 | 2025-02-06 | Alex Vernes       | Added idle mode calls                                                                                                 |
 | 2025-02-25 | Brooke Leinberger | Added hardware specific hook; Revised idle mode commands; Removed hardware coupling with speed commands               |
 | 2025-02-27 | Alex Vernes       | Reorganizing command order; added Cartesian Move                                                                      |
-| 2025-10-30 | Connor O'Neill    | Updated command wrapper to be more clear about what the fields are |
+| 2025-10-30 | Connor O'Neill    | Updated command wrapper to be more clear about what the fields are                                                    |
+| 2026-04-07 | Ryan Yocum        | Updated CRC to 1 byte XOR.                                                                                            |
 
-Note: 
-- Type names are given by the stdint.h header file in the C standard.
-- All data is in big endian format
+> [!NOTE] NOTES
+> Type names are given by the stdint.h header file in the C standard.
+> All data is in network byte order (big endian).
+> Not all messages here are implemented, this serves as future reference
 
 ## Command Wrapper
 
-| Arg           | Type | Description |
-|---|---|---|
-| Message ID    | UINT32    | Unique ID for individual messages |
-| *RESERVED*    | UINT16    | *RESERVED* |
-| Command ID    | UINT16    | Command for device to carry out |
-| Length        | UINT16    | Length of Payload |
-| Payload       | UINT8[]   | Command Info |
-| CRC           | UINT16    | Checksum |
+| Arg        | Type    | Description                       |
+| ---------- | ------- | --------------------------------- |
+| Message ID | UINT32  | Unique ID for individual messages |
+| *RESERVED* | UINT16  | *RESERVED*                        |
+| Command ID | UINT16  | Command for device to carry out   |
+| Length     | UINT16  | Length of Payload                 |
+| Payload    | UINT8[] | Command Info                      |
+| CRC        | UINT8   | XOR Checksum                      |
 
 *Note*: Message IDs are unique to the indiviual commands. If the director were to send out two identical commands, they would share a Command ID and payload, but would have unique Message IDs. Each command exchange will have 2 messages: a command request message, and a command return message. Half of the ID's will therefore be return messages, and should correspond to a specific command request message. Specifically, the upper 31 bits should denote the overall command exchange, while the least significant bit is a '0' for command, and a '1' for response (i.e. command issued with command ID 0 gets a return ID of 1, command ID of 54 gets a return ID of 55, etc).
 
