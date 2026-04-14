@@ -7,4 +7,7 @@ This project started in Fall 2023, with the goal of taking the ER-V and getting 
 
 The first senior project team who started this from Fall 2023-Spring 2024 accomplished basic MVP on the ER-V and accomplished basic camera tracking on the robot, and although there were many bugs and bad code practices, they accomplished the very basic goal. In addition, the ER-4pc was a side project, and they accomplished getting the motors to move, though without encoders, limit switches, or without any features that would make it human safe.
 
-The second senior project team took this from Fall 2025-Spring 2026. The goal of this iteration was to improve the maintainability 
+The second senior project team took this from Fall 2025-Spring 2026. The goal of this iteration was to get 2 robots working in tandem. This included building/finishing the custom controller for the ER-4pc, and allowing the commander application to connect to 2 robots simultaneously. The end outcome due to scope cuts were the partially working ER-4pc, maintainability improvements, improvements in the tracking models, as well as the ability to connect to 2 robots simultaneously.
+
+# [Project Architecture](technical/architecture/README.md)
+Please read this document to get a grasp on the overall architecture of the project before continuing with setup. This will help determine which sections of the project you may care to work on, and how they may communicate with each other.
