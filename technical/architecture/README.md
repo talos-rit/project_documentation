@@ -10,17 +10,17 @@ The Talos system has four major subsystems:
 
 Operator is strictly restricted to running on the Raspberry Pi. ESP-Driver must run on an ESP32. The other applications can run anywhere. For example, commander can run on the server with GPU, and camera streamer can run on a simple streaming device separate from robot's Raspberry Pi. Commander does not restrict us from pulling video from another source, so this is a completely valid setup. For the time being we are not exhausting resources on the Raspberry Pi, so we are directly streaming out from the Raspberry Pi. We also for ease of use have been running commander off of a laptop.
 
-# [Commander Architecture](technical/architecture/commander_architecture.md)
+# [Commander Architecture](commander_architecture.md)
 Commander is a python controller application that is executed on wide range of operating systems. It can even be run on the Raspberry Pi of the robot. At the most basic level it takes the camera feed, interprets where the robot must move and sends commands to the robot over a socket connection. See the architecture doc for more information.
 
 Repository: https://github.com/talos-rit/commander
 
-# [Operator Architecture](echnical/architecture/operator_architecture.md)
+# [Operator Architecture](operator_architecture.md)
 Operator is on the receiving end of commander. It processes commands, converts them to serial commands compatible for the robot controller to understand, and sends them to the robot
 
 Repository: https://github.com/talos-rit/operator
 
-# [ESP Driver Architecture](echnical/architecture/esp_driver_architecture.md)
+# [ESP Driver Architecture](esp_driver_architecture.md)
 ESP Driver is also on the receiving end of commander. It is compatible on the same protocol used by Operator. The difference is this is all bare metal and runs on an ESP32, and controls the hardware over GPIO pins/I2C.
 
 Repository: https://github.com/talos-rit/esp-driver
