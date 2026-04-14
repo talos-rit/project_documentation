@@ -9,3 +9,7 @@ However, this feature discussion wasn't just on the topic of Protobuf, it is on 
 The last point we discussed was that we have other functional features that we wanted to get done before this non-functional feature. For example, bluey(ER-4) was no where close to being operable. The operator is also falling behind, but the feature of gRPC would not be putting operator up to where the commander is; the commander currently is looking to implement metrics counter and final touches on quality of life features. The gRPC implementation has been discussed as a feature that would act as a refactoring work and replacing the current implementation that is not really going to progress operator forward. 
 
 This whole discussion lacked the analysis on the con of gRPC implementation and very light discussion around the technical details, but regardless we came to the conclusion that the trajectory of the project would heavily diverge for gRPC implementation and that was the fundamental factor that placed us on this path of de-prioritization of this feature. We still like the idea of gRPC and its benefits. We would love to continue implementation of gRPC, but we will halt development until necessary features are complete. 
+
+
+# Future Update (Apr 14 2026)
+We have decided against GRPC due to the lack of support on the ESP32 platform.
