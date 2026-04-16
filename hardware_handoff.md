@@ -1,5 +1,7 @@
+
 # For the next team
 
+<img src="https://media.licdn.com/dms/image/v2/D5603AQEBmf3N3IH6aQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723781797584?e=1777507200&v=beta&t=aK_dqS-ayiY614C3AOcgJ6XKjIcqVJ8sOWNAtE5tBNM" width="900" />
 Hi! My name is J! I was in charge of the hardware development during the 2025-2026 team.
 
 ## Where we started

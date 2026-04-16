@@ -5,7 +5,7 @@ The Remote Repository to store all things project planning.
 For best support please use [Obsidian](https://obsidian.md/) to view this documentation.
 
 > [!NOTE]
-> New members please read the [handoff.md](deadlines.md) doc
+> New members please read the [onboarding doc](onboarding.md).
 
 ## What to put here
 
@@ -29,4 +29,6 @@ For best support please use [Obsidian](https://obsidian.md/) to view this docume
 - evals -- semester evaluation documentations
 - imagine -- imagine planning docs
 - makerfaire -- makerfaire planning and application documentation
+
+
 
