@@ -9,6 +9,11 @@ The first senior project team who started this from Fall 2023-Spring 2024 accomp
 
 The second senior project team took this from Fall 2025-Spring 2026. The goal of this iteration was to get 2 robots working in tandem. This included building/finishing the custom controller for the ER-4pc, and allowing the commander application to connect to 2 robots simultaneously. The end outcome due to scope cuts were the partially working ER-4pc, maintainability improvements, improvements in the tracking models, as well as the ability to connect to 2 robots simultaneously.
 
+# Project Demos
+We demonstrated this at both RIT's Fall Makerfaire, as well as Imagine RIT. Past application info can be found below.
+[**Makerfaire**](makerfaire/README.md)
+[**Imagine RIT**](imagine/README.md)
+
 # [Project Architecture](technical/architecture/README.md)
 Please read this document to get a grasp on the overall architecture of the project before continuing with setup. This will help determine which sections of the project you may care to work on, and how they may communicate with each other.
 
