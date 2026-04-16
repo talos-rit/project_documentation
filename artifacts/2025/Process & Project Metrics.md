@@ -10,6 +10,8 @@
 	- Track the number of hours allocated working per member, per week.
 4. **PR Confidence**
 	- Scale 1-5 how confident you are with the quality of the work in the PR
+5. **Kill Count**
+	- The number of hardware devices broken during development
 
 ### Project Metrics
 1. **Earned Value**
