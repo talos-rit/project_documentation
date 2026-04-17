@@ -30,6 +30,6 @@ This is the TCP socket protocol used to communicate between Commander and Operat
 
 # [Camera Streamer](https://github.com/talos-rit/cam_streamer)
 
-This is an installer and setup guide for two services on raspberry pi running linux(ubuntu or Raspberry Pi OS). It packages the following services: MediaMTX and Ffmpeg. 
+This is an installer and setup guide for two services on raspberry pi running linux(ubuntu or Raspberry Pi OS). It packages the following services: MediaMTX and Ffmpeg. This is so that we can reliably start up the webcam on startup and keep the stream open for the entire duration that the robot is turned on.
 
 Repository: https://github.com/talos-rit/cam_streamer
