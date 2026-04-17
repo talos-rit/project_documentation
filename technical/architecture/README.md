@@ -28,12 +28,8 @@ Repository: https://github.com/talos-rit/esp-driver
 # [ICD Commands](talos_icd.md)
 This is the TCP socket protocol used to communicate between Commander and Operator/ESP Driver. More info on the format of the data can be found in the linked document. Note, this document outlines the full future spec, not every command is implemented.
 
-# Camera Streamer
+# [Camera Streamer](https://github.com/talos-rit/cam_streamer)
 
-Camera streamer consist of two separate services:
-1. MediaMTX
-	- MediaMTX manages client and source connections and allows wide variety of connection types. This allows us to fetch video streams from commander using open-cv2, OBS using ffmpeg, or even a web ui. 
-2. Ffmpeg
-	- ffmpeg pulls camera frames from web cam on the raspberry pi or any camera source.
+This is an installer and setup guide for two services on raspberry pi running linux(ubuntu or Raspberry Pi OS). It packages the following services: MediaMTX and Ffmpeg. 
 
 Repository: https://github.com/talos-rit/cam_streamer
