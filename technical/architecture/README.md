@@ -25,7 +25,7 @@ ESP Driver is also on the receiving end of commander. It is compatible on the sa
 
 Repository: https://github.com/talos-rit/esp-driver
 
-# [ICD Commands](talos_icd.md)
+# [ICD Commands](ICD%20API.md)
 This is the TCP socket protocol used to communicate between Commander and Operator/ESP Driver. More info on the format of the data can be found in the linked document. Note, this document outlines the full future spec, not every command is implemented.
 
 # [Camera Streamer](https://github.com/talos-rit/cam_streamer)

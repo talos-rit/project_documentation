@@ -31,7 +31,7 @@ graph LR
 The 3 threads that run are the Socket, Arm, and the Logger.
 
 ## Socket
-This module opens a plain TCP socket using `sys/socket.h`. It is setup as a server and setup to receive plain bytes. The packet format is outlined in [talos_icd](talos_icd.md). Each packet is pulled from the socket, and put into a raw buffer in the Sub module. Responding to commander is not currently setup but was a feature that was discussed for future improvement. This is basically just a basic Linux net socket.
+This module opens a plain TCP socket using `sys/socket.h`. It is setup as a server and setup to receive plain bytes. The packet format is outlined in [ICD API](ICD%20API.md). Each packet is pulled from the socket, and put into a raw buffer in the Sub module. Responding to commander is not currently setup but was a feature that was discussed for future improvement. This is basically just a basic Linux net socket.
 
 ## Sub
 Sub, short for Subscriber, is a module that acts as a queue mostly. It is not a true subscriber/observer pattern, though. It is mainly a custom queue. The way that it is structured, there is one pool of buffers used, which are fixed and recycled. Each buffer in the pool can belong to one of the following

@@ -17,14 +17,14 @@ For best support please use [Obsidian](https://obsidian.md/) to view this docume
 
 - technical -- Any technical documentation will be located here
 	- README -- overall system architecture
-	- architecture -- architecture diagrams
-	- domain_model -- domain model images
-	- talos_icd -- documentation on icd
+	- architecture -- architecture docs
+	- domain_model -- project domain models
+	- ICD API -- documentation on ICD
 - poster -- Any poster images and files
 - videos -- Any video script files
-- pm -- project meeting notes
-	- pm-2024 -- meeting notes from 2024
-	- pm-2025 -- meeting notes from 2025
+- meetings -- project meeting notes
+	- 2024 -- meeting notes from 2024
+	- 2025 -- meeting notes from 2025
 - hardware -- hardware documentations
 - evals -- semester evaluation documentations
 - imagine -- imagine planning docs

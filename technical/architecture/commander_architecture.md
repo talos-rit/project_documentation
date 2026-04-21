@@ -21,29 +21,56 @@ Contents:
 
 ## What is Commander
 
-Commander is a GUI application that lets us use the local device's camera to run a object detection model. Once the object is detected in frame, we can turn on the automatic control mode, and let the application send commands to the operator running on the robot's raspberry PI.
+Commander is a GUI Desktop application that uses the local device's camera to run a object detection model and control the robot based on the output. Once a person is detected in frame, we can turn on the automatic control mode, and let the application send commands to the operator running on the robot's raspberry PI.
 
 # Architecture
-One of the main architectural decision we made was the facade design pattern using the App class. In `talos_app.py` we have the App class which is a single point of control for the entire backend of commander. This merges several control behavior logic in the backend classes like Tracker, Director, Connection, and Publisher. The app class acts as a single bridge of User interface logics and the backend. This was necessary due to the interest of adding another interface option with a potentially completely different runtime and process behavior. Thus extracting backend logic from the user interface logic was necessary to make this transition process easier.
+
+### Tech stack
+**Interface**
+1. TKInter:
+	1. 1 of 3 interface options using commander. Has the widest support with a slight performance degradation
+2. PySide6
+	1. 1 of 3 interface options using commander. Uses Qt under the hood and requires installation and some setups required dependent on the OS. Most performant of the GUI interface
+3. Textual
+	1. 1 of 3 interface options using commander. Creates a nice intractable terminal UI that can be used through SSH or over the network. Good alternative for headless setup or running directly in the robot's Raspberry Pi.
+4. Ffmpeg + MediaMTX on docker
+	1. This is a method of streaming video out of commander into any supported video stream apps. It opens an RTSP endpoint for video to be fetched from.
+5. PyVCam
+	1. Virtual camera via OBS. Can be used in any video call apps and integrates well with desktop applications that uses the builtin video options.
+
+**Object detection**
+1. YOLO
+	1. You only look once is a Ultralytic foundation model with great performance for any realtime applications. The speed and size of the model is variable based on the size chosen by the user. 
+2. Mediapipe
+	1. Developed and maintained by Google, and is also very optimal and fast object detection model. It is getting outdated and has limited features that makes it harder to add new features around the detection process, but is still a solid option for running on  device.
+3. OpenCV
+	1. OpenCV themselves also comes with their own detection model that can be used. Not very performant or accurate, so we recommend other model options instead. This also helps with pulling frames from local web cams.
+4. PyAV
+	1. While not detection model, this is the main tool used to pull video streams fast over the network.
+
+**MISC**
+1. FastAPI
+	1. This is used to open an endpoint to allow remote control from the browser but fetching the endpoint and turning on the web stream from commander.
+### Facade
+One of the main architectural decision we made was the facade design pattern using the App class. In `talos_app.py` we have the App class which is a single point of control for the entire backend of commander. This merges several control behavior logic in the backend classes like Tracker, Director, Connection, and Publisher. The app class acts as a single bridge of User interface logics and the backend. This was necessary due to the interest of adding several interface option with a potentially completely different runtime and process behavior. Thus extracting backend logic from the user interface logic was necessary to make this transition process easier. There are also ways to override the runtime behavior using the scheduler object, but has been now defaulted to use multithreaded solution.
 
 ## GUI
 
 > [!NOTE] 
 > Tkinter is installed by default by python, but there could be some issues especially using the uv python package manager. See solutions in README.md in commander.
 
-The application uses Tkinter to display the GUI. While it's great that tkinter comes with the python installation, like any UI library it comes with its own event loop management as well. This is great for when you would like to have a simple native application, but if tasks needs to be separated into multiple processes and you need to manage cleanup it can get nasty. This architecture attempts to solve this issue. You may see a lot of explanation focusing on runtime management and how to schedule tasks, this is the reason why. 
+### Tkinter
+The application uses Tkinter to display the GUI. While it tkinter comes with the python by default, like any UI library it comes with its own event loop. This is great for when you would like to have a simple native application, but if tasks needs to be separated into multiple processes and you require to manage tasks and cleanups, it can get nasty. This architecture attempts to solve this issue. You may see a lot of explanation focusing on runtime management and how to schedule tasks, this is the reason why. 
 
-## TUI
+### PySide6
+Recently added interface and is now the default interface that allows more performant video display directly on the interface. Uses QT internally to manage interface control and runtime. 
 
-The no interface option is also possible to be developed or tested in the terminal via the `-t` flag. This allows us to also run the commander in a no graphical environment like the container or server. The application uses python [textul UI](https://github.com/talos-rit/project_documentation/blob/master/technical/architecture/Commander%20Architecture.md). This is still a interactive interface and the buttons, dropdown menu, and logger is interactive with a mouse. There are also several keyboard shortcut available and can be searched via the ctrl+p shortcut. 
-
-> [!NOTE]
-> This is still under development in [#168](https://github.com/talos-rit/commander/pull/168)
-> and is planned to be merged in milestone 2.
+### Textual UI
+The no interface option is also possible to be developed or tested in the terminal via the `-t` flag. This allows us to also run the commander in a no graphical environment like the container or server. The application uses python [textul UI](https://github.com/talos-rit/project_documentation/blob/master/technical/architecture/Commander%20Architecture.md). This is still a interactive interface and the buttons, dropdown menu, and logger is interactive with a mouse. There are also several keyboard shortcut available and can be searched via the ctrl+p shortcut. We also recommend using a more modern terminal apps for best support for colors.
 
 ## Scheduler class
 
-Scheduler class is the first part of such a solution. The scheduler is an abstract class that allows us to indirectly pass task scheduling logic reference to other sub classes that may need to perform tasks separately in the main loop.
+The scheduler is an abstract class that allows us to indirectly pass task scheduling logic reference to other sub classes that may need to perform tasks separately in the main loop.
 
 > [!NOTE] 
 > This section require one's understanding of event loops. If you need to understand the concept of single threaded event loops there are great videos explaining the event loop for internet browsers. While Tkinter does not have all of the browser's robust event loop management system, it's core idea and limitations are the same. More on this below...
