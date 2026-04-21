@@ -1,8 +1,12 @@
 
 Contents:
 - [[#What is Commander|What is Commander]]
+	- [[#What is Commander#Tech stack|Tech stack]]
+	- [[#What is Commander#Facade|Facade]]
 - [[#GUI|GUI]]
-- [[#TUI|TUI]]
+	- [[#GUI#Tkinter|Tkinter]]
+	- [[#GUI#PySide6|PySide6]]
+	- [[#GUI#Textual UI|Textual UI]]
 - [[#Scheduler class|Scheduler class]]
 	- [[#Scheduler class#Why this is useful|Why this is useful]]
 	- [[#Scheduler class#set_interval method|set_interval method]]
@@ -126,60 +130,13 @@ multiprocessing.Process(
 Now this works well sometimes, but with Queues this is still not enough. These will need a specific callback to be called to close during termination. This is where we use `add_termination_handler(handler)`. This will register a cleanup callback such that it will be called during the main loop termination process. 
 > See the Tracker class for example of how to use this.
 
-## Issues I have faced
-I had several issues when handling termination.
-- TKinter overrides the termination handler. This could be that Tkinter runs on a new process after initialization, but the termination did not always work. The solution for this was that I had to move the initialization of termination handler into the manual interface initialization. That seems to work more reliably.
-- This especially became a problem when closing the application because if the user clicks on the x button on the window, the termination handler will be triggered from the tkinter side in which case the termination handler will not be called. But if the termination process is subscribed to the window close event, closing via the terminal becomes a problem because the termination handler will to be called twice. Termination handler now has a remove method to delete used handlers to fix this problem. 
-- The GC accidentally deleted the shared memory used by numpy while the process is still writing into the buffer. This is an odd behavior of the numpy's internal optimization and the GC's unfortunate memory management mechanisms. This resulted in a segmentation fault in python, and the solution was holding a reference to the shared memory buffer, but not actually do anything else with it. While this will seem like a dead code, it is very necessary to prevent GC from accidentally deleting it. 
+# Class architecture
 
-# Tracker Class
+While not purposefully done, the MVC architecture is the best architecture to describe commander. All of the different interfaces are the view class. The app class and some feature specific classes under the app are controllers. Finally, we have a few model classes like Connection inside ConnectionCollection and VideoConnection also in Connection. 
 
-Tracker class currently acts as a state object for data distribution. From Tracker, three classes are reading data. 
-1. TKInterface
-	-Polls for frames and bounding boxes to update the display.
-	-If the bounding boxes are not found it will only display frames.
-3. Director
-	-Polls for bounding boxes to determine which commands to send to operator.
-5. Object Model
-	-Has a process queue that tracker pushes frames to.
-	-The queue has a max size of 1, so only the latest frame will be queued.
-
-Note that the TKInterface class (in src/tk_gui/main_interface) is the initiator of UI for Talos, but TKInterface will not be required to start the rest of the background tasks for Tracker, Director, and ObjectModel. Instead the Tracker class will act as an initiator for rest of the application tasks. See Tracker.\_\_init\_\_().
-
-```mermaid
----
-title: Dataflow diagram
----
-classDiagram
-    App -- Interface
-    Tracker -- App
-    
-    Tracker <|-- ObjectModel : bboxes
-    ObjectModel <|-- Tracker : frame
-    Tracker <|-- Director : get_bboxes()
-    Director <|-- Tracker : bboxes
-	
-	class Interface{
-        +VideoLabel
-    }
-    class App {
-	    -Tracker
-	    -Director
-    }
-	class Tracker{
-	    -_bboxes
-	    -captures dict[host, VideoConnection]
-        +get_frame(host: str)
-        +get_bboxes()
-    }
-    class ObjectModel{
-	    +detect_person: bboxes
-    }
-    class Director{
-        +connection: Connection
-    }
-    
-```
+>[!NOTE]
+>Update on this architecture in Spring 2026:
+>The model classes are now being shared among all controllers to reduce coupling between controllers and prevent ourselves from creating a god class. The model holds all of the application state, and any other state should only held by controllers for a strategy pattern or caching. To best support multithreaded schedulers these classes will have to be thread safe to ensure no race conditions or undefined behaviors.
 
 ## Concurrent Processes
 
@@ -216,15 +173,9 @@ Several things to watch out for with each:
 
 ![Commander-activity-diagram](commander-activity-diagram.excalidraw.svg)
 
-## MVC architecture
-
-While this is not regularly how we think about commander's architecture we can easily identify different sections of the commander to be classified as MVC. Since this is not how architecture was drafted for commander, the organization of the source code is not related to MVC. This could be possible, but organization via functionality has been prioritized to make this easier to maintain. 
-### View
-The interface classes will be the view of commander like tk_gui and textual_tui. This controls the visual aspects of the commander. Note that typically application will have only one view, but because we have a gui and tui option depending on the options, the interface class used will change.
-
-### Controller
-Considering tk_gui and textual_tui as view classes we can consider talos_app or app class to be the controller. All of the control or action a user can execute can be found here. Additionally there are also base director, scheduler, and tracker that also acts as controller. 
-
-### Model
-Models are harder to spot in commander but they still exist in a few places like IterativeTask for scheduler, Command for ICD, VideoConnection or Connection for OperatorConnection. 
+## Issues I have faced
+I had several issues when handling termination.
+- TKinter overrides the termination handler. This could be that Tkinter runs on a new process after initialization, but the termination did not always work. The solution for this was that I had to move the initialization of termination handler into the manual interface initialization. That seems to work more reliably.
+- This especially became a problem when closing the application because if the user clicks on the x button on the window, the termination handler will be triggered from the tkinter side in which case the termination handler will not be called. But if the termination process is subscribed to the window close event, closing via the terminal becomes a problem because the termination handler will to be called twice. Termination handler now has a remove method to delete used handlers to fix this problem. 
+- The GC accidentally deleted the shared memory used by numpy while the process is still writing into the buffer. This is an odd behavior of the numpy's internal optimization and the GC's unfortunate memory management mechanisms. This resulted in a segmentation fault in python, and the solution was holding a reference to the shared memory buffer, but not actually do anything else with it. While this will seem like a dead code, it is very necessary to prevent GC from accidentally deleting it. 
 
