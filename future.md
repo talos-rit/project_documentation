@@ -114,3 +114,4 @@
 4. ESP 32 needs more pins for IO
 5. Make the pendant controller work with the new ESP driver code
 6. Custom PCB design!
+7. Tally/status light to signify errors, automatic/manual control, active camera being used, etc.
