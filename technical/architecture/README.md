@@ -1,5 +1,5 @@
 # System Diagram
-![System diagram](system-diagram.excalidraw.svg)
+![system-diagram.excalidraw](diagrams/system-diagram.excalidraw.svg)
 link: https://excalidraw.com/#json=-4swq3L3L2yZn0jzfnopY,OjSybXvI3JqcrL6LNbakaw
 
 The Talos system has four major subsystems:

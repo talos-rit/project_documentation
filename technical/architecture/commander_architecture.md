@@ -142,7 +142,7 @@ While not purposefully done, the MVC architecture is the best architecture to de
 
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
-![commander-flow-diagram](commander-flow-diagram-2026-01-23-1417.excalidraw.png)
+![commander-flow-diagram](diagrams/commander-flow-diagram-2026-01-23-1417.excalidraw.png)
 link: https://excalidraw.com/#json=TYrgaMFIY22a3fWrXEuoE,_wv-jaxajN7yGfRHaKrrKA
 
 Process List by Type:
@@ -158,7 +158,7 @@ Process List by Type:
 	1. ObjectModel::detect_person -- this polls from the frame_queue and returns boundary boxes into bbox_queue
 
 The recommended factor to pick between each concurrency method is the following:
-![Concurrency decision graph](concurrency_decision_graph.svg)
+![Concurrency decision graph](diagrams/concurrency_decision_graph.svg)
 
 Several things to watch out for with each:
 - Event loop
@@ -171,7 +171,7 @@ Several things to watch out for with each:
 	- Be aware of unterminated processes, this project has seen segfaults in python due to unforeseen behavior of the garbage collector. 
 ## Detection and control mode interaction
 
-![Commander-activity-diagram](commander-activity-diagram.excalidraw.svg)
+![Commander-activity-diagram](diagrams/commander-activity-diagram.excalidraw.svg)
 
 ## Issues I have faced
 I had several issues when handling termination.
