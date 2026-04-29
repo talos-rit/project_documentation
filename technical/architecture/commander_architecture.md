@@ -29,6 +29,7 @@ Commander is a GUI Desktop application that uses the local device's camera to ru
 
 # Architecture
 
+![architecture-diagram](2025_commander_overall_architecture_dark.excalidraw.png)
 ### Tech stack
 **Interface**
 1. TKInter:
@@ -37,9 +38,13 @@ Commander is a GUI Desktop application that uses the local device's camera to ru
 	1. 1 of 3 interface options using commander. Uses Qt under the hood and requires installation and some setups required dependent on the OS. Most performant of the GUI interface
 3. Textual
 	1. 1 of 3 interface options using commander. Creates a nice intractable terminal UI that can be used through SSH or over the network. Good alternative for headless setup or running directly in the robot's Raspberry Pi.
-4. Ffmpeg + MediaMTX on docker
+
+Streamer
+1. Ffmpeg + MediaMTX on docker
 	1. This is a method of streaming video out of commander into any supported video stream apps. It opens an RTSP endpoint for video to be fetched from.
-5. PyVCam
+2. 1. FastAPI
+	1. This is used to open an endpoint to allow remote control from the browser but fetching the endpoint and turning on the web stream from commander.
+3. PyVCam
 	1. Virtual camera via OBS. Can be used in any video call apps and integrates well with desktop applications that uses the builtin video options.
 
 **Object detection**
@@ -52,11 +57,17 @@ Commander is a GUI Desktop application that uses the local device's camera to ru
 4. PyAV
 	1. While not detection model, this is the main tool used to pull video streams fast over the network.
 
-**MISC**
-1. FastAPI
-	1. This is used to open an endpoint to allow remote control from the browser but fetching the endpoint and turning on the web stream from commander.
 ### Facade
 One of the main architectural decision we made was the facade design pattern using the App class. In `talos_app.py` we have the App class which is a single point of control for the entire backend of commander. This merges several control behavior logic in the backend classes like Tracker, Director, Connection, and Publisher. The app class acts as a single bridge of User interface logics and the backend. This was necessary due to the interest of adding several interface option with a potentially completely different runtime and process behavior. Thus extracting backend logic from the user interface logic was necessary to make this transition process easier. There are also ways to override the runtime behavior using the scheduler object, but has been now defaulted to use multithreaded solution.
+
+## Three Column Architecture
+One of the main challenge we faced during development was the repeated violation of single responsibility principle and god class. For commander, majority of the problems came from the tracker class where it was handling data collection, data distribution, and detection work. This made us very hesitant on editing any of the features related to the tracker as it bloated the class. With this in mind we deployed the three column architecture where each column represent a specific flow of data and responsibility. 
+
+1. Starting with the middle column in the diagram above is the Director and publisher which helps compare bbox result to the frame position and convert to robot commands and makes API requests to operator or driver.
+2. On the right column we have Tracker and Detector class which is responsible of taking frames and producing bbox marking where the detected human is.
+3. The left column which is the newest addition to Commander is Streamer. This class is responsible for any communication from commander to post production such as PyVirtualCam integration, or Ffmpeg and RTSP video streamer integration for any other video post production software. 
+
+We recommend maintaining this core architecture as it divides responsibility cleanly and isolates each feature branches from one another very well. For example, if you need to implement a more advanced detection algorithm we should look at the right column. If we need to add simulation or more advanced robot control scheme we should look at the middle column.
 
 ## GUI
 
@@ -142,7 +153,7 @@ While not purposefully done, the MVC architecture is the best architecture to de
 
 This is the overall system flow diagram of commander when ManualInterface is running. 
 
-![commander-flow-diagram](diagrams/commander-flow-diagram-2026-01-23-1417.excalidraw.png)
+![commander-flow-diagram](2025_commander_flow_diagram.excalidraw.png)
 link: https://excalidraw.com/#json=TYrgaMFIY22a3fWrXEuoE,_wv-jaxajN7yGfRHaKrrKA
 
 Process List by Type:
