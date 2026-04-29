@@ -7,7 +7,7 @@ Additionally [this tripod screw](https://www.amazon.com/dp/B0BL3DV6PW?ref=ppx_po
 One issue we did face with the screw was that it was too long, so we recommend measuring the model again and making sure it does not max out the hole depth.
 
 ## Preview of the STL Model
-![cad_model](<camera_mount_CAD_files/Camera_Mount_ascii.stl>)
+[cad_model](<camera_mount_CAD_files/Camera_Mount_ascii.stl>)
 
 ```stl
 solid Mesh
