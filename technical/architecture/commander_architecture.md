@@ -30,6 +30,8 @@ Commander is a GUI Desktop application that uses the local device's camera to ru
 # Architecture
 
 ![architecture-diagram](2025_commander_overall_architecture_dark.excalidraw.png)
+\*the blue classes are the new classes introduced this semester
+https://excalidraw.com/#json=LVcicMAA9tqNow_iBVlHl,VV1m7QONqpfmYC9wTg34wA
 ### Tech stack
 **Interface**
 1. TKInter:
