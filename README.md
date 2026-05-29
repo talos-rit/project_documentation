@@ -1,8 +1,10 @@
-# Project Planning Repo
+# Project Documentation Repo
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/talos-rit/project_documentation)
-The Remote Repository to store all things project planning. 
-For best support please use [Obsidian](https://obsidian.md/) to view this documentation.
+
+The Remote Repository to store all things project planning and documentation. 
+
+> [!WARNING] For best support please download [Obsidian](https://obsidian.md/) to view this documentation.
 
 > [!NOTE]
 > New members please read the [onboarding doc](onboarding.md).
@@ -12,6 +14,7 @@ For best support please use [Obsidian](https://obsidian.md/) to view this docume
 - high-level documentation & diagrams
 - idea soup (persistent brainstorming project ideas)
 - meeting notes & meeting agendas
+- event fair application submissions and recommendations for the future teams
 
 # Table of contents
 

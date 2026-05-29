@@ -22,7 +22,7 @@ For the first person that is submitting the proposal will be asked to fill sever
 2. [Create a New Proposal](/imagine/2026_Spring/Create_a_New_Proposal.md)
 3. [Exhibit Information](/imagine/2026_Spring/Exhibit_information.md)
 4. [Service Requests](/imagine/2026_Spring/Service_Requests.md)
-5. Manage Exhibitors(add all of the group members via their RIT username)
+5. Manage Exhibitors(add all of the group members via their RIT username. No need to include the sponsor and coach but can be if requested by them)
 6. [Images and Files](/imagine/2026_Spring/Images_and_Files.md)
 
 **Double check for a [confirmation emails](imagine/2026_Spring/confirmation_emails/README)**

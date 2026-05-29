@@ -1,14 +1,14 @@
 # Notes from end of Milestone 3 Demo
 Attendees
-1. Malachowsky
-1. DQ
-!. Kiser
-1. Meenely
-1. Ryan Y
-1. J R.
-1. Connor 
-1. Kai F.
-1. Hiro T.
+- Dr. Daqing(Head of undergrad)
+- Dr. Meenely
+- Dr. Malachowsky(Project Sponsor)
+- Kiser(Project Coach)
+- Ryan Y
+- J R.
+- Connor 
+- Kai F.
+- Hiro T.
 
 
 Ryan Demonstrates hardware hookups
