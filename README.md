@@ -28,6 +28,7 @@ The Remote Repository to store all things project planning and documentation.
 - meetings -- project meeting notes
 	- 2024 -- meeting notes from 2024
 	- 2025 -- meeting notes from 2025
+	- 2026 -- meeting notes from 2026
 - hardware -- hardware documentations
 - evals -- semester evaluation documentations
 - imagine -- imagine planning docs
