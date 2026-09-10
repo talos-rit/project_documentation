@@ -1,7 +1,6 @@
 ## Key Takeaways
 - Takeaway
 - Another takeaway
-
 ## Team Updates
 ### Item 1
 - Who?
@@ -9,8 +8,12 @@
 ### Item 2
 - Who?
 - Updates
-## Action Items
+## Today's Action Items
 - [ ] Weekly 4-up
+- [ ] Checkbox 2
+- [ ] Checkbox 3
+## Next Meeting Action Items
+- [ ] Checkbox 1
 - [ ] Checkbox 2
 - [ ] Checkbox 3
 ## Misc Notes

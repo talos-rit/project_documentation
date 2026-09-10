@@ -1,5 +1,4 @@
-## Robotic Autonomous Cameraperson Refinement
-## Sept 2026 - May 2027
+## Robotic Autonomous Cameraperson Refinement | Sept 2026 - May 2027
 
 ### \[date]
 
