@@ -3,7 +3,7 @@
 ## Project Goals & Scope
 This research project repurposes legacy robotic hardware, the ScorBot ER-4pc and ER-V, into an autonomous camera platform. The project's goal is to automate camera operations which typically require a person: panning, tilting, and framing subjects. By utilizing two robotic arms, two camera feeds can be integrated and combined, autonomously and dynamically deciding which feed to highlight. This project includes ideating, research, implementation, and refinement of software that combines machine learning, computer vision, and other technologies to guide camera movements. The previous two iterations of this project focused on subject tracking and a new controller for the ER-4pc. The plan for this year includes refining subject tracking and implementing predictive movements, a digital twin to use for testing and debugging, and an updated controller user interface for more intuitive design. This year’s main goal is multi-camera integration.
 ### High Level Domain Model
-![[Domain Model.drawio.png]]
+![](https://github.com/talos-rit/project_documentation/blob/master/artifacts/2026/Domain%20Model.drawio.png)
 ## Planned Milestones and Major Deliverables
 
 | Milestone / Deliverable | Description                                                                                       | Target Date |
@@ -14,6 +14,7 @@ This research project repurposes legacy robotic hardware, the ScorBot ER-4pc and
 | Commander UI            | Commander UI should be more intuitive and display more helpful indicators & metrics               | 11/30       |
 | Multi-Cam               | The two video feeds should dynamically switch between each other on Commander                     | 11/30       |
 | Imagine RIT             | Final showcase                                                                                    | 04/21       |
+
 We plan to have the project in a working state with the initial scope of basic subject detection and following completed by the Maker Faire. We set deadlines for deliverables a week before the Maker Faire so we have buffer time to prepare.\
 We currently only have major milestones and deliverables planned through the fall semester, but plan to re-evaluate our progress and scope towards the end of the semester to plan for the spring.
 ## Initial Requirements & User Stories
