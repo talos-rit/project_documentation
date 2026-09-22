@@ -26,6 +26,12 @@ We currently only have major milestones and deliverables planned through the fal
 ### Nonfunctional Requirements
 1. Project must be open source
 2. Project must be have an easy set up time for someone with a basic technical background
+### User Stories
+1. As the end user, I want to use 2 robots to capture myself in various angles while giving lectures in order to improve how my lecture is presented.
+2. As the end user, I want to have a software that is given the video feeds from both robots to automatically figure out the best shot from both of them and output an edited lecture video, so that I can focus on my lecture as opposed to editing videos myself. 
+3. As the end user, I want to walk around my classroom and have the camera follow me so that I can focus on my lecture and not have to move the camera at the same time.
+4. As the end user, I want to easily access the Robot UIs from my device so that I can manage my videos and cameras easily. 
+5. As the end user, I want to save the videos captured by the robots easily so that I can use them in the future.
 ## Communication & Stakeholder Management Plan
 Each Thursday, we meet with our sponsor/coach to give status updates and receive feedback on our progress and future plans and goals for the project. We also set aside time to bring up any major risks we have encountered, both physical robot-related risks and project risks, so that we can discuss potential mitigations and solutions.\
 As a part of these weekly meetings, we go over our weekly 4-up, which details individual progress, current risks as of that week, immediate next plans, and any needs of the team from the sponsor/coach.
