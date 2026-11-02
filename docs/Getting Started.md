@@ -47,7 +47,7 @@ This guide assumes you want to set up the entire Talos stack to turn your Scorbo
 **Original Hardware:** Since you already have a way to control the robot, you just need:
 - **Raspberry Pi**
 	- Runs Operator, Cam Streamer, and Pi-Vision
-	- We use Raspberry Pi Model 4B (4GB RAM) and have had good results. Your mileage may vary with older models.
+	- We use Raspberry Pi Model 4B (2GB RAM) and have had fine results. Your mileage may vary with older models.
 		- *(TODO: run `htop` or similar and figure out how much CPU & RAM usage we have; maybe a Pi 3 would be enough? I'm not sure how much worse those were though)*
 	- Of course, you'll also need an MicroSD card and some means of powering it (e.g., a USB-C cable & power adapter) - there are many starter Pi kits available online that include this stuff!
 - **Webcam**
@@ -69,13 +69,8 @@ This guide assumes you want to set up the entire Talos stack to turn your Scorbo
 	- *(TODO PCBWay link or something?)*
 - ESP32
 	- *(TODO: link)*
-- ATX power supply?
-	- TODO: is this needed with the PCB
-- TODO: anything else they'd need in addition to the basics mentioned here?
+- ATX power supply
+	- *(TODO: is this needed with the PCB?)*
 
-## Installation
-TODO installation guide for all the components, with asides for OG and custom where they differ
-
-TODO: do we also include setup info for the raspberry pi itself? or do we just link out to the raspberry pi official guide?
-
-
+> [!info] 
+> Now that we've covered the basics, let's move on to [Installation](Installation.md)!

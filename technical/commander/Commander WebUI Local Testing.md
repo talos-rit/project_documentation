@@ -203,20 +203,21 @@ cd pi-vision
 pip install -r requirements.txt onnxruntime
 ```
 
-Unfortunately, that doesn't make things perfectly straightforward. This is because you'll need the pose model. There are two ways of getting it. The simpler way is copying it from the Pi, which should be as easy as...
-
-```bash
-scp pi@bluey.local:/home/pi/test/tracker/yolo11n-pose-320.onnx .
-```
-
-However, if you don't have access to the Pi (as is likely if you are following this guide), you'll have to download the model yourself:
-
-```bash
-pip install ultralytics
-yolo export model=yolo11n-pose.pt format=onnx imgsz=320 dynamic=False
-mv yolo11n-pose.onnx yolo11n-pose-320.onnx
-```
-*(Note: you may need to change the `mv` command if you're on Windows, although powershell should still support that syntax... Alternatively, you could just rename the file in File Explorer.)*
+> [!warning]- Outdated info here!! Pose model now included in repo!!
+> Unfortunately, that doesn't make things perfectly straightforward. This is because you'll need the pose model. There are two ways of getting it. The simpler way is copying it from the Pi, which should be as easy as...
+> 
+> ```bash
+> scp pi@bluey.local:/home/pi/test/tracker/yolo11n-pose-320.onnx .
+> ```
+> 
+> However, if you don't have access to the Pi (as is likely if you are following this guide), you'll have to download the model yourself:
+> 
+> ```bash
+> pip install ultralytics
+> yolo export model=yolo11n-pose.pt format=onnx imgsz=320 dynamic=False
+> mv yolo11n-pose.onnx yolo11n-pose-320.onnx
+> ```
+> *(Note: you may need to change the `mv` command if you're on Windows, although powershell should still support that syntax... Alternatively, you could just rename the file in File Explorer.)*
 
 Now, you should be able to run pi-vision!:
 
