@@ -54,7 +54,7 @@ If this still doesn't work, you might have some other issues afoot. *(TODO: expa
 > Now that you have the Pi's IP address, open up a terminal on another computer and follow the instructions above to SSH into it.
 
 ### Connecting Pi Hardware
-*(TODO: explain the serial connection and null modem stuff for ppl who aren't using the custom board. and for those people, explain the process for them. not sure where is the best place to do this, but it needs to happen at **some** point!)*
+*(TODO: explain the serial connection and null modem stuff for ppl who aren't using the custom board (ideally **with pictures!! using er-v as an example**). and for those people, explain the process for them. not sure where is the best place to do this, but it needs to happen at **some** point!)*
 
 ### Installing the Pi Software
 We have three pieces of software that run on the Pi: **Operator, Cam Streamer, and Pi-Vision**.
@@ -147,8 +147,6 @@ For reference, you can also run these commands to manage/troubleshoot these comp
 - Stop the publisher: `sudo systemctl stop camera-streamer`
 
 #### Pi-Vision
-TODO
-
 Next up is Pi-Vision, which is a piece of software that typically runs on the same Raspberry Pi as Operator and Cam-Streamer. It watches the camera feed, finds a person, and nudges the arm to keep them centered.
 
 Originally this work was performed by Commander, and (at time of writing) Commander can still do some of it, but Pi-Vision allows the robot's tracking to be more responsive since it no longer needs to wait for the video feed to get sent to another computer on the network. The video feed is still sent, but we no longer wait for that. Commander acts as something akin to a supervisor now: it turns tracking on and off, adjusts settings, and (through its debug menu) can still drive the arm manually if needed. It does these things by communicating with Pi-Vision.
@@ -231,7 +229,7 @@ journalctl -u pi-vision.service -f
 Now that the Raspberry Pi is set up, we can set up Commander, which is the GUI for running the tracking. As a reminder, this is usually going to be on a separate computer than the Raspberry Pi.
 
 ### Installing Commander
-First, we'll install dependencies: Python (via [`uv`](https://docs.astral.sh/uv/getting-started/installation/)), Git, and Bun. We also install OBS Studio or `v4l2loopback` for [Streaming and Capturing Video](Streaming%20and%20Capturing%20Video.md) with the *Virtual Camera* feature, although doing so is technically optional (though I'd imagine there'd be little point to using Commander if you can't capture the video).
+First, we'll install dependencies: Python (via [`uv`](https://docs.astral.sh/uv/getting-started/installation/)), Git, and Bun. We also install OBS Studio or `v4l2loopback` for [Streaming and Recording Video](Streaming%20and%20Recording%20Video.md) with the *Virtual Camera* feature, although doing so is technically optional (though I'd imagine there'd be little point to using Commander if you can't capture the video).
 
 These steps will differ on each operating system. Open a new terminal and enter the following commands:
 
@@ -245,7 +243,7 @@ These steps will differ on each operating system. Open a new terminal and enter 
 > winget install -e --id OBSProject.OBSStudio
 > ```
 > 
-> That last one, [OBS Studio](https://obsproject.com/download), is optional, but you'll want it for [Streaming and Capturing Video](Streaming%20and%20Capturing%20Video.md).
+> That last one, [OBS Studio](https://obsproject.com/download), is optional, but you'll want it for [Streaming and Recording Video](Streaming%20and%20Recording%20Video.md).
 
 > [!info] macOS
 > Install the [Homebrew](https://brew.sh) package manager if it isn't already, then use it install the packages
@@ -255,7 +253,7 @@ These steps will differ on each operating system. Open a new terminal and enter 
 > brew install git uv oven-sh/bun/bun
 > brew install --cask obs
 > ```
-> That last one, [OBS Studio](https://obsproject.com/download), is optional, but you'll want it for [Streaming and Capturing Video](Streaming%20and%20Capturing%20Video.md). You'll need to open it and click "**Start Virtual Camera**" in the bottom right once so that the virtual camera is registered with your system.
+> That last one, [OBS Studio](https://obsproject.com/download), is optional, but you'll want it for [Streaming and Recording Video](Streaming%20and%20Recording%20Video.md). You'll need to open it and click "**Start Virtual Camera**" in the bottom right once so that the virtual camera is registered with your system.
 
 > [!info] Linux (Debian/Ubuntu)
 > 
@@ -301,6 +299,8 @@ Finally, we'll run the web UI:
 ```bash
 uv run commander-web
 ```
+
+Now open [http://localhost:8000](http://localhost:8000) in your web browser of choice. It may take a second to load, but you should be presented with the Commander UI!
 
 ### Adding Robots to Commander
 *(TODO: write up guide, with screenshots)*

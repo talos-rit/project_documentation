@@ -56,7 +56,7 @@ This guide assumes you want to set up the entire Talos stack to turn your Scorbo
 - **Commander Device**
 	- This can be nearly any computer that you can install software on
 	- Runs the Commander web UI
-	- While the Commander UI *could* be accessed from another device, due to browser limitations it wouldn't be feasible to allow you to run the virtual camera on another device (e.g., for broadcasting the feed over Zoom or recording it in your device's webcam capture app; for more info see [Streaming and Capturing Video](Streaming%20and%20Capturing%20Video.md))
+	- While the Commander UI *could* be accessed from another device, due to browser limitations it wouldn't be feasible to allow you to run the virtual camera on another device (e.g., for broadcasting the feed over Zoom or recording it in your device's webcam capture app; for more info see [Streaming and Recording Video](Streaming%20and%20Recording%20Video.md))
 - **USB -> Serial cable**
 	- *(TODO link to one)*
 	- Connects the Raspberry Pi to the controller

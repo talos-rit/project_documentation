@@ -1,5 +1,5 @@
 # Updating
-Once you've got all of Talos installed on your system, you may on occasion want to update. This guide will explain how to update each of Talos's components.
+Once you've got all of Talos installed on your system, you may on occasion want to update. This guide will explain how to update each of Talos's components. In general, this will involve performing `git pull`, then doing actions similar to your first install (e.g., building the project).
 
 ## Commander
 *(TODO - should just be this, but add copy/info:)*
