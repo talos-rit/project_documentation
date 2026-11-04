@@ -2,6 +2,6 @@
 ### Current Status
 - Mostly worked on demo prep
 ### Open Questions
-- What to do about the newly-broken Pi? It's a hardware fault this time 😭
+- Can we get USB extenders for the webcams?
 ### Next Steps
-- makerfaire prep
+- MakerFaire prep
