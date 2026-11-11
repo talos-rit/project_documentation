@@ -4,7 +4,6 @@
 - Bluey motor control work (Aleck & Jacob)
 - Containerization work (Briggs)
 ### Open Questions
-- Can we get USB extenders for the webcams?
 - What's the format/logistics for Scoop recruitment? e.g.:
 	- When do we get the resumes? Where? How?
 	- How long can we review them for?
