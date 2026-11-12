@@ -5,12 +5,11 @@
 	- borrow the apple "Shot on Talos"
 - ends with final shot (not filmed on Talos) of both the robots together
 - DISABLE BOUNDING BOXES FOR THE FINAL SHOT OF COMMANDER UI!
+- Record it Friday 11/13 at normal all-hands time (5:30P)
 
 Presenters:
 - Christine
 - Aleck
-
-
 
 ## Script
 
