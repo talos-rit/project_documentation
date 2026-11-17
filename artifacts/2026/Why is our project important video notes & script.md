@@ -31,3 +31,11 @@ Presenters:
 - [final shot (not filmed on Talos) of both the robots together. this is a shot of someone filming the robots filming Christine & Aleck. it's a super meta thing.]
 - [Black screen with Talos logo saying "Shot on Talos" in SF Pro font]
 
+## Sources
+0m31s: Ultralytics YOLO Logo, used under their official branding guidelines: https://www.ultralytics.com/brand
+0m31s: OpenCV logo retrieved from their GitHub: https://raw.githubusercontent.com/wiki/opencv/opencv/logo/OpenCV_logo_black.png
+0m32s: YouTube Thumbnail by TEDxRIT, *Software Engineers Live in the Future | Samuel Malachowsky | TEDxRIT*: https://www.youtube.com/watch?v=evfKWo7amTg
+0m34s: Photo by [Jesus Loves Austin](https://unsplash.com/@jesuslovesaustin) on Unsplash: https://unsplash.com/photos/video-camera-recording-musical-performance-0O0gux4OZX4
+0m44s: Anime "Wow!" sound effect; this is a stock sound effect with history chronicled here: https://knowyourmeme.com/memes/anime-wow-sound-effect
+0m53s: bubble pop sound effect: https://bigsoundbank.com/bubbles-burst-s1074.html
+0m53s: servo sound effect: https://bigsoundbank.com/servomotor-1-180-1-s2911.html
