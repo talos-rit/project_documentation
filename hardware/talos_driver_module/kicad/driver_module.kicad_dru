@@ -1,0 +1,18 @@
+(version 1)
+# Driver module custom rules, written by work/gen_pcb.py from work/project_rules.py; do not edit by hand.
+# Net-class clearance is 0.25 mm everywhere (the project floor). Fine-pitch land patterns (HTSSOP 0.65 mm pitch,
+# 0.45 mm pads) leave 0.20 mm between neighbouring SMD pads, which is JLCPCB's two-layer minimum: allowed for
+# SMD pad to SMD pad only. Tracks, vias, fills and through-hole pads keep 0.25 mm.
+(rule "smd_pad_to_smd_pad"
+  (constraint clearance (min 0.2mm))
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Pad_Type == 'SMD' && B.Pad_Type == 'SMD'"))
+# Single-sided assembly, the 16 header pins soldered from the top: no footprint within 1.5 mm of either pin row (the rule
+# areas pin_row_keepout_* drawn by gen_pcb.py: the pads grown by 1.5 mm), except the pins' own footprint J1.
+(rule "pin_row_keepout"
+  (layer "F.Cu")
+  (constraint disallow footprint)
+  (condition "(A.insideArea('pin_row_keepout_logic') || A.insideArea('pin_row_keepout_power')) && A.Reference != 'J1'"))
+# Single-sided assembly: no footprint on the underside (the module sits on its pins over the controller).
+(rule "top_side_only"
+  (constraint disallow footprint)
+  (condition "A.Type == 'Footprint' && A.Layer == 'B.Cu'"))

@@ -1,0 +1,9 @@
+Designator,Value,Footprint,Why
+J1,Module_Pins_G2,DriverModule:Module_Pins_G2,"2 x PZ254V-11-08P (XFCN, C492407), hand-soldered, not placed by JLCPCB"
+R3B,100k DNP,Resistor_SMD:R_0603_1608Metric,"DNP: footprint only, not fitted (fit by hand instead of R3A if wanted)"
+TP1,VREF,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"
+TP2,SO,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"
+TP3,SNSOUT,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"
+TP4,SP_SENSE,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"
+TP5,GND,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"
+TP6,DVDD,TestPoint:TestPoint_Pad_D1.5mm,"bare copper pad, no part"

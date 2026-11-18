@@ -1,0 +1,22 @@
+Designator,Part,Manufacturer,MPN,Why not JLCPCB
+J1,D50S82C6GX00LF,Amphenol ICC,DD50S565MTLF,"Amphenol DD50S565MTLF from Digi-Key: press-fit sibling grid, brackets; keep the exact part"
+"JH1,JH2","female header 1x22, 2.54 mm, 8.5 mm",Sullins,PPTC221LFBN-RC,no 1x22 strip at LCSC (1x20 and 1x40 only; JLCPCB places whole parts): solder by hand into U1's holes
+U1,ESP32-S3-DevKitC-1,Espressif,ESP32-S3-DevKitC-1-N16R8,"plug-in module on JH1, JH2: no solder joint; since rev 0.5 any DevKitC-1 that is not a ...V part fits (N8R8, the 1U versions)"
+"U2,U3,U4,U5,U6",G2 18v17,Pololu,2991,"plug-in module on its two 1x8 strips (JH3-JH12, placed by JLCPCB): no solder joint"
+"U7,U8",G2 18v17,Pololu,2991,"plug-in module on JH13/JH14 (gripper) and JH15/JH16 (rail), bought later: no solder joint"
+"U11,U12",ADS1015 0x48 / 0x49,Adafruit,1083,plug-in STEMMA QT module on JH17/JH18 and JH19/JH20: no solder joint
+U13-U19,LS7366R quadrature counter,LSI/CSI,LS7366R (DIP-14),"pushed into the DIP-14 sockets JLCPCB solders (no joint); Digi-Key 2808-LS7366R-ND (LCSC C3828361 is the same part, 14 in stock)"
+U22,SN74AHCT125N,Texas Instruments,SN74AHCT125N,pushed into the DIP-14 socket JLCPCB solders (no joint); LCSC C354152 or Digi-Key; fallback SN74HCT125N
+"F1,F2",ATO fuses 7.5 A (F1) and 1 A (F2),Littelfuse,"028707.5PXCN, 0287001.PXCN",pushed into the holders after assembly (no joint)
+J2,ATX 24-pin header,Molex,0039300240,Molex 39-30-0240 not found at LCSC: hand-solder the Molex
+J3,CPU 12 V 2x2 header,Molex,39-30-0040,Molex 39-30-0040 not found at LCSC; candidates C505180 and C277695 not confirmed as the 2x2 right-angle body
+SW1,IDEC XA1E-BV3SG01R e-stop,IDEC,XA1E-BV3SG01R,"mounted through the board after assembly, lugs wired to the two pads; not a catalogue part"
+LED1-LED10,5 mm addressable pixel,SparkFun,12986 (Digi-Key 1568-12986-ND),not at LCSC; the WS2812D-F5 there swaps VDD and GND against the footprint and is discontinued; leads 2 and 4 are bent back 2 mm by hand
+D1-D14,"BAT85 Schottky, DO-35 (encoder clamps)",Vishay,BAT85S-TAP,"LCSC has no DO-35 BAT85; its BAT42 (C2798198) has no VF maximum below 10 mA, so the documented clamp level rises from VDD+0.32 V to VDD+0.40 V against the counters' VDD+0.3 V"
+"D23,D24","BAT85 Schottky, DO-35 (sense clamps to 3V3)",Vishay,BAT85S-TAP,"BAT42 rejected: the +5V-to-output fault row of the sense review goes from +0.33 V to +0.37 V over VDD, past the 0.35 V house rule"
+D22,pixel rail link (or 1N5819G by the TP13 rule),generic,wire link,left open for the first power of the pixel rail
+R61,"56k resistor, upright",Yageo,MFR-25FBF52-56K,no 56 kOhm code found at LCSC
+R64,"3.0k resistor, upright",Yageo,MFR-25FBF52-3K,no 3.0 kOhm code found at LCSC (sense tap resistor: only the design part)
+R65,"1.3k resistor, upright",Yageo,MFR-25FBF52-1K3,no 1.3 kOhm code found at LCSC (sense tap resistor: only the design part)
+TP1-TP14,test points,none,none,"bare loop pads, no part"
+SW2 key top,B32-1310 key top,Omron,B32-1310,fitted on the JLCPCB-soldered B3F-4055 by hand (no joint)
