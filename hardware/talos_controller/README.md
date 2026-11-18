@@ -35,6 +35,7 @@ front edge.
 | `fab/jlcpcb_bom.csv`, `fab/jlcpcb_cpl.csv` | the BOM and placement files for JLCPCB's assembly service |
 | `fab/hand_assembled.csv` | the parts JLCPCB does not place: what you fit yourself, and why |
 | `fab/digikey_upload.csv` | the Digi-Key list, ready for "Upload a list" |
+| `purchase_options.md`, `orders/` | three ways of ordering the boards, assembled or bare, with what each costs (carts of 18 November 2026) and the parts list of each cart |
 | `schematic.pdf` | the schematic |
 | `assembly_map.pdf`, `assembly_map.svg` | every footprint with its reference designator and orientation marks, and a legend of what goes where |
 | `images/` | the board's top and bottom views |
@@ -83,6 +84,8 @@ is fitted flat and upright, which JLCPCB flags as a duplicate (tick both); and a
 part that were accepted on their datasheets, which `fab/jlcpcb_bom.csv` names line by line.
 
 ## 2. Order the parts
+
+What a whole order costs, with the boards assembled or bare, is in [`purchase_options.md`](purchase_options.md).
 
 `parts.md` has everything by vendor: Digi-Key (upload `fab/digikey_upload.csv`, then delete the fallback lines you do not need),
 Pololu (the G2 18v17 driver modules, five for the arm or seven for all channels; a low-cost plug-in replacement, designed but not
