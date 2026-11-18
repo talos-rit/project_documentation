@@ -18,7 +18,7 @@ commercial driver (Pololu G2 18v17, about $45 each) fits the same sockets.
 | Team solders on each module | 16 header pins | 23 surface-mount parts and 16 pins | 16 header pins |
 | Extra tools | none | stencil, solder paste, hot air | none |
 | Orders to place | JLCPCB, Digi-Key | JLCPCB, Digi-Key, Mouser, LCSC | JLCPCB, Digi-Key, Mouser |
-| **Total** | **$513** | **$548 to $551, plus import duties** | **$521** |
+| **Total** | **$452** | **$487 to $490, plus import duties** | **$460** |
 
 **Recommended: A.** It is the cheapest, needs the least soldering, and delivers two assembled controller boards. B is the
 dearest, and each module's main chip has to be soldered with paste and hot air, where a bad joint cannot be seen.
@@ -31,13 +31,13 @@ dearest, and each module's main chip has to be soldered with paste and hot air, 
 | Digi-Key | 236.60 | 174.32 | 174.32 |
 | Mouser | none | 192.94 | 148.50 |
 | LCSC | none | 21.85 to 24.85, plus import duties | none |
-| Cables, mounting hardware, enclosure (estimate) | 61 | 61 | 61 |
-| **Total** | **512.58** | **about 548 to 551, plus import duties** | **about 520.52** |
+| **Total** | **451.58** | **about 487 to 490, plus import duties** | **about 459.52** |
 
 - Digi-Key and Mouser figures include shipping and tariff as their carts showed them. Digi-Key's include sales tax. Mouser shows
   sales tax only at checkout, so 8 % is assumed, the rate in Digi-Key's carts.
 - A's JLCPCB figure includes a $20 coupon the cart applied. Without it, C would be about $12 cheaper than A.
-- Not included: a PC power supply, a Raspberry Pi, an external emergency-stop button and bench instruments, which the lab has.
+- Not included: cables, mounting hardware and an enclosure, which are not in any cart yet, and the PC power supply, Raspberry Pi,
+  external emergency-stop button and bench instruments the lab has.
 
 ## What is in each order
 
@@ -50,7 +50,7 @@ dearest, and each module's main chip has to be soldered with paste and hot air, 
 | Driver-module boards, 10, ENIG | 22.77 | 22.97 | 22.77 |
 | Assembly of 10 driver modules, parts included | 42.04 | | 42.04 |
 | Solder-paste stencil for the modules | | 3.10 | |
-| Shipping (estimate) | 44.80 | 37.64 | 37.64 |
+| Shipping, as the cart quoted it | 44.80 | 37.64 | 37.64 |
 | Coupon | −20.00 | | |
 | **Total** | **214.98** | **97.96** | **136.70** |
 
@@ -66,9 +66,6 @@ for the module.
 | Mouser | B, C | 18 | 114.53 | 33.97 | 148.50 | [`orders/mouser_B_C.csv`](orders/mouser_B_C.csv) |
 | Mouser, added for B: 12 gate drivers and solder paste | B | 2 | 41.15 | 3.29 | 44.44 | the same file, marked "B only" |
 | LCSC: the other driver-module parts | B | 12 | 15.34 | 6.51 to 9.51, plus import duties | 21.85 to 24.85 | [`orders/lcsc_B_modules.csv`](orders/lcsc_B_modules.csv) |
-
-Small items bought locally, estimated: USB data cables 10, panel-mount USB extension 8, M3 screws, washers and standoffs 18,
-3D-printed enclosure 15, hook-up wire 5, cable adapter for the slide rail 5.
 
 ## Why assembled is cheaper
 
