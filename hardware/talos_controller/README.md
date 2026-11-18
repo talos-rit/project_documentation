@@ -113,7 +113,7 @@ what you fit yourself and why. On a board JLCPCB has populated, fit in this orde
 6. **The e-stop SW1, last among the soldered parts:** push it through the cut-out from the top with the notch at the front, tighten the
    locking ring underneath (IDEC wrench MT-001, 0.8 to 0.9 N·m), then solder two 25 mm leads from its lugs 11 and 12 to the two pads
    beside it on the bottom side.
-7. **Sockets and modules:** the seven LS7366R counters into U13 to U19 and the 74AHCT125 into U22, notch to the dot; the DevKit into
+7. **Sockets and modules:** the seven LS7366R counters into U13 to U19 and the 74HCT125 (or 74AHCT125) into U22, notch to the dot; the DevKit into
    JH1/JH2; the driver modules into their two strips each; the two ADS1015 boards into JH17 to JH20. Seat every driver module with
    the motor rail off and check that no pin hangs outside its strip: the power pins are doubled, so a module shifted by one pin
    joins the 12 V rail to ground through them, and a module turned round still fits and puts the rail on its logic side.
