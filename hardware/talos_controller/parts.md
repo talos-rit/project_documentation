@@ -24,8 +24,8 @@ do not need. The Adafruit and SparkFun parts are on the same list; they can also
 | 2 | `ESP32-S3-DEVKITC-1-N16R8` | U1 ESP32-S3-DevKitC-1 (1 + spare). Any variant that is not a "...V" part fits: N16R8 (the one in production), N8R8, their 1U versions, and the old N8 and N8R2 (both end-of-life). **Stock was thin in November 2026 (Mouser had the N16R8 on backorder, Digi-Key had no N8R8): check several distributors and buy it first** |
 | 8 | `LS7366R` | U13-U19 quadrature counters, DIP-14 (7 + spare); pushed into the sockets on the board |
 | 2 | `1083` | U11, U12 Adafruit ADS1015 breakout, STEMMA QT version (plug-in) |
-| 2 | `SN74AHCT125N` | U22 pixel level shifter, DIP-14 (1 + spare); pushed into its socket; fallback SN74HCT125N |
-| 2 | `TLV431ACLP` | U21 1.24 V shunt reference, TO-92: a fallback and spare, since JLCPCB fits U21 from its own stock. TI part only (pins 1 K, 2 A, 3 REF). Digi-Key had it only in reels in November 2026: any TI TLV431 in the LP (TO-92) package does |
+| 2 | `SN74HCT125N` | U22 pixel level shifter, DIP-14 (1 + spare); pushed into its socket. The `SN74AHCT125N` the board was drawn with fits as well; it was out of stock in November 2026 |
+| 2 | `TLV431BILP` | U21 1.24 V shunt reference, TO-92: a fallback and spare, since JLCPCB fits U21 from its own stock. TI part only (pins 1 K, 2 A, 3 REF). The `TLV431ACLP` the board was drawn with came only in reels at Digi-Key in November 2026; the `TLV431BILP` is the same reference in a tighter grade, and any TI TLV431 in the LP (TO-92) package does |
 | 20 | `BAT85S-TAP` | D1-D14, D23, D24 Schottky clamps, DO-35 (16 + spare); soldered by hand |
 | 3 | `12986` | LED1-LED10 SparkFun 5 mm addressable pixels, pack of 5 (10 + 5 spare); soldered by hand |
 | 4 | `PPTC221LFBN-RC` | JH1, JH2 1x22 female headers, the DevKit socket (2 + 2 spare); soldered by hand |
@@ -123,7 +123,8 @@ footprint's square pad is DIN.
   or the old N8 and N8R2. A part ending in V (N16R8V, N32R16V) runs two of the pins the board uses at 1.8 V; it does not work here.
 - **D20 and D25:** any maker's 1N4007 (silicon), never a Schottky; the relay hold time depends on it.
 - **F2:** a 1 A blade fuse, never the 7.5 A of F1; F2 protects the e-stop chain and the external cable.
-- **U21:** the TI `TLV431ACLP`. Another maker's TLV431 only if its datasheet puts the anode on the middle lead of the TO-92.
+- **U21:** a TI TLV431 in the LP (TO-92) package, `TLV431BILP` or `TLV431ACLP`. Another maker's TLV431 only if its datasheet puts the anode on the middle lead of the TO-92.
+- **U22:** `SN74HCT125N` or `SN74AHCT125N`, DIP-14. Both read the 3.3 V data line as a valid high from a 5 V supply; a plain 74HC125 is not guaranteed to.
 - **U20:** one of TI LM393P, ST LM393N or onsemi LM393NG, no unbranded clone: the supply-loss detection depends on its documented behaviour.
 - **C42 to C45:** 1000 µF 25 V with a 10 mm can and 5 mm pitch (12.5 mm cans do not fit). **C31:** 100 µF 25 V, 6.3 mm can, 2.5 mm pitch; any maker.
 - **The clamps D1 to D14, D23, D24:** BAT85. The BAT42 that JLCPCB stocks is accepted for D15 only.

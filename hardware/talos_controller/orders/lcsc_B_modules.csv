@@ -1,0 +1,13 @@
+Quantity,Manufacturer part number,Distributor part number,Line USD,What it is
+25,AO4882,C477943,7.87,"driver module: dual N-MOSFET 40 V, SOIC-8 (Q1 Q2)"
+20,FMF25FPJR020-LH,C105360,1.23,"driver module: 20 mOhm 1 % 2 W shunt, 2512 (R1)"
+30,CL31A106KBHNNNE,C13585,3.67,driver module: 10 uF 50 V X5R 1206 (C1 C2)
+100,CC0603KRX7R9BB104,C14663,0.50,driver module: 100 nF 50 V X7R 0603 (C3 C4 C9 C10 C11)
+50,CL10A105KB8NNNC,C15849,0.48,driver module: 1 uF 50 V X5R 0603 (C5 C6 C7)
+50,CL10B102KB8NNNC,C1588,0.32,driver module: 1 nF 50 V X7R 0603 (C8 C12)
+100,0603WAF1501T5E,C22843,0.20,driver module: 1.5 kOhm 1 % 0603 (R2)
+100,0603WAF1003T5E,C25803,0.30,driver module: 100 kOhm 1 % 0603 (R3A (R3B empty))
+100,0603WAF1202T5E,C22790,0.19,driver module: 12 kOhm 1 % 0603 (R4)
+100,0603WAF1002T5E,C25804,0.20,driver module: 10 kOhm 1 % 0603 (R5 R7)
+100,0603WAF3302T5E,C4216,0.21,driver module: 33 kOhm 1 % 0603 (R6)
+100,0603WAF220JT5E,C23345,0.17,driver module: 22 Ohm 1 % 0603 (R8)

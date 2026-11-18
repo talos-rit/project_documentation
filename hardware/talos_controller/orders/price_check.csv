@@ -1,0 +1,67 @@
+Quantity,Manufacturer part number,For,Digi-Key unit USD,Digi-Key backordered quantity,Mouser unit USD,Mouser stock,LCSC quoted unit USD,LCSC cart unit USD,LCSC stock status,Cheapest in stock,Note
+1,DD50S565MTLF,controller,10.9900,1,10.9900,218,22.4076,,Backordered,Mouser,"LCSC offered JAE DD-50PR, a different connector"
+2,09670019985,controller,2.5100,0,2.5100,3050,2.7994,,Backordered,Digi-Key,
+8,LS7366R,controller,6.6200,0,,,6.0567,10.4368,In Stock,Digi-Key,
+2,1083,controller,9.9500,0,,,2.3111,,Backordered,Digi-Key,"Mouser matched Keystone 1083, a different part (Adafruit's is 485-1083); LCSC offered an APEM mounting ring, a different part"
+2,SN74HCT125N,controller,0.9200,0,0.9200,1265,0.5794,0.6842,In Stock,LCSC,
+20,BAT85S-TAP,controller,0.3050,0,0.2210,40225,0.0876,0.1404,In Stock,LCSC,
+3,12986,controller,4.7500,0,,,4.0925,,Backordered,Digi-Key,"Mouser matched Banner PKW4M-5, a different part (SparkFun's is COM-12986)"
+4,PPTC221LFBN-RC,controller,1.3600,0,,,1.9094,,Backordered,Digi-Key,
+10,MFR-25FBF52-56K,controller,0.0440,0,0.0440,7092,0.0036,,Backordered,Digi-Key,
+10,MFR-25FBF52-3K,controller,0.0420,0,,,0.0054,,Backordered,Digi-Key,
+10,MFR-25FBF52-1K3,controller,0.0420,0,0.0420,44013,0.0531,,Backordered,Digi-Key,
+1,0039300240,controller,6.2400,0,,,,,-,Digi-Key,
+1,0039300040,controller,1.2900,0,,,,,-,Digi-Key,
+1,XA1E-BV3SG01R,controller,59.3500,1,53.7200,10,,,-,Mouser,
+1,HAAV-27,controller,8.3600,0,7.9600,106,,,-,Mouser,
+1,B32-1310,controller,0.3700,0,0.3700,0,0.7475,,Backordered,Digi-Key,
+3,028707.5PXCN,controller,0.4400,0,0.3600,29893,0.0815,0.1144,In Stock,LCSC,
+3,0287001.PXCN,controller,0.4400,0,0.3200,24413,0.0801,0.1651,In Stock,LCSC,
+2,SPC02SYAN,controller,0.1000,0,,,0.0658,,In Stock,Digi-Key,
+32,MFR-25FBF52-10K,controller,0.0347,0,0.0310,99801,0.0134,,Backordered,Mouser,
+2,1N5819G,controller,0.6900,0,,,0.1992,0.6277,In Stock,LCSC,"Mouser matched Microchip's 1N5819G at 7.48, not onsemi's"
+2,TLV431BILP,controller,1.0800,0,,,0.5086,,Backordered,Digi-Key,
+10,ED14DT,controller,0.4450,0,,,0.2684,,Backordered,Digi-Key,
+2,MCP23017-E/SP,controller,1.6900,0,1.6900,10879,2.0718,,In Stock,Digi-Key,
+2,LM393P,controller,0.5300,0,0.5300,18686,0.2028,,In Stock,Digi-Key,
+3,G2RL-1A-E DC12,controller,4.0600,0,3.3000,2307,1.2505,1.7567,In Stock,LCSC,
+1,1715721,controller,1.1600,1,1.1600,6150,0.3051,0.4248,In Stock,LCSC,
+1,1715789,controller,4.5900,0,4.5900,221,0.8643,0.8643,In Stock,LCSC,
+2,B3F-4055,controller,0.5200,0,0.5200,36200,0.1392,,In Stock,Digi-Key,
+2,178.6165.0001,controller,5.7500,0,4.7800,11892,1.8712,3.5596,In Stock,LCSC,
+2,RUEF300,controller,0.6200,0,0.5200,23983,0.2612,,In Stock,Mouser,
+2,RXEF050,controller,0.5200,0,0.4400,23827,0.1646,,In Stock,Mouser,
+4,EEU-FR1E102,controller,1.4200,4,1.1600,4698,0.4021,,Backordered,Mouser,
+1,EEU-FR1E101,controller,0.4500,1,0.4600,0,0.1121,,In Stock,Mouser,
+1,1.5KE16A,controller,1.0600,0,0.9400,0,0.4170,0.6070,In Stock,LCSC,
+2,1N4007G,controller,0.2400,0,0.3100,83801,0.0321,,In Stock,Digi-Key,
+4,WP710A10GD,controller,0.2400,0,0.2400,0,0.1398,,Backordered,Digi-Key,
+2,WP710A10YD,controller,0.2600,0,0.2600,23356,0.1477,,In Stock,Digi-Key,
+6,PRPC040SAAN-RC,controller,1.2300,0,,,0.3889,,Backordered,Digi-Key,
+16,PPTC081LFBN-RC,controller,0.4931,0,,,0.7787,,Backordered,Digi-Key,
+6,PPTC061LFBN-RC,controller,0.4700,0,,,0.6838,,Backordered,Digi-Key,
+17,FG28C0G1H102JNT06,controller,0.1600,0,0.1160,10214,,,discountinued,Mouser,
+32,FG28X7R1H104KNT06,controller,0.1550,0,0.1110,110031,0.0404,,In Stock,Mouser,
+27,MFR-25FBF52-1K,controller,0.0348,0,0.0290,101009,0.0162,,In Stock,Mouser,
+10,MFR-25FBF52-47R,controller,0.0420,0,0.0420,13485,0.0036,,Backordered,Digi-Key,
+12,MFR-25FBF52-2K2,controller,0.0417,0,0.0420,16932,0.0136,,In Stock,Digi-Key,
+10,MFR-25FBF52-39K,controller,0.0440,0,0.0420,5109,0.0118,,In Stock,Mouser,
+10,MFR-25FBF52-30K,controller,0.0420,0,0.0420,69833,0.0036,,Backordered,Digi-Key,
+10,MFR-25FBF52-330R,controller,0.0440,0,0.0440,13063,0.0173,,In Stock,Digi-Key,
+10,MFR-25FBF52-100K,controller,0.0420,10,0.0420,31791,0.0133,,In Stock,Mouser,
+10,MFR-25FBF52-22K,controller,0.0420,0,0.0420,15298,0.0047,,Backordered,Digi-Key,
+10,MFR-25FBF52-4K7,controller,0.0420,10,0.0510,7525,0.0142,,Backordered,Mouser,
+12,DRV8701ERGER,module,,,2.1000,23009,0.9228,,Backordered in the cart,Mouser,LCSC quoted it in stock and its cart put it on backorder at an estimated 0.69
+25,AO4882,module,,,,,0.1076,0.3147,In Stock,LCSC,LCSC's pricing tool matched another maker's AO4882; the cart price is for Alpha & Omega's (C477943)
+15,CSRN2512FK20L0,module,,,0.4170,23915,0.3887,0.0616,In Stock,LCSC,"LCSC cart price is for the module's listed part FMF25FPJR020-LH, which the US distributors do not sell"
+30,CL31A106KBHNNNE,module,,,0.2570,175,0.0119,0.1223,In Stock,LCSC,
+100,CC0603KRX7R9BB104,module,,,0.0420,46116411,0.0026,0.0050,In Stock,LCSC,
+50,CL10A105KB8NNNC,module,,,0.0790,9091,0.0064,0.0096,In Stock,LCSC,
+30,CL10B102KB8NNNC,module,,,0.0340,335366,0.0042,0.0063,In Stock,LCSC,
+25,RC0603FR-071K5L,module,,,0.0170,1394895,0.0012,0.0020,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF1501T5E, which the US distributors do not sell"
+25,RC0603FR-07100KL,module,,,0.0170,4377737,0.0003,0.0030,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF1003T5E, which the US distributors do not sell"
+25,RC0603FR-0712KL,module,,,0.0170,847728,0.0006,0.0019,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF1202T5E, which the US distributors do not sell"
+30,RC0603FR-0710KL,module,,,0.0170,5744407,0.0010,0.0020,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF1002T5E, which the US distributors do not sell"
+25,RC0603FR-0733KL,module,,,0.0170,263634,0.0007,0.0021,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF3302T5E, which the US distributors do not sell"
+25,RC0603FR-0722RL,module,,,0.0130,864654,0.0012,0.0017,In Stock,LCSC,"LCSC cart price is for the module's listed part 0603WAF220JT5E, which the US distributors do not sell"
+1,SMD291SNL,module,,,15.9500,355,41.4753,,Backordered,Mouser,

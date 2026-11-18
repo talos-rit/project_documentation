@@ -35,6 +35,7 @@ front edge.
 | `fab/jlcpcb_bom.csv`, `fab/jlcpcb_cpl.csv` | the BOM and placement files for JLCPCB's assembly service |
 | `fab/hand_assembled.csv` | the parts JLCPCB does not place: what you fit yourself, and why |
 | `fab/digikey_upload.csv` | the Digi-Key list, ready for "Upload a list" |
+| `purchase_options.md`, `orders/` | three ways of ordering the boards, assembled or bare, with what each costs (carts of 18 November 2026) and the parts list of each cart |
 | `schematic.pdf` | the schematic |
 | `assembly_map.pdf`, `assembly_map.svg` | every footprint with its reference designator and orientation marks, and a legend of what goes where |
 | `images/` | the board's top and bottom views |
@@ -84,6 +85,8 @@ part that were accepted on their datasheets, which `fab/jlcpcb_bom.csv` names li
 
 ## 2. Order the parts
 
+What a whole order costs, with the boards assembled or bare, is in [`purchase_options.md`](purchase_options.md).
+
 `parts.md` has everything by vendor: Digi-Key (upload `fab/digikey_upload.csv`, then delete the fallback lines you do not need),
 Pololu (the G2 18v17 driver modules, five for the arm or seven for all channels; a low-cost plug-in replacement, designed but not
 yet built or tested, is in [`../talos_driver_module/`](../talos_driver_module/README.md)), Adafruit and SparkFun (on the Digi-Key list), and
@@ -113,7 +116,7 @@ what you fit yourself and why. On a board JLCPCB has populated, fit in this orde
 6. **The e-stop SW1, last among the soldered parts:** push it through the cut-out from the top with the notch at the front, tighten the
    locking ring underneath (IDEC wrench MT-001, 0.8 to 0.9 N·m), then solder two 25 mm leads from its lugs 11 and 12 to the two pads
    beside it on the bottom side.
-7. **Sockets and modules:** the seven LS7366R counters into U13 to U19 and the 74AHCT125 into U22, notch to the dot; the DevKit into
+7. **Sockets and modules:** the seven LS7366R counters into U13 to U19 and the 74HCT125 (or 74AHCT125) into U22, notch to the dot; the DevKit into
    JH1/JH2; the driver modules into their two strips each; the two ADS1015 boards into JH17 to JH20. Seat every driver module with
    the motor rail off and check that no pin hangs outside its strip: the power pins are doubled, so a module shifted by one pin
    joins the 12 V rail to ground through them, and a module turned round still fits and puts the rail on its logic side.
