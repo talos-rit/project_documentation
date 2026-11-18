@@ -1,8 +1,8 @@
 # Talos controller board, rev 0.5
 
 A controller board for the Scorbot ER-V and ER-4pc educational arms (the Talos-RIT project's two robots). It replaces the original
-controller box with an ESP32-S3-DevKitC-1 on a 265 × 210 mm two-layer board: seven motor channels on plug-in Pololu G2 18v17
-drivers (five arm axes, the gripper, the slide rail), a hardware quadrature counter (LS7366R) and a current sense on every channel,
+controller box with an ESP32-S3-DevKitC-1 on a 265 × 210 mm two-layer board: seven motor channels on plug-in driver
+modules (five arm axes, the gripper, the slide rail; the project's own Talos driver module, or the Pololu G2 18v17 the sockets were drawn for), a hardware quadrature counter (LS7366R) and a current sense on every channel,
 power from a standard ATX PC supply, a mushroom e-stop with a MOTORS ON relay chain, and ten status pixels. Every part is
 through-hole, so the board can be built by hand or partly by a board house.
 
@@ -88,8 +88,8 @@ part that were accepted on their datasheets, which `fab/jlcpcb_bom.csv` names li
 What a whole order costs, with the boards assembled or bare, is in [`purchase_options.md`](purchase_options.md).
 
 `parts.md` has everything by vendor: Digi-Key (upload `fab/digikey_upload.csv`, then delete the fallback lines you do not need),
-Pololu (the G2 18v17 driver modules, five for the arm or seven for all channels; a low-cost plug-in replacement, designed but not
-yet built or tested, is in [`../talos_driver_module/`](../talos_driver_module/README.md)), Adafruit and SparkFun (on the Digi-Key list), and
+the driver modules (five for the arm or seven for all channels: the Talos driver module in [`../talos_driver_module/`](../talos_driver_module/README.md),
+designed and reviewed but not yet built or tested, or the Pololu G2 18v17 it replaces, which fits the same sockets), Adafruit and SparkFun (on the Digi-Key list), and
 the supply, cables and hardware from anywhere. The rules that must not be broken when substituting are at the end of that file; the
 three most important: the DevKit is never a variant ending in **V**, D20 and D25 are silicon rectifiers and never Schottkys, and F2 takes a
 **1 A** blade fuse, never the 7.5 A of F1.
@@ -120,9 +120,9 @@ what you fit yourself and why. On a board JLCPCB has populated, fit in this orde
    JH1/JH2; the driver modules into their two strips each; the two ADS1015 boards into JH17 to JH20. Seat every driver module with
    the motor rail off and check that no pin hangs outside its strip: the power pins are doubled, so a module shifted by one pin
    joins the 12 V rail to ground through them, and a module turned round still fits and puts the rail on its logic side.
-8. **On every driver module**, before any motor is connected: a 10 kΩ resistor between the module's VREF pad and the GND pad beside it,
+8. **On every Pololu G2**, if those are the drivers fitted, before any motor is connected: a 10 kΩ resistor between the module's VREF pad and the GND pad beside it,
    leads trimmed flush underneath. It sets the hardware current limit at about 3.7 A (the module's default is 40 A). Never less than
-   10 kΩ, and never 15 kΩ on the rail's module.
+   10 kΩ, and never 15 kΩ on the rail's module. The Talos driver module has its current limit on board and takes no resistor.
 9. The fuses: 7.5 A into F1 (motor rail), 1 A into F2 (the e-stop chain). The key top onto SW2. The shunt onto JP1 (fitted = the supply
    turns on with its mains switch).
 10. **J4, the external e-stop terminal.** With no external button, a link: 30 mm of solid 20 AWG wire, one end in each clamp, both screws
@@ -177,7 +177,7 @@ e-stop loop, TP13 the pixel rail (all labelled on the silk).
 6. **The pixel rail.** With D22 still open, power the board and read TP13; fit the wire link if it is at or below 5.25 V, a 1N5819
    otherwise. Once the pixel driver exists: every pattern of section 7 shown once, with IO48 and IO38 watched while all ten
    pixels are lit (the pixel current must not disturb the supply sense).
-7. **One driver module on the bench**, no arm: with its 10 kΩ VREF resistor fitted, drive a motor against a clamp meter and note the
+7. **One driver module on the bench**, no arm (a Pololu G2 with its 10 kΩ VREF resistor fitted; a Talos module after the bench tests in its own README): drive a motor against a clamp meter and note the
    current at which the module chops; compare it with the current the firmware reports in the same stall. The firmware's over-current
    detector can miss a chopped stall at full duty, so this number matters.
 8. **Bring-up in the firmware's order:** the DevKit alone (without the board it boots into FAULT, but the link answers `ping` and
@@ -253,8 +253,9 @@ the configuration, amber = not homed, blue blinking = homing, green = homed, gre
 - **The current reading at partial duty is unverified.** The firmware assumes the driver's current-sense pin reads 0 V during the PWM
   off-time. If a real module holds its 50 mV offset there instead, the firmware over-reads at low duty. Scope the CS pin of one module
   with PWM low and at 25, 50 and 100 % duty before any motion, and set the firmware's model from what you see.
-- **The driver modules have no over-temperature shut-off** (Pololu's own warning). The current limit and the firmware are the protection.
-- **The driver current limit is a graph reading.** The 10 kΩ VREF resistor gives about 3.7 A per Pololu's graph with no stated
+- **The Talos driver modules are untested first prototypes.** Their limits and open questions are in section 7 of their own README.
+- **A Pololu G2 has no over-temperature shut-off** (Pololu's own warning). The current limit and the firmware are the protection.
+- **A Pololu G2's current limit is a graph reading.** The 10 kΩ VREF resistor gives about 3.7 A per Pololu's graph with no stated
   tolerance; measure it (section 5, step 7).
 - **The rail's switch.** The slide's microswitch read closed at rest on the robot inspected; whether it is normally closed, or the leads
   are simply joined, is unknown. The firmware's switch polarity may need to become a per-channel setting.

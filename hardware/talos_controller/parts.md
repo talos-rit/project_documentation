@@ -41,7 +41,7 @@ do not need. The Adafruit and SparkFun parts are on the same list; they can also
 | 3 | `028707.5PXCN` | F1 ATO fuse 7.5 A (1 + 2 spare) |
 | 3 | `0287001.PXCN` | F2 ATO fuse 1 A (1 + 2 spare); never a 7.5 A blade in F2 |
 | 2 | `SPC02SYAN` | JP1 jumper shunt (1 + spare) |
-| 39 | `MFR-25FBF52-10K` | 10 k: one per driver module (VREF current limit, up to 7) plus the board's 25 if JLCPCB did not fit them, plus spare |
+| 39 | `MFR-25FBF52-10K` | 10 k: the board's 25 if JLCPCB did not fit them, plus one per Pololu G2 driver if those are used (VREF current limit, up to 7; the Talos driver module needs none), plus spare |
 | 2 | `1N5819G` | D21 Schottky (1, if JLCPCB did not fit it) and the alternative for the D22 link if the pixel rail reads above 5.25 V |
 
 ### Fallback: only for a line JLCPCB did not place
@@ -88,14 +88,16 @@ do not need. The Adafruit and SparkFun parts are on the same list; they can also
 | 1 | `FX0380` | inline 5 x 20 mm fuse holder for an external e-stop cable (Bulgin) |
 | 2 | `0217.500MXP` | 0.5 A fast 5 x 20 mm fuse for that holder (1 + spare) |
 
-## Pololu
+## Driver modules
 
 | Qty | Item | What it is |
 | --- | --- | --- |
-| 5 or 7 | 2991, G2 High-Power Motor Driver 18v17 | one per channel: five for the arm (U2 to U6); the gripper (U7) and the rail (U8) need two more. Each module ships with two 1x8 male strips, which plug into the sockets on the board |
+| 5 or 7 | Talos driver module, [`../talos_driver_module/`](../talos_driver_module/README.md) | one per channel: five for the arm (U2 to U6); the gripper (U7) and the rail (U8) need two more. Ordered from JLCPCB, assembled, with the files in that folder; two 1x8 pin strips (on the Digi-Key list) are soldered to each and plug into the sockets on the board. A first prototype: designed and reviewed, not yet built or tested |
+| instead | Pololu 2991, G2 High-Power Motor Driver 18v17 | the commercial driver the sockets were drawn for. It fits the same sockets and ships with its pin strips: the alternative if the Talos modules misbehave on the bench |
 
-Every fitted module gets a 10 kΩ resistor (on the Digi-Key list) between its VREF pad and the GND pad beside it: it is the only
-hardware current limit below the module's 40 A default, about 3.7 A. Never less than 10 kΩ, and never 15 kΩ on the rail's module.
+The Talos module has its current limit on board (3.6 A typical). A Pololu G2 has none below its 40 A default, so every fitted G2
+gets a 10 kΩ resistor (on the Digi-Key list) between its VREF pad and the GND pad beside it: about 3.7 A. Never less than 10 kΩ,
+and never 15 kΩ on the rail's module.
 
 ## Adafruit and SparkFun
 
