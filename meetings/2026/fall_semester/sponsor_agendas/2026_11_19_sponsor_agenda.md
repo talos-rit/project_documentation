@@ -13,5 +13,6 @@
 ### Next Steps
 - Makerfaire!
 - Tracking panel & framing toggle (Zoe)
+- Lecturer Recognition / Subject Specification (Christine)
 - Adaptive tracking (different speeds for different size targets; auto-resizing tolerance box) (Bevan)
 - Updating Gaia to work with new Bluey setup (Briggs)
