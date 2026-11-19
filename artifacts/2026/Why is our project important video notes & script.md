@@ -32,10 +32,13 @@ Presenters:
 - [Black screen with Talos logo saying "Shot on Talos" in SF Pro font]
 
 ## Sources
-0m31s: Ultralytics YOLO Logo, used under their official branding guidelines: https://www.ultralytics.com/brand
-0m31s: OpenCV logo retrieved from their GitHub: https://raw.githubusercontent.com/wiki/opencv/opencv/logo/OpenCV_logo_black.png
-0m32s: YouTube Thumbnail by TEDxRIT, *Software Engineers Live in the Future | Samuel Malachowsky | TEDxRIT*: https://www.youtube.com/watch?v=evfKWo7amTg
-0m34s: Photo by [Jesus Loves Austin](https://unsplash.com/@jesuslovesaustin) on Unsplash: https://unsplash.com/photos/video-camera-recording-musical-performance-0O0gux4OZX4
-0m44s: Anime "Wow!" sound effect; this is a stock sound effect with history chronicled here: https://knowyourmeme.com/memes/anime-wow-sound-effect
-0m53s: bubble pop sound effect: https://bigsoundbank.com/bubbles-burst-s1074.html
-0m53s: servo sound effect: https://bigsoundbank.com/servomotor-1-180-1-s2911.html
+- 0m10s: "Crinoline Dreams" Kevin MacLeod (incompetech.com) | Licensed under Creative Commons: By Attribution 4.0 License | http://creativecommons.org/licenses/by/4.0/
+- 0m27s: "Easy Lemon (30 second)" Kevin MacLeod (incompetech.com) | Licensed under Creative Commons: By Attribution 4.0 License | http://creativecommons.org/licenses/by/4.0/
+- 0m31s: Ultralytics YOLO Logo, used under their official branding guidelines: https://www.ultralytics.com/brand
+- 0m31s: OpenCV logo retrieved from their GitHub: https://raw.githubusercontent.com/wiki/opencv/opencv/logo/OpenCV_logo_black.png
+- 0m32s: YouTube Thumbnail by TEDxRIT, *Software Engineers Live in the Future | Samuel Malachowsky | TEDxRIT*: https://www.youtube.com/watch?v=evfKWo7amTg
+- 0m34s: Photo by [Jesus Loves Austin](https://unsplash.com/@jesuslovesaustin) on Unsplash: https://unsplash.com/photos/video-camera-recording-musical-performance-0O0gux4OZX4
+- 0m44s: Anime "Wow!" sound effect; this is a stock sound effect with history chronicled here: https://knowyourmeme.com/memes/anime-wow-sound-effect
+- 0m45s: 'Origami' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au
+- 0m52s: servo sound effect: https://bigsoundbank.com/servomotor-1-180-1-s2911.html
+- 0m55s: bubble pop sound effect: https://bigsoundbank.com/bubbles-burst-s1074.html

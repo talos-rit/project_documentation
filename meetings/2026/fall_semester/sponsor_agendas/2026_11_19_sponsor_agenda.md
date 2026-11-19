@@ -9,6 +9,7 @@
 - Made Commander's speed slider apply to auto-track instead of just manual jogs (Briggs)
 ### Open Questions
 - any recommendations for makerfaire?
+- presumably no sponsor meeting next week?
 ### Next Steps
 - Makerfaire!
 - Tracking panel & framing toggle (Zoe)
