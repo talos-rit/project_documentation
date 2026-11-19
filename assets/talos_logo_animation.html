@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talos Logo Animation</title>
+<style>
+  :root { --bg: #0e0f12; --fg: #ffffff; --muted: #8a8f98; --accent: #ff9400; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 16px; }
+  svg { width: 100%; max-width: 1200px; height: auto; overflow: visible; }
+  .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; color: var(--muted); }
+  button { background: transparent; color: var(--fg); border: 1px solid #333; border-radius: 6px; padding: 6px 12px; font: inherit; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  input[type=range] { width: min(360px, 70vw); accent-color: var(--accent); }
+  label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+  #dot { transition: filter .4s; }
+  #dot.glow { filter: drop-shadow(0 0 10px var(--accent)) drop-shadow(0 0 4px var(--accent)); }
+</style>
+</head>
+<body>
+<svg id="stage" viewBox="120 -20 1260 660" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="mElbow" maskUnits="userSpaceOnUse" x="-1000" y="-1000" width="4000" height="3000">
+      <rect x="-1000" y="-1000" width="4000" height="3000" fill="#fff"/>
+      <circle cx="548.75" cy="124.75" r="65" fill="#000"/>
+    </mask>
+    <clipPath id="cBaseTop"><rect x="-1000" y="-1000" width="4000" height="1361"/></clipPath>
+    <clipPath id="cBody"><rect x="590" y="220" width="150" height="73"/></clipPath>
+    <clipPath id="cLeft"><rect x="590" y="290" width="107" height="100"/></clipPath>
+    <clipPath id="cRight"><rect x="697" y="290" width="40" height="100"/></clipPath>
+    <path id="gripPath" d="M 683.198181 364.475677 C 684.658203 362.129547 684.001648 359.060913 681.669556 357.578278 L 628.110657 323.402527 L 637.618958 286.851929 L 672.849182 269.641602 L 707.534485 284.561035 L 701.557434 347.797821 C 701.473389 348.762634 701.64978 349.686035 702.051331 350.499268 C 702.787903 352.006042 704.260254 353.110046 706.067261 353.24884 C 708.819458 353.553284 711.277161 351.515076 711.526733 348.775574 L 717.850159 281.889465 C 718.076904 279.714722 716.852112 277.684998 714.860596 276.836853 L 683.339417 263.244904 L 675.775452 247.740814 L 666.284546 252.380951 C 666.284546 252.380951 627.117737 271.491516 627.117737 271.491516 L 617.62677 276.131653 L 625.69397 292.637421 L 625.758667 292.583801 L 617.476196 324.373596 C 617.178589 325.581055 617.309143 326.804535 617.839172 327.838562 C 618.240662 328.651733 618.85321 329.377197 619.63855 329.850281 L 676.292236 365.967651 C 678.610291 367.472778 681.711243 366.789429 683.198181 364.475677 Z"/>
+  </defs>
+
+  <g fill="#fff">
+    <path id="T" d="M250.0890625 363.0V164.4109375H200.5V139.5H349.5V164.4109375H299.9109375V363.0Z"/>
+    <path id="O" d="M1012.2054685 139.5H1062.0273435000001Q1082.3984372500001 139.5 1097.007421625 154.1671875Q1111.616406 168.834375 1111.616406 189.08906249999998V313.4109375Q1111.616406 333.54921875 1097.007421625 348.274609375Q1082.3984372500001 363.0 1062.0273435000001 363.0H1012.2054685Q991.83437475 363.0 977.2253903750001 348.391015625Q962.6164060000001 333.78203125 962.6164060000001 313.4109375V189.08906249999998Q962.6164060000001 168.71796874999998 977.2253903750001 154.10898437499998Q991.83437475 139.5 1012.2054685 139.5ZM1012.2054685 189.08906249999998V313.4109375Q1012.2054685 323.421875 1019.480859125 330.75546875Q1026.75624975 338.0890625 1037.116406 338.0890625Q1047.4765622500001 338.0890625 1054.7519528750001 330.75546875Q1062.0273435000001 323.421875 1062.0273435000001 313.4109375V189.08906249999998Q1062.0273435000001 178.96171875 1054.6355466250002 171.686328125Q1047.24374975 164.4109375 1037.116406 164.4109375Q1026.872656 164.4109375 1019.53906225 171.686328125Q1012.2054685 178.96171875 1012.2054685 189.08906249999998Z"/>
+    <path id="S" d="M1285.294531 189.08906249999998H1260.616406Q1257.357031 164.178125 1237.1023435 164.178125Q1224.0648435 164.178125 1217.42968725 170.4640625Q1210.794531 176.75 1210.794531 189.20546875Q1210.794531 198.51796875 1218.12812475 206.66640625L1270.74374975 265.80078125Q1285.294531 282.09765625 1285.294531 300.8390625V313.4109375Q1285.294531 333.54921875 1270.74374975 348.274609375Q1256.1929685 363.0 1235.7054685 363.0H1210.794531Q1186.116406 363.0 1173.6609372500002 350.54453125Q1161.2054685 338.0890625 1161.2054685 313.4109375H1186.116406Q1185.8835935 315.971875 1185.8835935 317.48515625Q1185.8835935 327.6125 1193.68281225 332.85078125Q1201.482031 338.0890625 1210.794531 338.0890625Q1224.0648435 338.0890625 1229.885156 331.68671875Q1235.7054685 325.284375 1235.7054685 313.06171875Q1235.7054685 303.6328125 1228.37187475 295.60078125L1175.75624975 236.69921875Q1161.2054685 220.51874999999998 1161.2054685 201.6609375V189.08906249999998Q1161.2054685 168.834375 1175.75624975 154.1671875Q1190.307031 139.5 1210.794531 139.5H1235.7054685Q1282.2679685 139.5 1285.294531 189.08906249999998Z"/>
+    <path id="L" d="M788.7054685 363.0V139.5H838.294531V338.0890625H912.794531V363.0Z"/>
+
+    <g id="base">
+      <g clip-path="url(#cBaseTop)">
+        <g id="lower">
+          <path mask="url(#mElbow)" d="M 393.968079 329.206635 L 439.081024 350.243164 L 531.967712 151.046967 L 486.854797 130.010437 Z"/>
+          <path d="M 568.8974 176.902893 C 597.660217 165.800415 612.030396 133.362122 600.927917 104.599335 C 589.833008 75.856232 557.387085 61.46637 528.624329 72.568848 C 499.861572 83.671326 485.491394 116.109619 496.593842 144.872406 C 507.69632 173.635193 540.134644 188.005371 568.8974 176.902893 Z M 508.946075 140.104431 C 500.474731 118.158051 511.426208 93.400024 533.392334 84.921082 C 555.358398 76.442139 580.104309 87.420929 588.575623 109.36731 C 597.054626 131.333405 586.09552 156.071716 564.129456 164.550659 C 542.16333 173.029602 517.417419 162.050842 508.946075 140.104431 Z"/>
+          <path id="dot" fill="#ff9400" d="M 557.201782 146.603485 C 545.124695 151.265259 531.555054 145.253937 526.893311 133.176788 C 522.231506 121.09964 528.242859 107.53006 540.319946 102.868286 C 552.397095 98.206482 565.966675 104.217804 570.628479 116.294952 C 575.290283 128.372101 569.278931 141.941681 557.201782 146.603485 Z"/>
+        </g>
+      </g>
+      <path d="M 372 361 L 473 361 L 473 324 L 372 324 Z"/>
+      <g id="upper">
+        <path mask="url(#mElbow)" d="M 611.036621 129.777557 L 565.923706 150.814056 L 623.630127 274.565979 L 668.743103 253.52951 Z"/>
+      </g>
+      <g id="grip">
+        <use href="#gripPath" clip-path="url(#cBody)"/>
+        <g id="fingerL"><use href="#gripPath" clip-path="url(#cLeft)"/></g>
+        <g id="fingerR"><use href="#gripPath" clip-path="url(#cRight)"/></g>
+      </g>
+    </g>
+  </g>
+</svg>
+
+<div class="controls">
+  <button id="play">Replay</button>
+  <input id="scrub" type="range" min="0" step="0.01" value="0" aria-label="Timeline">
+  <label><input id="loop" type="checkbox" checked> Loop</label>
+  <label><input id="slow" type="checkbox"> Slow-mo</label>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const RAD = Math.PI / 180;
+
+  // ---- Rig geometry (taken from Talos_Logo_v3.svg) ----
+  const S0 = { x: 422, y: 340 };          // shoulder pivot (top of base plate)
+  const E0 = { x: 548.75, y: 124.75 };    // elbow (ring centre)
+  const W0 = { x: 648, y: 266 };          // wrist (gripper mount)
+  const G  = { x: 693, y: 352 };          // pinch point between finger tips
+  const BASE_PIVOT = { x: 422.5, y: 361 };// squash origin (bottom of base)
+  const L1 = Math.hypot(E0.x - S0.x, E0.y - S0.y);
+  const L2 = Math.hypot(W0.x - E0.x, W0.y - E0.y);
+  const TH1R = Math.atan2(E0.y - S0.y, E0.x - S0.x);
+  const TH2R = Math.atan2(W0.y - E0.y, W0.x - E0.x);
+  const HOP = 200;                        // how far the base hops right to reach the slot
+
+  const M = () => new DOMMatrix();
+  const rotAbout = (m, deg, p) => m.translate(p.x, p.y).rotate(deg).translate(-p.x, -p.y);
+  const css = m => `matrix(${m.a},${m.b},${m.c},${m.d},${m.e},${m.f})`;
+
+  // Two-link IK, elbow kept "up" like the logo.
+  function ik(wx, wy) {
+    const dx = wx - S0.x, dy = wy - S0.y;
+    const D = Math.min(Math.max(Math.hypot(dx, dy), Math.abs(L1 - L2) + 1e-3), L1 + L2 - 1e-3);
+    const A = Math.acos((L1 * L1 + D * D - L2 * L2) / (2 * L1 * D));
+    const th1 = Math.atan2(dy, dx) - A;
+    const E = { x: S0.x + L1 * Math.cos(th1), y: S0.y + L1 * Math.sin(th1) };
+    const th2 = Math.atan2(wy - E.y, wx - E.x);
+    return { th1, th2, E };
+  }
+
+  function baseMatrix(p) {
+    const sx = 1 + (1 - p.sq) * 0.6;
+    return rotAbout(M().translate(p.bx, p.by), 0, BASE_PIVOT)
+      .translate(BASE_PIVOT.x, BASE_PIVOT.y).scale(sx, p.sq).translate(-BASE_PIVOT.x, -BASE_PIVOT.y);
+  }
+  const gripMatrix = p => rotAbout(M().translate(p.wx - W0.x, p.wy - W0.y), p.ga, W0);
+
+  // ---- Where the L starts: fallen down below its slot, leaning on one corner ----
+  const DROP = 200, TILT = -8;
+  const TEETER_PIVOT = { x: 788.7, y: 363 + DROP };   // its bottom-left corner
+  const ML0 = rotAbout(M(), TILT, TEETER_PIVOT).translate(0, DROP);
+
+  // ---- Place pose: gripper pointing straight down, pinching the top of the L's stem ----
+  const PINCH = { x: 813.5, y: 178 };
+  const PHI = 90 - Math.atan2(G.y - W0.y, G.x - W0.x) / RAD;
+  const vg = new DOMPoint(G.x - W0.x, G.y - W0.y).matrixTransform(M().rotate(PHI));
+  const PLACE = { bx: HOP, by: 0, sq: 1, wx: PINCH.x - vg.x - HOP, wy: PINCH.y - vg.y, ga: PHI };
+  const M_PLACE = M().translate(HOP, 0).multiply(gripMatrix(PLACE));
+  const K = M_PLACE.inverse();            // L = gripperWorld * K while held
+
+  // Grab pose: whatever gripper pose holds the L exactly where it lies now.
+  const MG = ML0.multiply(M_PLACE);
+  const wg = new DOMPoint(W0.x, W0.y).matrixTransform(MG);
+  const GRAB = { bx: HOP, by: 0, sq: 1, wx: wg.x - HOP, wy: wg.y, ga: Math.atan2(MG.b, MG.a) / RAD };
+
+  // ---- Choreography ----
+  const ease = {
+    lin: t => t,
+    io: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+    out: t => 1 - Math.pow(1 - t, 3),
+    in: t => t * t * t,
+    back: t => { const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); },
+  };
+  const REST = { bx: 0, by: 0, sq: 1, wx: W0.x, wy: W0.y, ga: 0, claw: 0 };
+  const K_ = [];
+  const k = (t, p = {}, e = 'io') => K_.push({ t, p, e });
+
+  k(0,    REST);
+  k(1.2);                                                        // asleep
+  k(1.7,  { wx: 640, wy: 228, ga: -12, claw: .55 });              // wake / stretch
+  k(2.0,  { wx: 650, wy: 236, ga: 4, claw: 0 });
+  k(2.5,  { wx: 682, wy: 206, ga: -34 });                         // peer at the empty slot
+  k(2.9);
+  k(3.15, { wy: 196, ga: -14, claw: .3 }, 'out');                 // head tilt: "huh?"
+  k(3.45, { wy: 204, ga: -34, claw: 0 });
+  k(3.6);
+  k(3.95, { wx: 572, wy: 186, ga: 122 });                         // glance back...
+  k(4.2,  { wx: 640, wy: 200, ga: -22 }, 'out');                  // ...nothing there
+  k(4.4);
+  k(4.55, { wx: 716, wy: 232, ga: 22 }, 'back');                  // double take, looking down!
+  k(4.7,  { wy: 220, claw: .85 }, 'out');                         // startled
+  k(5.25);
+  k(5.6,  { wx: 640, wy: 210, ga: 10, claw: .4, sq: .86 });       // crouch to hop
+  k(5.85, { bx: HOP * .5, by: -60, sq: 1.07, wy: 190 }, 'out');   // hop!
+  k(6.1,  { bx: HOP, by: 0, sq: .86, wx: 600, wy: 190 }, 'in');   // land beside it
+  k(6.4,  { sq: 1 }, 'out');
+  k(6.85, { wx: GRAB.wx, wy: GRAB.wy - 55, ga: GRAB.ga, claw: 1 }); // hover over the stem
+  k(7.15, { wy: GRAB.wy });                                       // reach down
+  k(7.35, { claw: 0 }, 'out');                                    // grip
+  k(7.6,  { wy: GRAB.wy - 12, ga: GRAB.ga + 3 }, 'out');          // test tug
+  k(8.5,  { wx: PLACE.wx, wy: PLACE.wy + 26, ga: PLACE.ga });     // haul it up
+  k(9.1,  { wy: PLACE.wy });                                      // ease it into the slot
+  k(9.6);
+  k(9.85, { claw: .8 }, 'out');                                   // let go
+  k(10.25,{ wx: PLACE.wx - 30, wy: PLACE.wy - 30, ga: PLACE.ga - 22, claw: .3 }); // back off
+  k(10.55,{ ga: PLACE.ga - 12, claw: 0 });
+  k(10.8, { ga: PLACE.ga - 34 }, 'out');                          // admire (head tilt)
+  k(11.05,{ ga: PLACE.ga - 14 });
+  k(11.4, { wx: 520, wy: 190, ga: -8, sq: .86 });                 // crouch to hop home
+  k(11.65,{ bx: HOP * .5, by: -56, sq: 1.06, wy: 200 }, 'out');
+  k(11.9, { bx: 0, by: 0, sq: .88, wx: W0.x, wy: 252, ga: 0 }, 'in');
+  k(12.3, REST, 'back');                                          // settle into the logo
+  const DUR = 15.5, T_GRIP = 7.28, T_DROP = 9.7, T_GLOW = 12.35;
+
+  // Fill in carried-over props so every keyframe is complete.
+  let prev = REST;
+  for (const f of K_) { f.p = { ...prev, ...f.p }; prev = f.p; }
+
+  function pose(t) {
+    let i = 0;
+    while (i < K_.length - 1 && K_[i + 1].t <= t) i++;
+    const a = K_[i], b = K_[Math.min(i + 1, K_.length - 1)];
+    if (a === b || t <= a.t) return a.p;
+    const u = ease[b.e]((t - a.t) / (b.t - a.t));
+    const out = {};
+    for (const key in a.p) out[key] = a.p[key] + (b.p[key] - a.p[key]) * u;
+    return out;
+  }
+
+  const el = {
+    base: $('base'), lower: $('lower'), upper: $('upper'), grip: $('grip'),
+    fL: $('fingerL'), fR: $('fingerR'), L: $('L'), dot: $('dot'),
+  };
+
+  function render(t) {
+    const p = pose(t);
+    const B = baseMatrix(p);
+    const { th1, th2, E } = ik(p.wx, p.wy);
+    const Gm = gripMatrix(p);
+
+    el.base.setAttribute('transform', css(B));
+    el.lower.setAttribute('transform', `rotate(${(th1 - TH1R) / RAD} ${S0.x} ${S0.y})`);
+    el.upper.setAttribute('transform',
+      css(rotAbout(M().translate(E.x - E0.x, E.y - E0.y), (th2 - TH2R) / RAD, E0)));
+    el.grip.setAttribute('transform', css(Gm));
+    el.fL.setAttribute('transform', `rotate(${p.claw * 18} 636 292)`);
+    el.fR.setAttribute('transform', `rotate(${-p.claw * 14} 709 290)`);
+
+    let Lm;
+    if (t < T_GRIP) {
+      // teeters when the arm notices it
+      const s = t - 4.55, a = s > 0 ? 5 * Math.exp(-2.2 * s) * (1 - Math.cos(s * 11)) / 2 : 0;
+      Lm = rotAbout(M(), -a, TEETER_PIVOT).multiply(ML0);
+    }
+    else if (t < T_DROP) Lm = B.multiply(Gm).multiply(K);
+    else {
+      // little boing as it lands
+      const s = t - T_DROP, sy = 1 - 0.06 * Math.exp(-s * 7) * Math.cos(s * 28);
+      Lm = M().translate(850, 363).scale(1 + (1 - sy) * .5, sy).translate(-850, -363);
+    }
+    el.L.setAttribute('transform', css(Lm));
+    el.dot.classList.toggle('glow', t > T_GLOW && t < DUR - .6);
+  }
+
+  // ---- Playback ----
+  const scrub = $('scrub'); scrub.max = DUR;
+  let t = 0, last = null, playing = true;
+  function tick(now) {
+    if (last != null && playing) {
+      t += (now - last) / 1000 * ($('slow').checked ? .35 : 1);
+      if (t >= DUR) { if ($('loop').checked) t = 0; else { t = DUR; playing = false; } }
+      scrub.value = t;
+    }
+    last = now;
+    render(t);
+    requestAnimationFrame(tick);
+  }
+  $('play').onclick = () => { t = 0; playing = true; };
+  scrub.oninput = () => { t = +scrub.value; playing = false; };
+  scrub.onchange = () => { playing = true; };
+  addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); t = 0; playing = true; } });
+  const qt = new URLSearchParams(location.search).get('t');
+  if (qt != null) { t = +qt; playing = false; scrub.value = t; }
+  render(t);
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
