@@ -9,7 +9,11 @@
 - Made Commander's speed slider apply to auto-track instead of just manual jogs (Briggs)
 ### Open Questions
 - any recommendations for makerfaire?
+	- bring water and also snacks
+	- take some pics/vids of it. could be interesting for our next video or posterity :)
+	- glhf
 - presumably no sponsor meeting next week?
+	- and no normal mtg next tuesday
 ### Next Steps
 - Makerfaire!
 - Tracking panel & framing toggle (Zoe)

@@ -1,0 +1,97 @@
+# Gaia configuration: the shared, committed source of truth for the Talos Pi fleet.
+#
+# Personal changes (e.g. "deploy Operator from my working copy", "my Pi instead of the lab's") go
+# in gaia.local.yaml: git-ignored, and a merge patch over this file (same keys; `null` removes
+# one). The UI's Sources panel and Pi settings write it for you.
+
+server:
+  port: 4747
+
+stack:
+  dir: talos-stack # on each Pi, relative to the SSH user's home
+  project: talos # docker compose project name -> containers talos-operator-1, ...
+
+# Commander runs on this machine (not on a Pi, not in Docker). Gaia clones it to `path` on
+# Set up, builds its web UI, and runs `uv run commander-web`. Set up also creates Commander's
+# config/robot_configs.local.yaml and config/app_settings.local.yaml from the Pis below,
+# but only when those files don't exist yet; Gaia never overwrites them.
+commander:
+  path: ../commander # relative to this Gaia checkout
+  repo: https://github.com/talos-rit/commander.git
+  branch: main # what Set up clones; switch branches from the Commander card
+
+# Where each image is built from. Sources:
+#   { mode: git,   repo: <url>, ref: <branch | tag | sha> }   clean checkout of exactly that ref
+#   { mode: local, path: ../operator }                         your working copy (tracked + untracked, minus .gitignore)
+#   { mode: builtin }                                          image defined entirely by Gaia (stack/*.Dockerfile)
+components:
+  operator:
+    source: { mode: git, repo: https://github.com/talos-rit/operator.git, ref: feat/dual-arm-containers }
+    runTests: true # run the CppUTest suite during the image build; a failing test means no image
+
+  vision:
+    # Canonical Pi-Vision is the pi-vision repo. Until feat/dual-arm-integration is merged,
+    # build that branch (master lacks the controller-profile relay Commander needs and
+    # --processing-width); switch ref to master after the merge.
+    source: { mode: git, repo: https://github.com/talos-rit/pi-vision.git, ref: feat/dual-arm-integration }
+    appDir: . # directory containing main.py, relative to the repo root
+    model: yolo11n-pose-320.onnx # pose model, relative to the repo root (320 for small/distant people)
+    extraArgs: [--processing-width, "640"] # appended to `python main.py --model ... --port ... --edge-control`
+    env:
+      POSE_THREADS: "2" # onnxruntime intra-op threads; 2 gives ~3.5 fps on a Pi 4 with the 320 model
+      POSE_SPINNING: "0"
+
+  mediamtx:
+    # RTSP server, built from stack/mediamtx.Dockerfile (official image + stack/mediamtx.yml).
+    source: { mode: builtin }
+    version: 1.15.3 # bluenviron/mediamtx tag; same version the Pis ran as a host service
+
+  camera:
+    # Runs scripts/stream_camera.sh; settings come from env vars generated per Pi.
+    # OUTPUT_FPS (capture 30 fps MJPEG, publish 10 fps) needs cam_streamer's feat/output-fps branch;
+    # switch ref to main once it's merged. (An older script ignores OUTPUT_FPS and publishes 30 fps.)
+    source: { mode: git, repo: https://github.com/talos-rit/cam_streamer.git, ref: feat/output-fps }
+
+# The Pis Gaia manages, keyed by id. These are the RIT lab's Pis, so a new teammate gets them
+# without configuring anything. Elsewhere, remove them and add your own in the UI (a Pi's
+# More › Settings, and Fleet › Add a Pi): that writes gaia.local.yaml, never this file.
+#
+# The id names the Pi's devices (/dev/talos-<id>-serial) and its Commander robot entry. Fields
+# left out use defaults: user pi, controller native, homesOnStart true, operatorPort 61616,
+# visionPort 5051, rtspPath <id>, inferenceFps 4, encoder hardware, telemetry true.
+pis:
+  bingo:
+    name: Bingo
+    host: bingo.local
+    fallbackHosts: [192.168.0.3, 192.168.0.2]
+    user: pi
+    arm:
+      controller: native # native = Scorbot controller box | talos = our custom ESP32 board
+      homesOnStart: true # starting Operator physically HOMEs the arm -> UI asks for confirmation
+      operatorPort: 61617
+      visionPort: 5052
+      rtspPath: bingo
+      inferenceFps: 4
+      encoder: hardware # hardware = h264_v4l2m2m 1280x720 | software = libx264 640x480 fallback
+      usb: # used to generate udev rules -> /dev/talos-<id>-serial and /dev/talos-<id>-camera
+        serial: { idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.[34]:1.0", vendor: "067b", product: "2303" }
+        camera: { idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.[34]:1.0" }
+
+  bluey:
+    name: Bluey
+    host: bluey.local
+    # bluey.local breaks when the Pi is on ethernet and Wi-Fi at once (avahi renames it bluey-2.local).
+    fallbackHosts: [192.168.0.52, bluey-2.local, 192.168.0.54]
+    user: pi
+    arm:
+      controller: talos
+      # The firmware homes when Operator starts (native profile), confirmed 2026-11-19.
+      homesOnStart: true
+      operatorPort: 61616
+      visionPort: 5051
+      rtspPath: camera
+      inferenceFps: 4
+      encoder: hardware
+      usb:
+        serial: { idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0", vendor: "10c4", product: "ea60" }
+        camera: { idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.2:1.0" }

@@ -1,0 +1,24 @@
+# This is the default configuration for new connections to the system.
+# This file is not used directly for any connections, only as a template for new configurations
+# that are added to config.local.yaml via config.py
+
+# The host, port, and camera index have placeholder values in this file that will be replaced when adding a new connection.
+socket_host: "default_host"
+socket_port: 8080
+camera_index: 0
+# Link to camera feed to be used for video capture
+# camera_index: http://unctalos.student.rit.edu:5000/video_feed
+
+tracking_priority: "largest" # Options are 'largest' or 'closest' to determine which bounding box to track when multiple are present
+acceptable_box_percent: 0.4 # Percentage of the frame width and height used to define the size of the acceptable box
+vertical_field_of_view: 48 # vertical FOV of camera being used
+horizontal_field_of_view: 89 # horizontal FOV of camera being used
+confirmation_delay: 0.25 # Amount of time subject is outside of acceptable box before a command is sent
+
+command_delay: 0.25 # Wait time before another command can be sent (while in discrete director mode)
+frame_width: 500 # Desired width of the video frame
+fps: 30 # Frame rate to update the gui video
+max_fps: 60 # Maximum fps for boundary box polling
+# frame_height: 400 # auto calculate if commented out
+
+manual_only: false # If true, the connection will only allow manual control

@@ -1,0 +1,9 @@
+log_level: DEBUG
+bbox_max_fps: 60
+disable_performance_warnings: true
+camera_1_host: bluey.local
+camera_2_host: bingo.local
+display_mode: one_screen
+one_screen_mode: manual
+ui_mode: debug
+jog_mode: continuous

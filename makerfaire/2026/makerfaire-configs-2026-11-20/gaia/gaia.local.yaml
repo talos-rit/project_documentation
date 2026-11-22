@@ -1,0 +1,23 @@
+# Personal Gaia overrides (git-ignored): a merge patch over gaia.config.yaml (null removes a key).
+# Written by the Gaia UI (or its MCP server); safe to hand-edit.
+components: 
+  vision: 
+    source: 
+      mode: git
+      repo: https://github.com/talos-rit/pi-vision.git
+      ref: feat/live-tracking-speed
+  operator: 
+    source: 
+      mode: git
+      repo: https://github.com/talos-rit/operator.git
+      ref: main
+pis: 
+  bingo: 
+    arm: 
+      usb: 
+        serial: 
+          idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.[1-4]:1.0"
+          vendor: 067b
+          product: "2303"
+        camera: 
+          idPath: "platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.[1-4]:1.0"
