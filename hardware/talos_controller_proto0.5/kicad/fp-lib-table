@@ -1,0 +1,3 @@
+(fp_lib_table (version 7)
+  (lib (name "talos_controller_lite")(type "KiCad")(uri "${KIPRJMOD}/talos_controller_lite.pretty")(options "")(descr "Footprints drawn for the Talos controller, prototype 0.5"))
+)

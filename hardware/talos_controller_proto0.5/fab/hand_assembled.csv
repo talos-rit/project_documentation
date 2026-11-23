@@ -1,0 +1,23 @@
+Designator,Value,Description,Manufacturer part,Solder joints,Note
+C1,220uF 35V,"220 uF 35 V aluminium electrolytic, radial, 8 mm diameter, 3.5 mm lead pitch, 11.5 mm high or more, 105 C","any of that size (for example Nichicon UHV1V221MPD, Panasonic EEU-FR1V221 or Rubycon 35ZLH220MEFC8X11.5)",2,
+C2,220uF 35V,"220 uF 35 V aluminium electrolytic, radial, 8 mm diameter, 3.5 mm lead pitch, 11.5 mm high or more, 105 C","any of that size (for example Nichicon UHV1V221MPD, Panasonic EEU-FR1V221 or Rubycon 35ZLH220MEFC8X11.5)",2,
+F1,ATO 5 A,"ATO blade fuse holder, PCB",Littelfuse 178.6165.0001,9,
+J1,ROBOT D50,"D-Sub DD-50 socket, right angle, solder tails (the robot cable); its two screwlock kits are a line of their own","Amphenol DD50S565MTLF (or HARTING 09 66 552 6616, which has a threaded flange and needs no screwlock kits)",52,
+J2,ATX 24-pin,"ATX 24-pin header, 4.2 mm, right angle, with pegs","Wuerth 649024227222 (or Molex 0039300240, the part the footprint was drawn for)",26,
+J4,E-STOP (NC),"terminal block 2-pole 5.08 mm, wire entry from the side","Phoenix Contact MKDS 1,5/2-5,08 (1715721), or Same Sky TB007-508-02BE",2,
+J6,GND post,"pin header 1x2, 2.54 mm (cut from a 1x40 strip)","Sullins PRPC040SAAN-RC, two pins of it",2,
+J8,RAIL,"terminal block 8-pole 5.08 mm, wire entry from the side (the rail's cable)","Phoenix Contact MKDS 1,5/ 8-5,08 (1715789)",8,
+JP1,PS_ON (fit = on),"pin header 1x2, 2.54 mm (cut from a 1x40 strip)","Sullins PRPC040SAAN-RC, two pins of it",2,
+K1,G2RL-2 12V,"power relay DPDT, 12 V coil, 8 A contacts",Omron G2RL-2 DC12,8,
+SW3,MOTORS ON,tactile switch 12 x 12 mm with key top (MOTORS ON),Omron B3F-4055 + B32-1310,6,
+U1,ESP32-S3-DevKitC-1,"ESP32-S3-DevKitC-1, plugged into the two socket strips (any variant that is not a ...V part, as for the first Talos controller)",Espressif ESP32-S3-DevKitC-1,44,
+D21,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D22,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D23,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D24,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D25,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D26,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D27,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D28,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D49,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
+D50,WS2812C,"addressable RGB LED, 2.0 x 2.0 mm, WS2812 protocol, 5 mA per colour",Worldsemi WS2812C-2020-V6,4,"optional, surface-mount, hot air: JLCPCB does not place it"
