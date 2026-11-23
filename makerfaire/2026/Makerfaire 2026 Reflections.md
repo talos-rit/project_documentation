@@ -120,4 +120,8 @@ We were lucky enough to be able to move them outside, which probably was better 
 ## One Last Problem
 At ~4pm, Bingo stopped working. We're currently not entirely sure of the cause, but it seems like some sort of split-brain problem between Operator and the controller. This will hopefully be fixed by ImagineRIT & by next MakerFaire.
 
-More investigation is forthcoming, of course, but at the moment I do not have access to Bingo.
+**UPDATE:** On Monday, 2026-11-23, I was able to get Bingo working. The fix was to plug in the serial cable. Our best guess is that it simply got loose, perhaps from someone bumping into the cart at Makerfaire, causing the occasional jog prompt to get lost. Operator did not have a way to recover from even just one lost prompt, so it would simply stop working and not recover until Operator is restarted, potentially also needing a controller restart if it's in a jog prompt mode so that their state machines match.
+
+An alternative explanation would be that it's simply due to the long nature of the Faire; something overheated after the first 7+ hours of running causing just the right thing to break for the most mysterious, incomprehensible bug possible. But unfortunately the serial link seems more likely.
+
+In our defense, it'd been a long day for all of us.
